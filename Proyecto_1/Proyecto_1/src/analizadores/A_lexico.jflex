@@ -1,6 +1,5 @@
 package analizadores;
-import java_cup.runtime.*; 
-import java.util.LinkedList;
+import java_cup.runtime.*;
 
 %%
 
@@ -8,17 +7,16 @@ import java.util.LinkedList;
     String cache = "";
 %}
 
-%public 
+%public
 %class Analizador_Lexico
-%cupsym Simbolos 
-%cup 
+%cupsym Simbolos
+%cup
 %char
 %column
 %full
-%ignorecase 
-%line 
+%ignorecase
+%line
 %unicode
-
 
 // Expresiones regulares
 letra = [a-zA-Z]
