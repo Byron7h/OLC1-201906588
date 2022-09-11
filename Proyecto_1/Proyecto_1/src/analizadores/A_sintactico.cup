@@ -95,7 +95,7 @@ E::= E coma id
 
 
 
-non terminal INICIO, INSTRUCCIONES, INSTRUCCION, ASIGNACION_, DECLARACION, EXPRE, VALOR, TIPO, LISTA_ID;
+non terminal INICIO, INSTRUCCIONES, INSTRUCCION, ASIGNACION_, DECLARACION, EXPRE, VALOR, TIPO, LISTA_ID, LISTA_PARAMETROS, PRINT, RETORNO, EJECUCION, METODO, FUNCION;
 start with INICIO;
 
 
@@ -104,14 +104,19 @@ INICIO  ::= pr_inicio INSTRUCCIONES pr_fin ;
 INSTRUCCIONES ::=   INSTRUCCIONES INSTRUCCION 
                 |   INSTRUCCION
 
-INSTRUCCION   ::=   ASIGNACION_ pyc
+INSTRUCCION_R   ::= ASIGNACION_ pyc
                 |   DECLARACION pyc
                 |   PRINT pyc
                 |   RETORNO pyc
+                |   EJECUCION pyc
+                |   METODO  
+
+INSTRUCCION   ::=   ASIGNACION_ pyc
                 |   DECLARACION pyc
-                |   DECLARACION pyc
-                |   DECLARACION pyc
-                |   DECLARACION pyc
+                |   PRINT pyc
+                |   EJECUCION pyc
+                |   METODO
+
 ;
                 
 
@@ -166,6 +171,7 @@ LISTA_ID ::=  LISTA_ID coma id
 
 LISTA_PARAMETROS ::= LISTA_PARAMETROS coma id TIPO
             | id TIPO
+            | par1 LISTA_PARAMETROS par2
 ;
 
 PRINT ::=   pr_imprimir EXPRE
@@ -175,9 +181,15 @@ PRINT ::=   pr_imprimir EXPRE
 RETORNO ::= pr_retornar EXPRE
 ;
 
-EJECUCION ::= pr_ejecutar id par1 par2 pyc
-            | pr_ejecutar id par1 par2 pyc
- 
+EJECUCION ::= pr_ejecutar id par1 par2
+            | pr_ejecutar id LISTA_PARAMETROS 
+;
 
-ejecutar <identificador>();
-ejecutar <identificador>(<Lista de parámetros>);
+METODO ::=  pr_metodo id INSTRUCCIONES pr_fin_metodo
+            | pr_metodo id pr_con_parametros LISTA_PARAMETROS INSTRUCCIONES pr_fin_metodo
+;
+
+FUNCION ::= pr_funcion id TIPO INSTRUCCIONES_R pr_fin_funcion
+            | pr_funcion id TIPO pr_con_parametros LISTA_PARAMETROS INSTRUCCIONES_R pr_fin_funcion
+;
+
