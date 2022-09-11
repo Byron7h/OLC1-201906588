@@ -20,6 +20,8 @@ terminal igual;
 terminal asignacion;
 terminal pyc;
 terminal coma;
+terminal duda1;
+terminal duda1;
 
 terminal pr_verdadero;
 terminal pr_falso;
@@ -60,6 +62,7 @@ terminal pr_es_igual;
 terminal pr_es_diferente;
 terminal pr_inicio;
 terminal pr_fin;
+terminal pr_con_incremental;
 
 terminal td_cadena;
 terminal td_numero;
@@ -95,28 +98,42 @@ E::= E coma id
 
 
 
-non terminal INICIO, INSTRUCCIONES, INSTRUCCION, ASIGNACION_, DECLARACION, EXPRE, VALOR, TIPO, LISTA_ID, LISTA_PARAMETROS, PRINT, RETORNO, EJECUCION, METODO, FUNCION;
+non terminal INICIO, GLOBALES, GLOBAL, INSTRUCCIONES, INSTRUCCION, ASIGNACION_, DECLARACION, EXPRE, VALOR, TIPO, LISTA_ID, LISTA_PARAMETROS, PRINT, RETORNO, EJECUCION, METODO, FUNCION, IF, RAMIFICACION,SEGUN, LISTA_SEGUN;
 start with INICIO;
 
 
-INICIO  ::= pr_inicio INSTRUCCIONES pr_fin ;
+INICIO  ::= pr_inicio GLOBALES pr_fin ;
+
+GLOBALES ::=    GLOBALES GLOBAL
+                |GLOBAL
+;
+GLOBAL :=  INSTRUCCIONES 
+           | METODO 
+           | FUNCION
+;
 
 INSTRUCCIONES ::=   INSTRUCCIONES INSTRUCCION 
                 |   INSTRUCCION
+;
 
+// instrucciones 
 INSTRUCCION_R   ::= ASIGNACION_ pyc
                 |   DECLARACION pyc
                 |   PRINT pyc
                 |   RETORNO pyc
                 |   EJECUCION pyc
-                |   METODO  
+                |   SI
+                |   SEGUN
+                |   PARA 
+;
 
 INSTRUCCION   ::=   ASIGNACION_ pyc
                 |   DECLARACION pyc
                 |   PRINT pyc
                 |   EJECUCION pyc
-                |   METODO
-
+                |   SI
+                |   SEGUN
+                |   PARA 
 ;
                 
 
@@ -125,7 +142,6 @@ DECLARACION   ::=   pr_ingresar LISTA_ID pr_como TIPO pr_con_valor EXPRE
 
 ASIGNACION_   ::=   LISTA_ID asignacion EXPRE
 ;
-
 
 
 EXPRE   :=      pare1 EXPRE pare2
@@ -192,4 +208,31 @@ METODO ::=  pr_metodo id INSTRUCCIONES pr_fin_metodo
 FUNCION ::= pr_funcion id TIPO INSTRUCCIONES_R pr_fin_funcion
             | pr_funcion id TIPO pr_con_parametros LISTA_PARAMETROS INSTRUCCIONES_R pr_fin_funcion
 ;
+
+SI ::=        pr_si EXPRE pr_entonces INSTRUCCIONES pr_fin_si
+            | pr_si EXPRE pr_entonces INSTRUCCIONES pr_de_lo_contrario INSTRUCCIONES pr_fin_si
+            | pr_si EXPRE pr_entonces INSTRUCCIONES RAMIFICACION pr_fin_si
+            | pr_si EXPRE pr_entonces INSTRUCCIONES RAMIFICACION pr_de_lo_contrario INSTRUCCIONES pr_fin_si
+;
+
+RAMIFICACION ::= RAMIFICACION pr_o_si EXPRE pr_entonces INSTRUCCIONES
+                |pr_o_si EXPRE pr_entonces INSTRUCCIONES
+;
+
+SEGUN ::=   pr_segun EXPRE pr_hacer LISTA_SEGUN pr_fin segun
+            | pr_segun EXPRE pr_hacer LISTA_SEGUN pr_de_lo_contrario r_entonces INSTRUCCIONES pr_fin segun
+;
+
+LISTA_SEGUN ::= LISTA_SEGUN duda1 EXPRE duda2 pr_entonces INSTRUCCIONES
+            |   duda1 EXPRE duda2 pr_entonces INSTRUCCIONES
+;
+
+PARA ::=     pr_para EXPRE asignacion EXPRE pr_hasta EXPRE pr_hacer INSTRUCCIONES pr_fin_para
+            |pr_para EXPRE asignacion EXPRE pr_hasta EXPRE pr_hacer  pr_fin_para
+            |pr_para EXPRE asignacion EXPRE pr_hasta EXPRE pr_con_incremental EXPRE pr_hacer INSTRUCCIONES pr_fin_para
+            |pr_para EXPRE asignacion EXPRE pr_hasta EXPRE pr_con_incremental EXPRE pr_hacer  pr_fin_para
+;
+
+
+
 

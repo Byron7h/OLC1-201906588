@@ -72,6 +72,12 @@ caracter = (\'{letra}\')|("${"{digito}{digito}{digito}"}")|("${"{digito}{digito}
     ","           { System.out.println("Reconocio token:<coma> lexema:" +yytext());
                      return new Symbol(Simbolos.coma, yycolumn, yyline, yytext());     }
 
+    "?"           { System.out.println("Reconocio token:<duda2> lexema:" +yytext());
+                     return new Symbol(Simbolos.duda2, yycolumn, yyline, yytext());     }
+
+    "¿"           { System.out.println("Reconocio token:<duda1> lexema:" +yytext());
+                     return new Symbol(Simbolos.duda1, yycolumn, yyline, yytext());     }
+
     "->"          { System.out.println("Reconocio token:<asignacion> lexema:" +yytext());
                      return new Symbol(Simbolos.asignacion, yycolumn, yyline, yytext());}
 
@@ -211,6 +217,9 @@ caracter = (\'{letra}\')|("${"{digito}{digito}{digito}"}")|("${"{digito}{digito}
 
     "fin"               {  System.out.println("Reconocio token:<pr_fin> lexema:" +yytext());
                             return new Symbol(Simbolos.pr_fin, yycolumn, yyline, yytext());     }
+
+    "con_incremental"   {  System.out.println("Reconocio token:<pr_con_incremental> lexema:" +yytext());
+                            return new Symbol(Simbolos.pr_con_incremental, yycolumn, yyline, yytext());     }
 
     // Expresiones regulares
 
