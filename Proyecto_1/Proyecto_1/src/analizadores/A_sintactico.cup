@@ -1,7 +1,89 @@
 package analizadores;
 import java_cup.runtime.Symbol;
-terminal id;
+
+
+
+
+
+
+terminal suma;
+terminal resta;
+terminal mult;
+terminal div;
+terminal pot;
+terminal mod;
+terminal pare1;
+terminal pare2;
+terminal cor1;
+terminal cor2;
+terminal igual;
+terminal asignacion;
+terminal pyc;
 terminal coma;
+
+terminal pr_verdadero;
+terminal pr_falso;
+terminal pr_ingresar;
+terminal pr_como;
+terminal pr_con_valor;
+terminal pr_si;
+terminal pr_entonces;
+terminal pr_fin_si;
+terminal pr_de_lo_contrario;
+terminal pr_segun;
+terminal pr_hacer;
+terminal pr_fin_segun;
+terminal pr_para;
+terminal pr_hasta;
+terminal pr_fin_para;
+terminal pr_mientras;
+terminal pr_fin_mientras;
+terminal pr_repetir;
+terminal pr_thasta_que;
+terminal pr_retomar;
+terminal pr_metodo;
+terminal pr_fin_metodo;
+terminal pr_con_parametros;
+terminal pr_funcion;
+terminal pr_fin_funcion;
+terminal pr_ejecutar;
+terminal pr_imprimir;
+terminal pr_imprimir_nl;
+terminal pr_or;
+terminal pr_and;
+terminal pr_not;
+terminal pr_mayor;
+terminal pr_menor;
+terminal pr_mayor_o_igual;
+terminal pr_menor_o_igual;
+terminal pr_es_igual;
+terminal pr_es_diferente;
+terminal pr_inicio;
+terminal pr_fin;
+
+terminal td_cadena;
+terminal td_numero;
+terminal td_boolean;
+terminal td_caracter;
+
+
+terminal num;
+terminal id;
+terminal cadena;
+terminal caracter;
+terminal comentario_multilinea;
+terminal comentario_unilinea;
+
+
+
+
+
+
+
+
+
+
+ 
 non terminal INICIO,E;
 start with INICIO;
 INICIO::= E {:System.out.println("Fin de analisis de entrada");:}
@@ -10,3 +92,92 @@ E::= E coma id
 | id
 ;
 
+
+
+
+non terminal INICIO, INSTRUCCIONES, INSTRUCCION, ASIGNACION_, DECLARACION, EXPRE, VALOR, TIPO, LISTA_ID;
+start with INICIO;
+
+
+INICIO  ::= pr_inicio INSTRUCCIONES pr_fin ;
+
+INSTRUCCIONES ::=   INSTRUCCIONES INSTRUCCION 
+                |   INSTRUCCION
+
+INSTRUCCION   ::=   ASIGNACION_ pyc
+                |   DECLARACION pyc
+                |   PRINT pyc
+                |   RETORNO pyc
+                |   DECLARACION pyc
+                |   DECLARACION pyc
+                |   DECLARACION pyc
+                |   DECLARACION pyc
+;
+                
+
+DECLARACION   ::=   pr_ingresar LISTA_ID pr_como TIPO pr_con_valor EXPRE  
+;
+
+ASIGNACION_   ::=   LISTA_ID asignacion EXPRE
+;
+
+
+
+EXPRE   :=      pare1 EXPRE pare2
+
+                |EXPRE suma EXPRE 
+                |EXPRE resta EXPRE 
+                |EXPRE mult EXPRE 
+                |EXPRE div EXPRE 
+                |EXPRE pot cor1 EXPRE cor2 
+                |EXPRE mod EXPRE 
+
+                |EXPRE pr_or EXPRE 
+                |EXPRE pr_and EXPRE 
+                |pr_not EXPRE 
+
+                |EXPRE pr_mayor EXPRE 
+                |EXPRE pr_menor EXPRE 
+                |EXPRE pr_mayor_o_igual EXPRE 
+                |EXPRE pr_menor_o_igual EXPRE 
+                |EXPRE pr_es_igual EXPRE 
+                |EXPRE pr_es_diferente EXPRE
+
+                | VALOR
+;
+
+VALOR ::=       num
+                | id
+                | cadena
+                | pr_verdadero
+                | pr_falso
+                | caracter
+;
+
+TIPO ::= td_cadena;
+        | td_numero;
+        | td_boolean;
+        | td_caracter;    
+;
+
+LISTA_ID ::=  LISTA_ID coma id
+            | id
+;
+
+LISTA_PARAMETROS ::= LISTA_PARAMETROS coma id TIPO
+            | id TIPO
+;
+
+PRINT ::=   pr_imprimir EXPRE
+        |   pr_imprimir_nl EXPRE
+;
+
+RETORNO ::= pr_retornar EXPRE
+;
+
+EJECUCION ::= pr_ejecutar id par1 par2 pyc
+            | pr_ejecutar id par1 par2 pyc
+ 
+
+ejecutar <identificador>();
+ejecutar <identificador>(<Lista de parámetros>);

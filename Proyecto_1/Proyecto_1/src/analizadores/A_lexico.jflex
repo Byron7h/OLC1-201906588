@@ -26,6 +26,7 @@ numero_flotante =  {numero_entero}"."{numero_entero}
 id = "_"({letra}|"_"|{digito})+"_"
 cadena = \"[^\"]*\"
 cometario_uni = "//"("/")*
+caracter = (\'{letra}\')|("${"{digito}{digito}{digito}"}")|("${"{digito}{digito}"}")
 
 
 %state ESTADOCOMENTARIO
@@ -41,37 +42,40 @@ cometario_uni = "//"("/")*
     "-"           { System.out.println("Reconocio token:<tresta> lexema:" +yytext());
                      return new Symbol(Simbolos.resta, yycolumn, yyline, yytext());     }
 
-    "*"           { System.out.println("Reconocio token:<tmult> lexema:" +yytext());
+    "*"           { System.out.println("Reconocio token:<mult> lexema:" +yytext());
                      return new Symbol(Simbolos.mult, yycolumn, yyline, yytext());      }
 
-    "/"           { System.out.println("Reconocio token:<tdiv> lexema:" +yytext());
+    "/"           { System.out.println("Reconocio token:<div> lexema:" +yytext());
                      return new Symbol(Simbolos.div, yycolumn, yyline, yytext());       }
 
-    "potencia"    { System.out.println("Reconocio token:<tpot> lexema:" +yytext());
+    "potencia"    { System.out.println("Reconocio token:<pot> lexema:" +yytext());
                      return new Symbol(Simbolos.pot, yycolumn, yyline, yytext());       }
 
-    "mod"         { System.out.println("Reconocio token:<tmod> lexema:" +yytext());
+    "mod"         { System.out.println("Reconocio token:<mod> lexema:" +yytext());
                      return new Symbol(Simbolos.mod, yycolumn, yyline, yytext());       }
 
-    "("           { System.out.println("Reconocio token:<tpare1> lexema:" +yytext());
+    "("           { System.out.println("Reconocio token:<pare1> lexema:" +yytext());
                      return new Symbol(Simbolos.pare1, yycolumn, yyline, yytext());     }
 
-    ")"           { System.out.println("Reconocio token:<tpare2> lexema:" +yytext());
+    ")"           { System.out.println("Reconocio token:<pare2> lexema:" +yytext());
                      return new Symbol(Simbolos.pare2, yycolumn, yyline, yytext());     }
 
-    "["           { System.out.println("Reconocio token:<tcor1> lexema:" +yytext());
+    "["           { System.out.println("Reconocio token:<cor1> lexema:" +yytext());
                      return new Symbol(Simbolos.cor1, yycolumn, yyline, yytext());      }
 
-    "]"           { System.out.println("Reconocio token:<tcor2> lexema:" +yytext());
+    "]"           { System.out.println("Reconocio token:<cor2> lexema:" +yytext());
                      return new Symbol(Simbolos.cor2, yycolumn, yyline, yytext());      }
 
-    "="           { System.out.println("Reconocio token:<tigual> lexema:" +yytext());
+    "="           { System.out.println("Reconocio token:<igual> lexema:" +yytext());
                      return new Symbol(Simbolos.igual, yycolumn, yyline, yytext());     }
 
-    "->"          { System.out.println("Reconocio token:<tasignacion> lexema:" +yytext());
+    ","           { System.out.println("Reconocio token:<coma> lexema:" +yytext());
+                     return new Symbol(Simbolos.coma, yycolumn, yyline, yytext());     }
+
+    "->"          { System.out.println("Reconocio token:<asignacion> lexema:" +yytext());
                      return new Symbol(Simbolos.asignacion, yycolumn, yyline, yytext());}
 
-    ";"           { System.out.println("Reconocio token:<tpyc> lexema:" +yytext());
+    ";"           { System.out.println("Reconocio token:<pyc> lexema:" +yytext());
                      return new Symbol(Simbolos.pyc, yycolumn, yyline, yytext());       }
     
     "/*"          { yybegin(ESTADOCOMENTARIO);}
@@ -133,8 +137,8 @@ cometario_uni = "//"("/")*
     "repetir"           {  System.out.println("Reconocio token:<pr_repetir> lexema:" +yytext());
                             return new Symbol(Simbolos.pr_repetir, yycolumn, yyline, yytext());     }
 
-    "hasta_que"         {  System.out.println("Reconocio token:<pr_thasta_que> lexema:" +yytext());
-                            return new Symbol(Simbolos.pr_thasta_que, yycolumn, yyline, yytext());     }
+    "hasta_que"         {  System.out.println("Reconocio token:<pr_hasta_que> lexema:" +yytext());
+                            return new Symbol(Simbolos.pr_hasta_que, yycolumn, yyline, yytext());     }
 
     "retomar"           {  System.out.println("Reconocio token:<pr_retomar> lexema:" +yytext());
                             return new Symbol(Simbolos.pr_retomar, yycolumn, yyline, yytext());     }
@@ -190,6 +194,18 @@ cometario_uni = "//"("/")*
     "es_diferente"      {  System.out.println("Reconocio token:<pr_es_diferente> lexema:" +yytext());
                             return new Symbol(Simbolos.pr_es_diferente, yycolumn, yyline, yytext());     }
 
+    "cadena"            {  System.out.println("Reconocio token:<td_cadena> lexema:" +yytext());
+                            return new Symbol(Simbolos.td_cadena, yycolumn, yyline, yytext());     }
+                            
+    "numero"            {  System.out.println("Reconocio token:<td_numero> lexema:" +yytext());
+                            return new Symbol(Simbolos.td_numero, yycolumn, yyline, yytext());     }
+
+    "boolean"           {  System.out.println("Reconocio token:<td_boolean> lexema:" +yytext());
+                            return new Symbol(Simbolos.td_boolean, yycolumn, yyline, yytext());     }
+
+    "caracter"          {  System.out.println("Reconocio token:<td_caracter> lexema:" +yytext());
+                            return new Symbol(Simbolos.td_caracter, yycolumn, yyline, yytext());     }
+   
     "inicio"            {  System.out.println("Reconocio token:<pr_inicio> lexema:" +yytext());
                           return new Symbol(Simbolos.pr_inicio, yycolumn, yyline, yytext());     }
 
@@ -209,6 +225,9 @@ cometario_uni = "//"("/")*
 
     {cadena}            {  System.out.println("Reconocio token:<cadena> lexema:" +yytext());
                             return new Symbol(Simbolos.cadena, yycolumn, yyline, yytext());     }
+
+    {caracter}            {  System.out.println("Reconocio token:<caracter> lexema:" +yytext());
+                            return new Symbol(Simbolos.caracter, yycolumn, yyline, yytext());     }
 
     {cometario_uni}     { yybegin(ESTADOCOMENTARIO2);}
 }

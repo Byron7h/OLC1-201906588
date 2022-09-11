@@ -26,7 +26,6 @@ Analizador_Lexico lexico = new Analizador_Lexico(
 new BufferedReader(new FileReader("./entrada.txt"))
 
 );
-            System.out.println("entro");
 Analizador_sintactico sintactico = new Analizador_sintactico(lexico);
 sintactico.parse();
 } catch (Exception e) {
