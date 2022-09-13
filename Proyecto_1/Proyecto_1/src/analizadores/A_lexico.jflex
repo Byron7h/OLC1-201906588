@@ -132,7 +132,7 @@ caracter = (\'{letra}\')|("${"{digito}{digito}{digito}"}")|("${"{digito}{digito}
                             return new Symbol(Simbolos.pr_hasta, yycolumn, yyline, yytext());     }
 
     "fin_para"          {  System.out.println("Reconocio token:<pr_fin_para> lexema:" +yytext());
-                            return new Symbol(Simbolos.pr_fin_para, yycolumn, yyline, yytext());     
+                            return new Symbol(Simbolos.pr_fin_para, yycolumn, yyline, yytext());  }   
 
     "mientras"          {  System.out.println("Reconocio token:<pr_mientras> lexema:" +yytext());
                             return new Symbol(Simbolos.pr_mientras, yycolumn, yyline, yytext());     }
@@ -253,7 +253,7 @@ caracter = (\'{letra}\')|("${"{digito}{digito}{digito}"}")|("${"{digito}{digito}
                                 // Cuando vuelva a encontrar las (") quiere decir que terminó la cadena, por lo que se guarda y se traslada al estado inicial de nuevo
                                 yybegin(YYINITIAL); 
                                 System.out.println("Reconocio token:<comentario_multilinea>");
-                                return new Symbol(Simbolos.comentario_multilinea, yycolumn, yyline, cache);   
+                                //return new Symbol(Simbolos.comentario_multilinea, yycolumn, yyline, cache);   
                                 cache = "";
                             }
 }
@@ -270,7 +270,7 @@ caracter = (\'{letra}\')|("${"{digito}{digito}{digito}"}")|("${"{digito}{digito}
                                 System.out.println("Fin del estado cadena");
                                 yybegin(YYINITIAL); 
                                 System.out.println("Reconocio token:<comentario_unilinea>");
-                                return new Symbol(Simbolos.comentario_unilinea, yycolumn, yyline, cache);   
+                                //return new Symbol(Simbolos.comentario_unilinea, yycolumn, yyline, cache);   
                                 cache = "";
                             }
 }

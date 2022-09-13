@@ -16,7 +16,8 @@ public class Simbolos {
   "EOF",
   "error",
   "id",
-  "coma"
+  "coma",
+  "pare1"
   };
 }
 
