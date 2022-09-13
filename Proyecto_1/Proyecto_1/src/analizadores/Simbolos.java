@@ -8,16 +8,139 @@ package analizadores;
 /** CUP generated class containing symbol constants. */
 public class Simbolos {
   /* terminals */
-  public static final int error = 1;
-  public static final int coma = 3;
+  public static final int pr_ejecutar = 42;
+  public static final int pr_hasta_que = 35;
+  public static final int pr_de_lo_contrario = 25;
+  public static final int pr_o_si = 57;
+  public static final int cor2 = 11;
+  public static final int pr_menor_o_igual = 51;
+  public static final int pr_con_parametros = 39;
+  public static final int cor1 = 10;
+  public static final int suma = 2;
+  public static final int resta = 3;
+  public static final int pr_fin_funcion = 41;
+  public static final int mod = 7;
+  public static final int td_boolean = 60;
+  public static final int pr_inicio = 54;
+  public static final int pr_como = 20;
+  public static final int pr_imprimir = 43;
+  public static final int coma = 14;
+  public static final int td_caracter = 61;
+  public static final int pr_entonces = 23;
+  public static final int pr_hasta = 30;
+  public static final int pr_fin_si = 24;
+  public static final int caracter = 65;
+  public static final int pr_verdadero = 17;
+  public static final int pr_fin = 55;
+  public static final int pr_es_diferente = 53;
+  public static final int pr_not = 47;
+  public static final int pr_and = 46;
+  public static final int pr_mientras = 32;
+  public static final int pr_imprimir_nl = 44;
+  public static final int pr_metodo = 37;
+  public static final int td_cadena = 58;
+  public static final int pr_es_igual = 52;
+  public static final int pare2 = 9;
+  public static final int pare1 = 8;
   public static final int EOF = 0;
-  public static final int id = 2;
+  public static final int pyc = 13;
+  public static final int pr_si = 22;
+  public static final int error = 1;
+  public static final int pr_fin_segun = 28;
+  public static final int pr_menor = 49;
+  public static final int pot = 6;
+  public static final int pr_repetir = 34;
+  public static final int pr_con_incremental = 56;
+  public static final int pr_fin_para = 31;
+  public static final int pr_con_valor = 21;
+  public static final int pr_para = 29;
+  public static final int pr_mayor = 48;
+  public static final int id = 63;
+  public static final int pr_mayor_o_igual = 50;
+  public static final int pr_or = 45;
+  public static final int mult = 4;
+  public static final int pr_fin_mientras = 33;
+  public static final int pr_fin_metodo = 38;
+  public static final int pr_ingresar = 19;
+  public static final int pr_falso = 18;
+  public static final int pr_segun = 26;
+  public static final int pr_hacer = 27;
+  public static final int pr_funcion = 40;
+  public static final int duda2 = 16;
+  public static final int div = 5;
+  public static final int duda1 = 15;
+  public static final int td_numero = 59;
+  public static final int pr_retornar = 36;
+  public static final int num = 62;
+  public static final int asignacion = 12;
+  public static final int cadena = 64;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
-  "id",
+  "suma",
+  "resta",
+  "mult",
+  "div",
+  "pot",
+  "mod",
+  "pare1",
+  "pare2",
+  "cor1",
+  "cor2",
+  "asignacion",
+  "pyc",
   "coma",
-  "pare1"
+  "duda1",
+  "duda2",
+  "pr_verdadero",
+  "pr_falso",
+  "pr_ingresar",
+  "pr_como",
+  "pr_con_valor",
+  "pr_si",
+  "pr_entonces",
+  "pr_fin_si",
+  "pr_de_lo_contrario",
+  "pr_segun",
+  "pr_hacer",
+  "pr_fin_segun",
+  "pr_para",
+  "pr_hasta",
+  "pr_fin_para",
+  "pr_mientras",
+  "pr_fin_mientras",
+  "pr_repetir",
+  "pr_hasta_que",
+  "pr_retornar",
+  "pr_metodo",
+  "pr_fin_metodo",
+  "pr_con_parametros",
+  "pr_funcion",
+  "pr_fin_funcion",
+  "pr_ejecutar",
+  "pr_imprimir",
+  "pr_imprimir_nl",
+  "pr_or",
+  "pr_and",
+  "pr_not",
+  "pr_mayor",
+  "pr_menor",
+  "pr_mayor_o_igual",
+  "pr_menor_o_igual",
+  "pr_es_igual",
+  "pr_es_diferente",
+  "pr_inicio",
+  "pr_fin",
+  "pr_con_incremental",
+  "pr_o_si",
+  "td_cadena",
+  "td_numero",
+  "td_boolean",
+  "td_caracter",
+  "num",
+  "id",
+  "cadena",
+  "caracter"
   };
 }
 

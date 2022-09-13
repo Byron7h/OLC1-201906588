@@ -25,16 +25,18 @@ numero_entero = {digito}+
 numero_flotante =  {numero_entero}"."{numero_entero}
 id = "_"({letra}|"_"|{digito})+"_"
 cadena = \"[^\"]*\"
-cometario_uni = "//"("/")*
+comentario_uni = "//"[^\n]*[\n]
+comentario_multi = "/*"["*"]*[^"*/"]*["*"]*"*/"
 caracter = (\'{letra}\')|("${"{digito}{digito}{digito}"}")|("${"{digito}{digito}"}")
 
-
-%state ESTADOCOMENTARIO
-%state ESTADOCOMENTARIO2
 
 %%
  
 <YYINITIAL>{
+    {comentario_uni}         { System.out.println("Reconocio token:<comentario_uni> lexema:" +yytext());}
+
+    {comentario_multi}     { System.out.println("Reconocio token:<comentario_multi> lexema:" +yytext());}
+
 
     "+"           { System.out.println("Reconocio token:<suma> lexema:" +yytext());
                     return new Symbol(Simbolos.suma, yycolumn, yyline, yytext());       }
@@ -66,9 +68,6 @@ caracter = (\'{letra}\')|("${"{digito}{digito}{digito}"}")|("${"{digito}{digito}
     "]"           { System.out.println("Reconocio token:<cor2> lexema:" +yytext());
                      return new Symbol(Simbolos.cor2, yycolumn, yyline, yytext());      }
 
-    "="           { System.out.println("Reconocio token:<igual> lexema:" +yytext());
-                     return new Symbol(Simbolos.igual, yycolumn, yyline, yytext());     }
-
     ","           { System.out.println("Reconocio token:<coma> lexema:" +yytext());
                      return new Symbol(Simbolos.coma, yycolumn, yyline, yytext());     }
 
@@ -84,8 +83,6 @@ caracter = (\'{letra}\')|("${"{digito}{digito}{digito}"}")|("${"{digito}{digito}
     ";"           { System.out.println("Reconocio token:<pyc> lexema:" +yytext());
                      return new Symbol(Simbolos.pyc, yycolumn, yyline, yytext());       }
     
-    "/*"          { yybegin(ESTADOCOMENTARIO);}
-
     
     // Palabras recervadas
 
@@ -145,9 +142,6 @@ caracter = (\'{letra}\')|("${"{digito}{digito}{digito}"}")|("${"{digito}{digito}
 
     "hasta_que"         {  System.out.println("Reconocio token:<pr_hasta_que> lexema:" +yytext());
                             return new Symbol(Simbolos.pr_hasta_que, yycolumn, yyline, yytext());     }
-
-    "retomar"           {  System.out.println("Reconocio token:<pr_retomar> lexema:" +yytext());
-                            return new Symbol(Simbolos.pr_retomar, yycolumn, yyline, yytext());     }
 
     "metodo"            {  System.out.println("Reconocio token:<pr_metodo> lexema:" +yytext());
                             return new Symbol(Simbolos.pr_metodo, yycolumn, yyline, yytext());     }
@@ -221,6 +215,15 @@ caracter = (\'{letra}\')|("${"{digito}{digito}{digito}"}")|("${"{digito}{digito}
     "con_incremental"   {  System.out.println("Reconocio token:<pr_con_incremental> lexema:" +yytext());
                             return new Symbol(Simbolos.pr_con_incremental, yycolumn, yyline, yytext());     }
 
+    "retornar"          {  System.out.println("Reconocio token:<pr_retornar> lexema:" +yytext());
+                            return new Symbol(Simbolos.pr_retornar, yycolumn, yyline, yytext());     }
+
+    "o_si"              {  System.out.println("Reconocio token:<pr_o_si> lexema:" +yytext());
+                            return new Symbol(Simbolos.pr_o_si, yycolumn, yyline, yytext());     }
+
+
+
+
     // Expresiones regulares
 
     {numero_entero}     {  System.out.println("Reconocio token:<num> lexema:" +yytext());
@@ -238,42 +241,12 @@ caracter = (\'{letra}\')|("${"{digito}{digito}{digito}"}")|("${"{digito}{digito}
     {caracter}            {  System.out.println("Reconocio token:<caracter> lexema:" +yytext());
                             return new Symbol(Simbolos.caracter, yycolumn, yyline, yytext());     }
 
-    {cometario_uni}     { yybegin(ESTADOCOMENTARIO2);}
+
+
 }
 
 
-<ESTADOCOMENTARIO> {
 
-                    [^"*/"] { 
-                                cache += cache + YYTEXT() ;
-                                //• CADENA_LEXEMA += CADENA_LEXEMA + YYTEXT() //Acá vamos guardando todos los caracteres de la cadena
-                            }      
-
-                    "*/"    { 
-                                // Cuando vuelva a encontrar las (") quiere decir que terminó la cadena, por lo que se guarda y se traslada al estado inicial de nuevo
-                                yybegin(YYINITIAL); 
-                                System.out.println("Reconocio token:<comentario_multilinea>");
-                                //return new Symbol(Simbolos.comentario_multilinea, yycolumn, yyline, cache);   
-                                cache = "";
-                            }
-}
-
-<ESTADOCOMENTARIO2> {
-
-                    [^\n] { 
-                                cache += cache + YYTEXT() ;
-                                //• CADENA_LEXEMA += CADENA_LEXEMA + YYTEXT() //Acá vamos guardando todos los caracteres de la cadena
-                            }      
-
-                    [\n]    { 
-                                // Cuando vuelva a encontrar las (") quiere decir que terminó la cadena, por lo que se guarda y se traslada al estado inicial de nuevo
-                                System.out.println("Fin del estado cadena");
-                                yybegin(YYINITIAL); 
-                                System.out.println("Reconocio token:<comentario_unilinea>");
-                                //return new Symbol(Simbolos.comentario_unilinea, yycolumn, yyline, cache);   
-                                cache = "";
-                            }
-}
 
 
 

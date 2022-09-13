@@ -1,6 +1,68 @@
 package analizadores;
 import java_cup.runtime.Symbol;
 
+
+
+
+parser code
+
+  
+
+{:
+
+
+    
+    // listas que nos van a servir
+
+    
+
+    // esta función nata de la herramienta, manda a llamar todos los errores sintacticos
+    // necesita un objeto simbolo
+   
+    public void syntax_error(Symbol s)
+    {        
+
+        //obtenemos los valores de los parámetros del objeto s
+        String lexema = s.value.toString();
+        int fila = s.right;
+        int columna = s.left;
+      
+        System.out.println("!!!!!!! Error Sintactico Recuperado !!!!!!!");
+        System.out.println("\t\tLexema: "+lexema);
+        System.out.println("\t\tFila: "+fila);
+        System.out.println("\t\tColumna: "+columna);
+
+        // error de tipo sintáctico
+        //TError tmp = new TError("Sintactico",lexema,"Caracter no esperado",fila,columna);
+        //errores.add(tmp);
+        
+    }
+
+
+    //Metodo al que se llama en el momento en que ya no es posible una recuperacion de errores, se reporta y termina el análisis
+    // en caso de que se pueda recurer este no saldrá
+    public void unrecovered_syntax_error(Symbol s) throws java.lang.Exception
+    {        
+        String lexema = s.value.toString();
+        int fila = s.right;
+        int columna = s.left;
+        
+        System.out.println("!!!!!!! Error Sintactico, Panic Mode !!!!!!! ");
+        System.out.println("\t\tLexema: "+lexema);
+        System.out.println("\t\tFila: "+fila);
+        System.out.println("\t\tColumna: "+columna);
+        
+        //TError tmp = new TError("Sintactico",lexema, "Caracter no esperado",fila,columna);
+        //errores.add(tmp);   
+    }
+:}
+
+
+
+
+
+
+
 terminal suma;
 terminal resta;
 terminal mult;
@@ -11,7 +73,6 @@ terminal pare1;
 terminal pare2;
 terminal cor1;
 terminal cor2;
-terminal igual;
 terminal asignacion;
 terminal pyc;
 terminal coma;
@@ -36,8 +97,8 @@ terminal pr_fin_para;
 terminal pr_mientras;
 terminal pr_fin_mientras;
 terminal pr_repetir;
-terminal pr_thasta_que;
-terminal pr_retomar;
+terminal pr_hasta_que;
+terminal pr_retornar;
 terminal pr_metodo;
 terminal pr_fin_metodo;
 terminal pr_con_parametros;
@@ -58,6 +119,8 @@ terminal pr_es_diferente;
 terminal pr_inicio;
 terminal pr_fin;
 terminal pr_con_incremental;
+terminal pr_o_si;
+
 
 terminal td_cadena;
 terminal td_numero;
@@ -71,8 +134,9 @@ terminal caracter;
 
 non terminal INICIO, GLOBALES, GLOBAL, INSTRUCCIONES, INSTRUCCION, ASIGNACION_; 
 non terminal DECLARACION, EXPRE, VALOR, TIPO, LISTA_ID, LISTA_PARAMETROS;
-non terminal PRINT, RETORNO, EJECUCION, METODO, FUNCION, IF, RAMIFICACION;
-non terminal SEGUN, LISTA_SEGUN, MIENTRAS, REPETIR, SI, INSTRUCCION_R, PARA;
+non terminal PRINT, RETORNO, EJECUCION, METODO, FUNCION, RAMIFICACION;
+non terminal SEGUN, LISTA_SEGUN, MIENTRAS, REPETIR, SI, INSTRUCCION_R;
+non terminal INSTRUCCIONES_R, PARA;
 
 precedence left pr_or;
 precedence left pr_and;
@@ -88,15 +152,19 @@ INICIO  ::= pr_inicio GLOBALES pr_fin ;
 
 GLOBALES ::=    GLOBALES GLOBAL
                 |GLOBAL
+                |INSTRUCCIONES 
 ;
 
-GLOBAL ::=  INSTRUCCIONES 
-           | METODO 
+GLOBAL ::=   METODO 
            | FUNCION
 ;
 
 INSTRUCCIONES ::=   INSTRUCCIONES INSTRUCCION 
                 |   INSTRUCCION
+;
+
+INSTRUCCIONES_R ::=     INSTRUCCIONES_R INSTRUCCION_R 
+                    |   INSTRUCCION_R
 ;
 
 // instrucciones 
@@ -162,10 +230,10 @@ VALOR ::=   num
             | caracter
 ;
 
-TIPO ::=    td_cadena;
-            | td_numero;
-            | td_boolean;
-            | td_caracter;    
+TIPO ::=    td_cadena
+            | td_numero
+            | td_boolean
+            | td_caracter   
 ;
 
 LISTA_ID ::=  LISTA_ID coma id
@@ -174,7 +242,7 @@ LISTA_ID ::=  LISTA_ID coma id
 
 LISTA_PARAMETROS ::= LISTA_PARAMETROS coma id TIPO
             | id TIPO
-            | par1 LISTA_PARAMETROS par2
+            | pare1 LISTA_PARAMETROS pare2
 ;
 
 PRINT ::=   pr_imprimir EXPRE
@@ -184,7 +252,7 @@ PRINT ::=   pr_imprimir EXPRE
 RETORNO ::= pr_retornar EXPRE
 ;
 
-EJECUCION ::= pr_ejecutar id par1 par2
+EJECUCION ::= pr_ejecutar id pare1 pare2
             | pr_ejecutar id LISTA_PARAMETROS 
 ;
 
@@ -206,8 +274,8 @@ RAMIFICACION ::= RAMIFICACION pr_o_si EXPRE pr_entonces INSTRUCCIONES
                 |pr_o_si EXPRE pr_entonces INSTRUCCIONES
 ;
 
-SEGUN ::=   pr_segun EXPRE pr_hacer LISTA_SEGUN pr_fin segun
-            | pr_segun EXPRE pr_hacer LISTA_SEGUN pr_de_lo_contrario r_entonces INSTRUCCIONES pr_fin segun
+SEGUN ::=   pr_segun EXPRE pr_hacer LISTA_SEGUN pr_fin_segun
+            | pr_segun EXPRE pr_hacer LISTA_SEGUN pr_de_lo_contrario pr_entonces INSTRUCCIONES pr_fin_segun
 ;
 
 LISTA_SEGUN ::= LISTA_SEGUN duda1 EXPRE duda2 pr_entonces INSTRUCCIONES
