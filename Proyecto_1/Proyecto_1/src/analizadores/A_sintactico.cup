@@ -136,7 +136,7 @@ non terminal INICIO, GLOBALES, GLOBAL, INSTRUCCIONES, INSTRUCCION, ASIGNACION_;
 non terminal DECLARACION, EXPRE, VALOR, TIPO, LISTA_ID, LISTA_PARAMETROS;
 non terminal PRINT, RETORNO, EJECUCION, METODO, FUNCION, RAMIFICACION;
 non terminal SEGUN, LISTA_SEGUN, MIENTRAS, REPETIR, SI, INSTRUCCION_R;
-non terminal INSTRUCCIONES_R, PARA;
+non terminal INSTRUCCIONES_R, PARA, GLO;
 
 precedence left pr_or;
 precedence left pr_and;
@@ -150,13 +150,17 @@ start with INICIO;
 
 INICIO  ::= pr_inicio GLOBALES pr_fin ;
 
-GLOBALES ::=    GLOBALES GLOBAL
-                |GLOBAL
-                |INSTRUCCIONES 
+GLOBALES ::=    GLOBALES GLO
+                |GLO
+
+;
+GLO ::= GLOBAL
+        |INSTRUCCION
 ;
 
 GLOBAL ::=   METODO 
            | FUNCION
+
 ;
 
 INSTRUCCIONES ::=   INSTRUCCIONES INSTRUCCION 
@@ -240,8 +244,8 @@ LISTA_ID ::=  LISTA_ID coma id
             | id
 ;
 
-LISTA_PARAMETROS ::= LISTA_PARAMETROS coma id TIPO
-            | id TIPO
+LISTA_PARAMETROS ::= LISTA_PARAMETROS coma EXPRE TIPO
+            | EXPRE TIPO
             | pare1 LISTA_PARAMETROS pare2
 ;
 

@@ -30,6 +30,7 @@ comentario_multi = "/*"["*"]*[^"*/"]*["*"]*"*/"
 caracter = (\'{letra}\')|("${"{digito}{digito}{digito}"}")|("${"{digito}{digito}"}")
 
 
+
 %%
  
 <YYINITIAL>{
@@ -71,10 +72,10 @@ caracter = (\'{letra}\')|("${"{digito}{digito}{digito}"}")|("${"{digito}{digito}
     ","           { System.out.println("Reconocio token:<coma> lexema:" +yytext());
                      return new Symbol(Simbolos.coma, yycolumn, yyline, yytext());     }
 
-    "?"           { System.out.println("Reconocio token:<duda2> lexema:" +yytext());
+    [\?]           { System.out.println("Reconocio token:<duda2> lexema:" +yytext());
                      return new Symbol(Simbolos.duda2, yycolumn, yyline, yytext());     }
 
-    "¿"           { System.out.println("Reconocio token:<duda1> lexema:" +yytext());
+    [\¿]           { System.out.println("Reconocio token:<duda1> lexema:" +yytext());
                      return new Symbol(Simbolos.duda1, yycolumn, yyline, yytext());     }
 
     "->"          { System.out.println("Reconocio token:<asignacion> lexema:" +yytext());
