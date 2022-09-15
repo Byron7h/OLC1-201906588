@@ -1,10 +1,11 @@
 package analizadores;
 import java_cup.runtime.*;
+import java.util.LinkedList;
 
 %%
 
 %{
-    String cache = "";
+    public static LinkedList<TError> errores = new LinkedList<TError>();
 %}
 
 %public
@@ -34,10 +35,15 @@ caracter = (\'{letra}\')|("${"{digito}{digito}{digito}"}")|("${"{digito}{digito}
 %%
  
 <YYINITIAL>{
-    {comentario_uni}         { System.out.println("Reconocio token:<comentario_uni> lexema:" +yytext());}
 
-    {comentario_multi}     { System.out.println("Reconocio token:<comentario_multi> lexema:" +yytext());}
+    // Comentarios
 
+    {comentario_uni}    { System.out.println("Reconocio token:<comentario_uni> lexema:" +yytext());}
+
+    {comentario_multi}  { System.out.println("Reconocio token:<comentario_multi> lexema:" +yytext());}
+
+
+    // Signos
 
     "+"           { System.out.println("Reconocio token:<suma> lexema:" +yytext());
                     return new Symbol(Simbolos.suma, yycolumn, yyline, yytext());       }
@@ -253,6 +259,9 @@ caracter = (\'{letra}\')|("${"{digito}{digito}{digito}"}")|("${"{digito}{digito}
 
 [ \t\r\n\f]             { /* Espacios en blanco, se ignoran */	}
 
-.                     	{
-                            System.out.println("Error Lexico : "+yytext()+ "Linea"+yyline+" Columna "+yycolumn);
-                        }
+.                     	{                           
+                            System.out.println("Reconocio token:<error_lexico> lexema:"+yytext());
+                            /*tipo, lexema, descripcion, fila, columna; lo agtegamos a la lista de errores*/
+                            TError tmp = new TError("Lexico", yytext(),"Caracter no reconocido", yyline, yycolumn );
+                            errores.add(tmp);     
+}

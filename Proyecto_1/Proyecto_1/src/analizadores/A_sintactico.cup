@@ -10,10 +10,13 @@ parser code
 
 {:
 
+    elemento padre = new elemento("INICIO");
+    elemento padre_actual = padre;
+
 
     
     // listas que nos van a servir
-
+    public static LinkedList<TError> errores = new LinkedList<TError>();
     
 
     // esta función nata de la herramienta, manda a llamar todos los errores sintacticos
@@ -148,7 +151,9 @@ precedence left pot;
 
 start with INICIO;
 
-INICIO  ::= pr_inicio GLOBALES pr_fin ;
+INICIO  ::= pr_inicio:a GLOBALES:b pr_fin:c ; {: padre_actual.agregar_hijo(a);
+                                                
+                                               :}
 
 GLOBALES ::=    GLOBALES GLO
                 |GLO
