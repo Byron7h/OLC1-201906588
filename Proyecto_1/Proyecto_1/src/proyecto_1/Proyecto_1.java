@@ -22,14 +22,20 @@ public class Proyecto_1 {
     public static void main(String[] args) {
         try {
             
-Analizador_Lexico lexico = new Analizador_Lexico(
-new BufferedReader(new FileReader("./entrada.txt"))
+            Analizador_Lexico lexico = new Analizador_Lexico(
+            new BufferedReader(new FileReader("./entrada.txt"))
 
-);
-Analizador_sintactico sintactico = new Analizador_sintactico(lexico);
-sintactico.parse();
-} catch (Exception e) {
-}
+            );
+            
+            Analizador_sintactico sintactico = new Analizador_sintactico(lexico);
+            sintactico.parse();
+            
+            
+            String cache = Analizador_sintactico.cache;
+            System.out.println(cache);
+        } catch (Exception e) {
+            
+        }
     }
     
 }

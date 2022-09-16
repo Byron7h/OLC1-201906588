@@ -1,6 +1,6 @@
 package analizadores;
 import java_cup.runtime.Symbol;
-
+import java.util.LinkedList;
 
 
 
@@ -10,9 +10,8 @@ parser code
 
 {:
 
-    elemento padre = new elemento("INICIO");
-    elemento padre_actual = padre;
-
+    public static String cache = "";
+    String lista_iid = "";
 
     
     // listas que nos van a servir
@@ -119,8 +118,8 @@ terminal pr_mayor_o_igual;
 terminal pr_menor_o_igual;
 terminal pr_es_igual;
 terminal pr_es_diferente;
-terminal pr_inicio;
-terminal pr_fin;
+terminal String pr_inicio;
+terminal String pr_fin;
 terminal pr_con_incremental;
 terminal pr_o_si;
 
@@ -130,16 +129,19 @@ terminal td_numero;
 terminal td_boolean;
 terminal td_caracter;
 
-terminal num;
-terminal id;
-terminal cadena;
-terminal caracter;
+terminal String num;
+terminal String id;
+terminal String cadena;
+terminal String caracter;
 
-non terminal INICIO, GLOBALES, GLOBAL, INSTRUCCIONES, INSTRUCCION, ASIGNACION_; 
+non terminal String INSTRUCCION, ASIGNACION_;
+
+
+non terminal INICIO, GLOBALES, GLOBAL, INSTRUCCIONES; 
 non terminal DECLARACION, EXPRE, VALOR, TIPO, LISTA_ID, LISTA_PARAMETROS;
 non terminal PRINT, RETORNO, EJECUCION, METODO, FUNCION, RAMIFICACION;
 non terminal SEGUN, LISTA_SEGUN, MIENTRAS, REPETIR, SI, INSTRUCCION_R;
-non terminal INSTRUCCIONES_R, PARA, GLO;
+non terminal INSTRUCCIONES_R, PARA, GLO, PRIMERO;
 
 precedence left pr_or;
 precedence left pr_and;
@@ -151,16 +153,18 @@ precedence left pot;
 
 start with INICIO;
 
-INICIO  ::= pr_inicio:a GLOBALES:b pr_fin:c ; {: padre_actual.agregar_hijo(a);
-                                                
-                                               :}
+INICIO  ::= PRIMERO;
 
+PRIMERO ::= pr_inicio:a GLOBALES:b pr_fin:c   {:
+                                                cache = a + c;
+                                              :}
+ ;  
 GLOBALES ::=    GLOBALES GLO
                 |GLO
 
 ;
 GLO ::= GLOBAL
-        |INSTRUCCION
+        |INSTRUCCION:a {:cache = cache  + a; :}
 ;
 
 GLOBAL ::=   METODO 
@@ -187,9 +191,10 @@ INSTRUCCION_R   ::= ASIGNACION_ pyc
                 |   PARA 
                 |   MIENTRAS
                 |   REPETIR
+                |   error
 ;
 
-INSTRUCCION   ::=   ASIGNACION_ pyc
+INSTRUCCION   ::=   ASIGNACION_:a pyc {:  RESULT = a ; :}
                 |   DECLARACION pyc
                 |   PRINT pyc
                 |   EJECUCION pyc
@@ -198,45 +203,47 @@ INSTRUCCION   ::=   ASIGNACION_ pyc
                 |   PARA 
                 |   MIENTRAS
                 |   REPETIR
+                |   error
 ;
                 
 
 DECLARACION   ::=   pr_ingresar LISTA_ID pr_como TIPO pr_con_valor EXPRE  
 ;
 
-ASIGNACION_   ::=   LISTA_ID asignacion EXPRE
+ASIGNACION_   ::=   LISTA_ID asignacion EXPRE:w {:  RESULT = lista_iid + " = " + w ;  
+                                                lista_iid = ""; :}
 ;
 
 
-EXPRE   ::=  pare1 EXPRE pare2
+EXPRE   ::=  pare1 EXPRE:a pare2 {:  RESULT=" ( " + a + " ) ";  :}
 
-            |EXPRE suma EXPRE 
-            |EXPRE resta EXPRE 
-            |EXPRE mult EXPRE 
-            |EXPRE div EXPRE 
-            |EXPRE pot cor1 EXPRE cor2 
-            |EXPRE mod EXPRE 
+            |EXPRE:a suma EXPRE:b {:  RESULT=a + " + " + b;  :}
+            |EXPRE:a resta EXPRE:b {:  RESULT=a + " - " + b;  :}
+            |EXPRE:a mult EXPRE:b {:  RESULT=a + " * " + b;  :}
+            |EXPRE:a div EXPRE:b {:  RESULT=a + " / " + b;  :}
+            |EXPRE:a pot cor1 EXPRE:b cor2 {:  RESULT=a + " ** " + b;  :}
+            |EXPRE:a mod EXPRE:b {:  RESULT=a + " % " + b;  :}
 
-            |EXPRE pr_or EXPRE 
-            |EXPRE pr_and EXPRE 
-            |pr_not EXPRE 
+            |EXPRE:a pr_or EXPRE:b {:  RESULT=a + " or " + b;  :}
+            |EXPRE:a pr_and EXPRE:b {:  RESULT=a + " and " + b;  :}
+            |pr_not EXPRE:a {:  RESULT="not " + a;  :}
 
-            |EXPRE pr_mayor EXPRE 
-            |EXPRE pr_menor EXPRE 
-            |EXPRE pr_mayor_o_igual EXPRE 
-            |EXPRE pr_menor_o_igual EXPRE 
-            |EXPRE pr_es_igual EXPRE 
-            |EXPRE pr_es_diferente EXPRE
+            |EXPRE:a  pr_mayor EXPRE:b {:  RESULT=a + " > " + b;  :}
+            |EXPRE:a  pr_menor EXPRE:b {:  RESULT=a + " < " + b;  :}
+            |EXPRE:a  pr_mayor_o_igual EXPRE:b {:  RESULT=a + " >= " + b;  :}
+            |EXPRE:a  pr_menor_o_igual EXPRE:b {:  RESULT=a + " <= " + b;  :}
+            |EXPRE:a  pr_es_igual EXPRE:b {:  RESULT=a + " == " + b;  :}
+            |EXPRE:a  pr_es_diferente EXPRE:b {:  RESULT=a + " != " + b;  :}
 
-            | VALOR
+            | VALOR:a {:  RESULT=a;  :}
 ;
 
-VALOR ::=   num
-            | id
-            | cadena
-            | pr_verdadero
-            | pr_falso
-            | caracter
+VALOR ::=   num:a {:  RESULT=a;  :}
+            | id:a {:  RESULT=a;  :}
+            | cadena:a {:  RESULT=a;  :}
+            | pr_verdadero:a {:  RESULT="true";  :}
+            | pr_falso:a {:  RESULT="false";  :}
+            | caracter:a {:  RESULT=a;  :}
 ;
 
 TIPO ::=    td_cadena
@@ -245,8 +252,8 @@ TIPO ::=    td_cadena
             | td_caracter   
 ;
 
-LISTA_ID ::=  LISTA_ID coma id
-            | id
+LISTA_ID ::=  LISTA_ID coma:a id:b  {: lista_iid +=  a + " "+ b + lista_iid ;:}
+            | id:a   {: lista_iid +=  a + lista_iid ;:} 
 ;
 
 LISTA_PARAMETROS ::= LISTA_PARAMETROS coma EXPRE TIPO

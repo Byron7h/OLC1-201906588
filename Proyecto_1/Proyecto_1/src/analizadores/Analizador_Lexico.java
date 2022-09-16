@@ -2,6 +2,7 @@
 
 package analizadores;
 import java_cup.runtime.*;
+import java.util.LinkedList;
 
 
 /**
@@ -371,7 +372,7 @@ public class Analizador_Lexico implements java_cup.runtime.Scanner {
   private int zzFinalHighSurrogate = 0;
 
   /* user code: */
-    String cache = "";
+    public static LinkedList<TError> errores = new LinkedList<TError>();
 
 
   /**
@@ -742,7 +743,10 @@ public class Analizador_Lexico implements java_cup.runtime.Scanner {
       else {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
           case 1: 
-            { System.out.println("Error Lexico : "+yytext()+ "Linea"+yyline+" Columna "+yycolumn);
+            { System.out.println("Reconocio token:<error_lexico> lexema:"+yytext());
+                            /*tipo, lexema, descripcion, fila, columna; lo agtegamos a la lista de errores*/
+                            TError tmp = new TError("Lexico", yytext(),"Caracter no reconocido", yyline, yycolumn );
+                            errores.add(tmp);
             } 
             // fall through
           case 69: break;

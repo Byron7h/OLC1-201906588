@@ -8,7 +8,7 @@ public class Ramificacion {
     public Ramificacion(String condicion, String instruccion){
         
         cache = "elif"+" " + condicion + " : \n" + 
-                "   "+instruccion;
+                "   "+ instruccion + "\n";
     }     
     
     public String get_codigo(){
