@@ -9,7 +9,7 @@ parser code
   
 
 {:
-    public nodo Padre;
+    public nodo padre;
     public int contador = 0;
 
     public static String cache = "";
@@ -37,8 +37,8 @@ parser code
         System.out.println("\t\tColumna: "+columna);
 
         // error de tipo sintáctico
-        //TError tmp = new TError("Sintactico",lexema,"Caracter no esperado",fila,columna);
-        //errores.add(tmp);
+        TError tmp = new TError("Sintactico",lexema,"Caracter no esperado",fila,columna);
+        errores.add(tmp);
         
     }
 
@@ -56,8 +56,8 @@ parser code
         System.out.println("\t\tFila: "+fila);
         System.out.println("\t\tColumna: "+columna);
         
-        //TError tmp = new TError("Sintactico",lexema, "Caracter no esperado",fila,columna);
-        //errores.add(tmp);   
+        TError tmp = new TError("Sintactico",lexema, "Caracter no esperado",fila,columna);
+        errores.add(tmp);   
     }
 :}
 
@@ -140,7 +140,7 @@ non terminal INICIO, GLOBALES, GLOBAL, INSTRUCCIONES;
 non terminal DECLARACION, EXPRE, VALOR, TIPO, LISTA_ID, LISTA_PARAMETROS;
 non terminal PRINT, RETORNO, EJECUCION, METODO, FUNCION, RAMIFICACION;
 non terminal SEGUN, LISTA_SEGUN, MIENTRAS, REPETIR, SI, INSTRUCCION_R;
-non terminal INSTRUCCIONES_R, PARA, GLO, PRIMERO,INSTRUCCION, ASIGNACION_;
+non terminal INSTRUCCIONES_R, PARA, GLO, INSTRUCCION, ASIGNACION_;
 
 precedence left pr_or;
 precedence left pr_and;
@@ -404,7 +404,7 @@ INSTRUCCION   ::=   ASIGNACION_:a pyc       {: nodo nuevo = new nodo("INSTRUCCIO
 
                                             nuevo.AddHijos((nodo) a);
                                             RESULT = nuevo;
-                                            :}
+                                            
                                         :}
 
                 |   SEGUN:a            {: 
@@ -413,7 +413,7 @@ INSTRUCCION   ::=   ASIGNACION_:a pyc       {: nodo nuevo = new nodo("INSTRUCCIO
 
                                             nuevo.AddHijos((nodo) a);
                                             RESULT = nuevo;
-                                            :}
+                                            
                                         :}
 
                 |   PARA:a            {: 
@@ -422,7 +422,7 @@ INSTRUCCION   ::=   ASIGNACION_:a pyc       {: nodo nuevo = new nodo("INSTRUCCIO
 
                                             nuevo.AddHijos((nodo) a);
                                             RESULT = nuevo;
-                                            :}
+                                            
                                         :} 
 
                 |   MIENTRAS:a            {: 
@@ -431,7 +431,7 @@ INSTRUCCION   ::=   ASIGNACION_:a pyc       {: nodo nuevo = new nodo("INSTRUCCIO
 
                                             nuevo.AddHijos((nodo) a);
                                             RESULT = nuevo;
-                                            :}
+                                            
                                         :}
 
                 |   REPETIR:a            {: 
@@ -440,7 +440,7 @@ INSTRUCCION   ::=   ASIGNACION_:a pyc       {: nodo nuevo = new nodo("INSTRUCCIO
 
                                             nuevo.AddHijos((nodo) a);
                                             RESULT = nuevo;
-                                            :}
+                                            
                                         :}
 
                 |   error:a            {: 
@@ -450,7 +450,7 @@ INSTRUCCION   ::=   ASIGNACION_:a pyc       {: nodo nuevo = new nodo("INSTRUCCIO
                                             parser.contador ++;
                                             nuevo.AddHijos(nuevo1);
                                             RESULT = nuevo;
-                                            :}
+                                            
                                         :}
 ;
                 
@@ -492,7 +492,7 @@ ASIGNACION_   ::=   LISTA_ID:a asignacion EXPRE:b {:
 
 
 EXPRE   ::=  pare1 EXPRE:a pare2 {: 
-                                            nodo nuevo = new nodo(EXPRE, parser.contador);
+                                            nodo nuevo = new nodo("EXPRE", parser.contador);
                                             parser.contador ++;
                                             nodo nuevo1 = new nodo("(", parser.contador);
                                             parser.contador ++;
@@ -506,7 +506,7 @@ EXPRE   ::=  pare1 EXPRE:a pare2 {:
                                             RESULT = nuevo;
                                             :}
 
-            |EXPRE:a suma EXPRE:{: 
+            |EXPRE:a suma EXPRE:b {: 
                                             nodo nuevo = new nodo("EXPRE", parser.contador);
                                             parser.contador ++;
                                             nodo nuevo1 = new nodo("+", parser.contador);
@@ -559,7 +559,7 @@ EXPRE   ::=  pare1 EXPRE:a pare2 {:
                                             :}
   
             |EXPRE:a pot cor1 EXPRE:b cor2 {: 
-                                            nodo nuevo = new nodo(EXPRE, parser.contador);
+                                            nodo nuevo = new nodo("EXPRE", parser.contador);
                                             parser.contador ++;
                                             nodo nuevo1 = new nodo("potencia", parser.contador);
                                             parser.contador ++;
@@ -710,7 +710,7 @@ EXPRE   ::=  pare1 EXPRE:a pare2 {:
                                             parser.contador ++;
                                             nuevo.AddHijos((nodo) a);
 
-                                            RESULT = nuevo;);
+                                            RESULT = nuevo;
                                             :}
 ;
 
@@ -839,7 +839,7 @@ LISTA_ID ::=  LISTA_ID:a coma id:b {:       nodo nuevo = new nodo("LISTA_ID", pa
                                             parser.contador ++;
                                             nuevo.AddHijos(nuevo2);
 
-                                            RESULT = nuevo;);
+                                            RESULT = nuevo;
                                             :} 
 ;
 
@@ -1232,7 +1232,7 @@ LISTA_SEGUN ::= LISTA_SEGUN:a duda1 EXPRE:b duda2 pr_entonces INSTRUCCIONES:c {:
        
                                             RESULT = nuevo;
                                             :}
-;
+
 
             |   duda1 EXPRE:a duda2 pr_entonces INSTRUCCIONES:b {: 
                                             nodo nuevo = new nodo("LISTA_SEGUN", parser.contador);
@@ -1254,7 +1254,7 @@ LISTA_SEGUN ::= LISTA_SEGUN:a duda1 EXPRE:b duda2 pr_entonces INSTRUCCIONES:c {:
                                             :}
 ;
 
-PARA ::=     pr_para EXPRE:a asignacion EXPRE:b pr_hasta EXPRE:c pr_hacer INSTRUCCIONE:d pr_fin_para {: 
+PARA ::=     pr_para EXPRE:a asignacion EXPRE:b pr_hasta EXPRE:c pr_hacer INSTRUCCIONES:d pr_fin_para {: 
                                             nodo nuevo = new nodo("PARA", parser.contador);
                                             parser.contador ++;
                                             nodo nuevo1 = new nodo("para", parser.contador);
@@ -1308,7 +1308,7 @@ PARA ::=     pr_para EXPRE:a asignacion EXPRE:b pr_hasta EXPRE:c pr_hacer INSTRU
                                             :}
 
 
-            |pr_para EXPRE:a asignacion EXPRE:b pr_hasta EXPRE:c pr_con_incremental EXPRE:d pr_hacer INSTRUCCIONES:e pr_fin_para {: 
+            |pr_para EXPRE:a asignacion EXPRE:b pr_hasta EXPRE:c pr_con_incremental EXPRE:d pr_hacer INSTRUCCIONES:f pr_fin_para {: 
                                             nodo nuevo = new nodo("PARA", parser.contador);
                                             parser.contador ++;
                                             nodo nuevo1 = new nodo("para", parser.contador);
@@ -1333,7 +1333,7 @@ PARA ::=     pr_para EXPRE:a asignacion EXPRE:b pr_hasta EXPRE:c pr_hacer INSTRU
                                             nuevo.AddHijos(nuevo4);
                                             nuevo.AddHijos((nodo) d);
                                             nuevo.AddHijos(nuevo5);
-                                            nuevo.AddHijos((nodo) e);
+                                            nuevo.AddHijos((nodo) f);
                                             nuevo.AddHijos(nuevo6);
        
                                             RESULT = nuevo;
@@ -1364,7 +1364,6 @@ PARA ::=     pr_para EXPRE:a asignacion EXPRE:b pr_hasta EXPRE:c pr_hacer INSTRU
                                             nuevo.AddHijos(nuevo4);
                                             nuevo.AddHijos((nodo) d);
                                             nuevo.AddHijos(nuevo5);
-                                            nuevo.AddHijos((nodo) e);
                                             nuevo.AddHijos(nuevo6);
        
                                             RESULT = nuevo;

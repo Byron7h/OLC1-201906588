@@ -32,35 +32,35 @@ public class Analizador_sintactico extends java_cup.runtime.lr_parser {
   /** Production table. */
   protected static final short _production_table[][] = 
     unpackFromStrings(new String[] {
-    "\000\136\000\002\002\004\000\002\004\005\000\002\005" +
-    "\004\000\002\005\003\000\002\034\003\000\002\034\003" +
-    "\000\002\006\003\000\002\006\003\000\002\007\004\000" +
-    "\002\007\003\000\002\032\004\000\002\032\003\000\002" +
-    "\031\004\000\002\031\004\000\002\031\004\000\002\031" +
-    "\004\000\002\031\004\000\002\031\003\000\002\031\003" +
-    "\000\002\031\003\000\002\031\003\000\002\031\003\000" +
-    "\002\031\003\000\002\002\004\000\002\002\004\000\002" +
-    "\002\004\000\002\002\004\000\002\002\003\000\002\002" +
-    "\003\000\002\002\003\000\002\002\003\000\002\002\003" +
-    "\000\002\002\003\000\002\010\010\000\002\003\005\000" +
-    "\002\011\005\000\002\011\005\000\002\011\005\000\002" +
-    "\011\005\000\002\011\005\000\002\011\007\000\002\011" +
-    "\005\000\002\011\005\000\002\011\005\000\002\011\004" +
-    "\000\002\011\005\000\002\011\005\000\002\011\005\000" +
-    "\002\011\005\000\002\011\005\000\002\011\005\000\002" +
-    "\011\003\000\002\012\003\000\002\012\003\000\002\012" +
-    "\003\000\002\012\003\000\002\012\003\000\002\012\003" +
-    "\000\002\013\003\000\002\013\003\000\002\013\003\000" +
-    "\002\013\003\000\002\014\005\000\002\014\003\000\002" +
-    "\015\006\000\002\015\004\000\002\015\005\000\002\016" +
-    "\004\000\002\016\004\000\002\017\004\000\002\020\006" +
-    "\000\002\020\005\000\002\021\006\000\002\021\010\000" +
-    "\002\022\007\000\002\022\011\000\002\030\007\000\002" +
-    "\030\011\000\002\030\010\000\002\030\012\000\002\023" +
-    "\007\000\002\023\006\000\002\024\007\000\002\024\012" +
-    "\000\002\025\010\000\002\025\007\000\002\033\013\000" +
-    "\002\033\012\000\002\033\015\000\002\033\014\000\002" +
-    "\026\007\000\002\026\006\000\002\027\006\000\002\027" +
+    "\000\136\000\002\002\004\000\002\002\005\000\002\003" +
+    "\004\000\002\003\003\000\002\032\003\000\002\032\003" +
+    "\000\002\004\003\000\002\004\003\000\002\005\004\000" +
+    "\002\005\003\000\002\030\004\000\002\030\003\000\002" +
+    "\027\004\000\002\027\004\000\002\027\004\000\002\027" +
+    "\004\000\002\027\004\000\002\027\003\000\002\027\003" +
+    "\000\002\027\003\000\002\027\003\000\002\027\003\000" +
+    "\002\027\003\000\002\033\004\000\002\033\004\000\002" +
+    "\033\004\000\002\033\004\000\002\033\003\000\002\033" +
+    "\003\000\002\033\003\000\002\033\003\000\002\033\003" +
+    "\000\002\033\003\000\002\006\010\000\002\034\005\000" +
+    "\002\007\005\000\002\007\005\000\002\007\005\000\002" +
+    "\007\005\000\002\007\005\000\002\007\007\000\002\007" +
+    "\005\000\002\007\005\000\002\007\005\000\002\007\004" +
+    "\000\002\007\005\000\002\007\005\000\002\007\005\000" +
+    "\002\007\005\000\002\007\005\000\002\007\005\000\002" +
+    "\007\003\000\002\010\003\000\002\010\003\000\002\010" +
+    "\003\000\002\010\003\000\002\010\003\000\002\010\003" +
+    "\000\002\011\003\000\002\011\003\000\002\011\003\000" +
+    "\002\011\003\000\002\012\005\000\002\012\003\000\002" +
+    "\013\006\000\002\013\004\000\002\013\005\000\002\014" +
+    "\004\000\002\014\004\000\002\015\004\000\002\016\006" +
+    "\000\002\016\005\000\002\017\006\000\002\017\010\000" +
+    "\002\020\007\000\002\020\011\000\002\026\007\000\002" +
+    "\026\011\000\002\026\010\000\002\026\012\000\002\021" +
+    "\007\000\002\021\006\000\002\022\007\000\002\022\012" +
+    "\000\002\023\010\000\002\023\007\000\002\031\013\000" +
+    "\002\031\012\000\002\031\015\000\002\031\014\000\002" +
+    "\024\007\000\002\024\006\000\002\025\006\000\002\025" +
     "\005" });
 
   /** Access to production table. */
@@ -661,147 +661,147 @@ public class Analizador_sintactico extends java_cup.runtime.lr_parser {
   /** <code>reduce_goto</code> table. */
   protected static final short[][] _reduce_table = 
     unpackFromStrings(new String[] {
-    "\000\321\000\004\004\004\001\001\000\042\002\010\003" +
-    "\011\005\014\006\037\010\015\014\016\016\035\020\013" +
-    "\021\024\022\041\024\007\026\040\027\034\030\033\033" +
-    "\020\034\022\001\001\000\002\001\001\000\002\001\001" +
+    "\000\321\000\004\002\004\001\001\000\042\003\014\004" +
+    "\037\006\015\012\016\014\035\016\013\017\024\020\041" +
+    "\022\007\024\040\025\034\026\033\031\020\032\022\033" +
+    "\010\034\011\001\001\000\002\001\001\000\002\001\001" +
     "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
-    "\002\001\001\000\032\002\140\003\011\007\261\010\015" +
-    "\014\016\016\035\020\013\024\007\026\040\027\034\030" +
-    "\033\033\020\001\001\000\002\001\001\000\040\002\010" +
-    "\003\011\006\037\010\015\014\016\016\035\020\013\021" +
-    "\024\022\041\024\007\026\040\027\034\030\033\033\020" +
-    "\034\257\001\001\000\002\001\001\000\002\001\001\000" +
-    "\004\014\244\001\001\000\002\001\001\000\006\011\243" +
-    "\012\045\001\001\000\002\001\001\000\006\011\224\012" +
-    "\045\001\001\000\002\001\001\000\006\011\223\012\045" +
-    "\001\001\000\006\011\177\012\045\001\001\000\006\011" +
-    "\172\012\045\001\001\000\002\001\001\000\006\011\150" +
-    "\012\045\001\001\000\002\001\001\000\002\001\001\000" +
+    "\002\001\001\000\032\005\261\006\015\012\016\014\035" +
+    "\016\013\022\007\024\040\025\034\026\033\031\020\033" +
+    "\140\034\011\001\001\000\002\001\001\000\040\004\037" +
+    "\006\015\012\016\014\035\016\013\017\024\020\041\022" +
+    "\007\024\040\025\034\026\033\031\020\032\257\033\010" +
+    "\034\011\001\001\000\002\001\001\000\002\001\001\000" +
+    "\004\012\244\001\001\000\002\001\001\000\006\007\243" +
+    "\010\045\001\001\000\002\001\001\000\006\007\224\010" +
+    "\045\001\001\000\002\001\001\000\006\007\223\010\045" +
+    "\001\001\000\006\007\177\010\045\001\001\000\006\007" +
+    "\172\010\045\001\001\000\002\001\001\000\006\007\150" +
+    "\010\045\001\001\000\002\001\001\000\002\001\001\000" +
     "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
     "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
-    "\001\000\010\011\056\012\045\015\044\001\001\000\002" +
+    "\001\000\010\007\056\010\045\013\044\001\001\000\002" +
     "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
-    "\001\000\002\001\001\000\002\001\001\000\010\011\131" +
-    "\012\045\015\126\001\001\000\002\001\001\000\002\001" +
-    "\001\000\006\011\125\012\045\001\001\000\004\013\070" +
-    "\001\001\000\006\011\124\012\045\001\001\000\006\011" +
-    "\123\012\045\001\001\000\002\001\001\000\006\011\122" +
-    "\012\045\001\001\000\006\011\121\012\045\001\001\000" +
+    "\001\000\002\001\001\000\002\001\001\000\010\007\131" +
+    "\010\045\013\126\001\001\000\002\001\001\000\002\001" +
+    "\001\000\006\007\125\010\045\001\001\000\004\011\070" +
+    "\001\001\000\006\007\124\010\045\001\001\000\006\007" +
+    "\123\010\045\001\001\000\002\001\001\000\006\007\122" +
+    "\010\045\001\001\000\006\007\121\010\045\001\001\000" +
     "\002\001\001\000\002\001\001\000\002\001\001\000\006" +
-    "\011\115\012\045\001\001\000\002\001\001\000\006\011" +
-    "\114\012\045\001\001\000\006\011\113\012\045\001\001" +
-    "\000\006\011\112\012\045\001\001\000\002\001\001\000" +
-    "\006\011\111\012\045\001\001\000\006\011\110\012\045" +
-    "\001\001\000\006\011\107\012\045\001\001\000\006\011" +
-    "\106\012\045\001\001\000\006\011\103\012\045\001\001" +
-    "\000\006\011\104\012\045\001\001\000\002\001\001\000" +
+    "\007\115\010\045\001\001\000\002\001\001\000\006\007" +
+    "\114\010\045\001\001\000\006\007\113\010\045\001\001" +
+    "\000\006\007\112\010\045\001\001\000\002\001\001\000" +
+    "\006\007\111\010\045\001\001\000\006\007\110\010\045" +
+    "\001\001\000\006\007\107\010\045\001\001\000\006\007" +
+    "\106\010\045\001\001\000\006\007\103\010\045\001\001" +
+    "\000\006\007\104\010\045\001\001\000\002\001\001\000" +
     "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
     "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
     "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
-    "\000\006\011\117\012\045\001\001\000\002\001\001\000" +
+    "\000\006\007\117\010\045\001\001\000\002\001\001\000" +
     "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
     "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
-    "\001\000\002\001\001\000\010\011\131\012\045\015\126" +
-    "\001\001\000\004\013\070\001\001\000\006\011\134\012" +
-    "\045\001\001\000\002\001\001\000\004\013\135\001\001" +
-    "\000\002\001\001\000\002\001\001\000\032\002\140\003" +
-    "\011\007\142\010\015\014\016\016\035\020\013\024\007" +
-    "\026\040\027\034\030\033\033\020\001\001\000\002\001" +
-    "\001\000\010\011\056\012\045\015\145\001\001\000\030" +
-    "\002\143\003\011\010\015\014\016\016\035\020\013\024" +
-    "\007\026\040\027\034\030\033\033\020\001\001\000\002" +
-    "\001\001\000\002\001\001\000\032\002\140\003\011\007" +
-    "\146\010\015\014\016\016\035\020\013\024\007\026\040" +
-    "\027\034\030\033\033\020\001\001\000\030\002\143\003" +
-    "\011\010\015\014\016\016\035\020\013\024\007\026\040" +
-    "\027\034\030\033\033\020\001\001\000\002\001\001\000" +
-    "\002\001\001\000\004\025\153\001\001\000\006\011\166" +
-    "\012\045\001\001\000\002\001\001\000\002\001\001\000" +
-    "\006\011\162\012\045\001\001\000\002\001\001\000\032" +
-    "\002\140\003\011\007\160\010\015\014\016\016\035\020" +
-    "\013\024\007\026\040\027\034\030\033\033\020\001\001" +
-    "\000\030\002\143\003\011\010\015\014\016\016\035\020" +
-    "\013\024\007\026\040\027\034\030\033\033\020\001\001" +
+    "\001\000\002\001\001\000\010\007\131\010\045\013\126" +
+    "\001\001\000\004\011\070\001\001\000\006\007\134\010" +
+    "\045\001\001\000\002\001\001\000\004\011\135\001\001" +
+    "\000\002\001\001\000\002\001\001\000\032\005\142\006" +
+    "\015\012\016\014\035\016\013\022\007\024\040\025\034" +
+    "\026\033\031\020\033\140\034\011\001\001\000\002\001" +
+    "\001\000\010\007\056\010\045\013\145\001\001\000\030" +
+    "\006\015\012\016\014\035\016\013\022\007\024\040\025" +
+    "\034\026\033\031\020\033\143\034\011\001\001\000\002" +
+    "\001\001\000\002\001\001\000\032\005\146\006\015\012" +
+    "\016\014\035\016\013\022\007\024\040\025\034\026\033" +
+    "\031\020\033\140\034\011\001\001\000\030\006\015\012" +
+    "\016\014\035\016\013\022\007\024\040\025\034\026\033" +
+    "\031\020\033\143\034\011\001\001\000\002\001\001\000" +
+    "\002\001\001\000\004\023\153\001\001\000\006\007\166" +
+    "\010\045\001\001\000\002\001\001\000\002\001\001\000" +
+    "\006\007\162\010\045\001\001\000\002\001\001\000\032" +
+    "\005\160\006\015\012\016\014\035\016\013\022\007\024" +
+    "\040\025\034\026\033\031\020\033\140\034\011\001\001" +
+    "\000\030\006\015\012\016\014\035\016\013\022\007\024" +
+    "\040\025\034\026\033\031\020\033\143\034\011\001\001" +
     "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
-    "\032\002\140\003\011\007\165\010\015\014\016\016\035" +
-    "\020\013\024\007\026\040\027\034\030\033\033\020\001" +
-    "\001\000\030\002\143\003\011\010\015\014\016\016\035" +
-    "\020\013\024\007\026\040\027\034\030\033\033\020\001" +
-    "\001\000\002\001\001\000\002\001\001\000\032\002\140" +
-    "\003\011\007\171\010\015\014\016\016\035\020\013\024" +
-    "\007\026\040\027\034\030\033\033\020\001\001\000\030" +
-    "\002\143\003\011\010\015\014\016\016\035\020\013\024" +
-    "\007\026\040\027\034\030\033\033\020\001\001\000\002" +
-    "\001\001\000\032\002\140\003\011\007\174\010\015\014" +
-    "\016\016\035\020\013\024\007\026\040\027\034\030\033" +
-    "\033\020\001\001\000\030\002\143\003\011\010\015\014" +
-    "\016\016\035\020\013\024\007\026\040\027\034\030\033" +
-    "\033\020\001\001\000\002\001\001\000\002\001\001\000" +
-    "\002\001\001\000\032\002\140\003\011\007\201\010\015" +
-    "\014\016\016\035\020\013\024\007\026\040\027\034\030" +
-    "\033\033\020\001\001\000\032\002\143\003\011\010\015" +
-    "\014\016\016\035\020\013\023\203\024\007\026\040\027" +
-    "\034\030\033\033\020\001\001\000\032\002\140\003\011" +
-    "\007\221\010\015\014\016\016\035\020\013\024\007\026" +
-    "\040\027\034\030\033\033\020\001\001\000\002\001\001" +
-    "\000\002\001\001\000\006\011\206\012\045\001\001\000" +
-    "\002\001\001\000\032\002\140\003\011\007\210\010\015" +
-    "\014\016\016\035\020\013\024\007\026\040\027\034\030" +
-    "\033\033\020\001\001\000\030\002\143\003\011\010\015" +
-    "\014\016\016\035\020\013\024\007\026\040\027\034\030" +
-    "\033\033\020\001\001\000\002\001\001\000\032\002\140" +
-    "\003\011\007\217\010\015\014\016\016\035\020\013\024" +
-    "\007\026\040\027\034\030\033\033\020\001\001\000\006" +
-    "\011\214\012\045\001\001\000\002\001\001\000\032\002" +
-    "\140\003\011\007\216\010\015\014\016\016\035\020\013" +
-    "\024\007\026\040\027\034\030\033\033\020\001\001\000" +
-    "\030\002\143\003\011\010\015\014\016\016\035\020\013" +
-    "\024\007\026\040\027\034\030\033\033\020\001\001\000" +
-    "\030\002\143\003\011\010\015\014\016\016\035\020\013" +
-    "\024\007\026\040\027\034\030\033\033\020\001\001\000" +
-    "\002\001\001\000\030\002\143\003\011\010\015\014\016" +
-    "\016\035\020\013\024\007\026\040\027\034\030\033\033" +
-    "\020\001\001\000\002\001\001\000\002\001\001\000\002" +
-    "\001\001\000\006\011\226\012\045\001\001\000\002\001" +
-    "\001\000\006\011\230\012\045\001\001\000\002\001\001" +
-    "\000\006\011\236\012\045\001\001\000\032\002\140\003" +
-    "\011\007\233\010\015\014\016\016\035\020\013\024\007" +
-    "\026\040\027\034\030\033\033\020\001\001\000\030\002" +
-    "\143\003\011\010\015\014\016\016\035\020\013\024\007" +
-    "\026\040\027\034\030\033\033\020\001\001\000\002\001" +
-    "\001\000\002\001\001\000\002\001\001\000\032\002\140" +
-    "\003\011\007\240\010\015\014\016\016\035\020\013\024" +
-    "\007\026\040\027\034\030\033\033\020\001\001\000\030" +
-    "\002\143\003\011\010\015\014\016\016\035\020\013\024" +
-    "\007\026\040\027\034\030\033\033\020\001\001\000\002" +
+    "\032\005\165\006\015\012\016\014\035\016\013\022\007" +
+    "\024\040\025\034\026\033\031\020\033\140\034\011\001" +
+    "\001\000\030\006\015\012\016\014\035\016\013\022\007" +
+    "\024\040\025\034\026\033\031\020\033\143\034\011\001" +
+    "\001\000\002\001\001\000\002\001\001\000\032\005\171" +
+    "\006\015\012\016\014\035\016\013\022\007\024\040\025" +
+    "\034\026\033\031\020\033\140\034\011\001\001\000\030" +
+    "\006\015\012\016\014\035\016\013\022\007\024\040\025" +
+    "\034\026\033\031\020\033\143\034\011\001\001\000\002" +
+    "\001\001\000\032\005\174\006\015\012\016\014\035\016" +
+    "\013\022\007\024\040\025\034\026\033\031\020\033\140" +
+    "\034\011\001\001\000\030\006\015\012\016\014\035\016" +
+    "\013\022\007\024\040\025\034\026\033\031\020\033\143" +
+    "\034\011\001\001\000\002\001\001\000\002\001\001\000" +
+    "\002\001\001\000\032\005\201\006\015\012\016\014\035" +
+    "\016\013\022\007\024\040\025\034\026\033\031\020\033" +
+    "\140\034\011\001\001\000\032\006\015\012\016\014\035" +
+    "\016\013\021\203\022\007\024\040\025\034\026\033\031" +
+    "\020\033\143\034\011\001\001\000\032\005\221\006\015" +
+    "\012\016\014\035\016\013\022\007\024\040\025\034\026" +
+    "\033\031\020\033\140\034\011\001\001\000\002\001\001" +
+    "\000\002\001\001\000\006\007\206\010\045\001\001\000" +
+    "\002\001\001\000\032\005\210\006\015\012\016\014\035" +
+    "\016\013\022\007\024\040\025\034\026\033\031\020\033" +
+    "\140\034\011\001\001\000\030\006\015\012\016\014\035" +
+    "\016\013\022\007\024\040\025\034\026\033\031\020\033" +
+    "\143\034\011\001\001\000\002\001\001\000\032\005\217" +
+    "\006\015\012\016\014\035\016\013\022\007\024\040\025" +
+    "\034\026\033\031\020\033\140\034\011\001\001\000\006" +
+    "\007\214\010\045\001\001\000\002\001\001\000\032\005" +
+    "\216\006\015\012\016\014\035\016\013\022\007\024\040" +
+    "\025\034\026\033\031\020\033\140\034\011\001\001\000" +
+    "\030\006\015\012\016\014\035\016\013\022\007\024\040" +
+    "\025\034\026\033\031\020\033\143\034\011\001\001\000" +
+    "\030\006\015\012\016\014\035\016\013\022\007\024\040" +
+    "\025\034\026\033\031\020\033\143\034\011\001\001\000" +
+    "\002\001\001\000\030\006\015\012\016\014\035\016\013" +
+    "\022\007\024\040\025\034\026\033\031\020\033\143\034" +
+    "\011\001\001\000\002\001\001\000\002\001\001\000\002" +
+    "\001\001\000\006\007\226\010\045\001\001\000\002\001" +
+    "\001\000\006\007\230\010\045\001\001\000\002\001\001" +
+    "\000\006\007\236\010\045\001\001\000\032\005\233\006" +
+    "\015\012\016\014\035\016\013\022\007\024\040\025\034" +
+    "\026\033\031\020\033\140\034\011\001\001\000\030\006" +
+    "\015\012\016\014\035\016\013\022\007\024\040\025\034" +
+    "\026\033\031\020\033\143\034\011\001\001\000\002\001" +
+    "\001\000\002\001\001\000\002\001\001\000\032\005\240" +
+    "\006\015\012\016\014\035\016\013\022\007\024\040\025" +
+    "\034\026\033\031\020\033\140\034\011\001\001\000\030" +
+    "\006\015\012\016\014\035\016\013\022\007\024\040\025" +
+    "\034\026\033\031\020\033\143\034\011\001\001\000\002" +
     "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
-    "\001\000\002\001\001\000\004\013\247\001\001\000\002" +
-    "\001\001\000\006\011\251\012\045\001\001\000\002\001" +
-    "\001\000\002\001\001\000\006\011\254\012\045\001\001" +
+    "\001\000\002\001\001\000\004\011\247\001\001\000\002" +
+    "\001\001\000\006\007\251\010\045\001\001\000\002\001" +
+    "\001\000\002\001\001\000\006\007\254\010\045\001\001" +
     "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
-    "\002\001\001\000\002\001\001\000\030\002\143\003\011" +
-    "\010\015\014\016\016\035\020\013\024\007\026\040\027" +
-    "\034\030\033\033\020\001\001\000\006\011\263\012\045" +
-    "\001\001\000\002\001\001\000\006\011\265\012\045\001" +
-    "\001\000\002\001\001\000\002\001\001\000\004\013\270" +
-    "\001\001\000\034\003\272\010\275\014\016\016\304\017" +
-    "\277\020\276\024\271\026\306\027\303\030\301\031\273" +
-    "\032\305\033\300\001\001\000\002\001\001\000\002\001" +
-    "\001\000\002\001\001\000\010\011\056\012\045\015\317" +
+    "\002\001\001\000\002\001\001\000\030\006\015\012\016" +
+    "\014\035\016\013\022\007\024\040\025\034\026\033\031" +
+    "\020\033\143\034\011\001\001\000\006\007\263\010\045" +
+    "\001\001\000\002\001\001\000\006\007\265\010\045\001" +
+    "\001\000\002\001\001\000\002\001\001\000\004\011\270" +
+    "\001\001\000\034\006\275\012\016\014\304\015\277\016" +
+    "\276\022\271\024\306\025\303\026\301\027\273\030\305" +
+    "\031\300\034\272\001\001\000\002\001\001\000\002\001" +
+    "\001\000\002\001\001\000\010\007\056\010\045\013\317" +
     "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
     "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
-    "\000\002\001\001\000\002\001\001\000\032\003\272\010" +
-    "\275\014\016\016\304\017\277\020\276\024\271\026\306" +
-    "\027\303\030\301\031\311\033\300\001\001\000\002\001" +
-    "\001\000\006\011\310\012\045\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001\000\032\006\275\012" +
+    "\016\014\304\015\277\016\276\022\271\024\306\025\303" +
+    "\026\301\027\311\031\300\034\272\001\001\000\002\001" +
+    "\001\000\006\007\310\010\045\001\001\000\002\001\001" +
     "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
     "\002\001\001\000\002\001\001\000\002\001\001\000\034" +
-    "\003\272\010\275\014\016\016\304\017\277\020\276\024" +
-    "\271\026\306\027\303\030\301\031\273\032\320\033\300" +
-    "\001\001\000\032\003\272\010\275\014\016\016\304\017" +
-    "\277\020\276\024\271\026\306\027\303\030\301\031\311" +
-    "\033\300\001\001\000\002\001\001\000\002\001\001" });
+    "\006\275\012\016\014\304\015\277\016\276\022\271\024" +
+    "\306\025\303\026\301\027\273\030\320\031\300\034\272" +
+    "\001\001\000\032\006\275\012\016\014\304\015\277\016" +
+    "\276\022\271\024\306\025\303\026\301\027\311\031\300" +
+    "\034\272\001\001\000\002\001\001\000\002\001\001" });
 
   /** Access to <code>reduce_goto</code> table. */
   public short[][] reduce_table() {return _reduce_table;}
@@ -840,6 +840,8 @@ public class Analizador_sintactico extends java_cup.runtime.lr_parser {
 
 
 
+    public nodo padre;
+    public int contador = 0;
 
     public static String cache = "";
     String lista_iid = "";
@@ -866,8 +868,8 @@ public class Analizador_sintactico extends java_cup.runtime.lr_parser {
         System.out.println("\t\tColumna: "+columna);
 
         // error de tipo sintáctico
-        //TError tmp = new TError("Sintactico",lexema,"Caracter no esperado",fila,columna);
-        //errores.add(tmp);
+        TError tmp = new TError("Sintactico",lexema,"Caracter no esperado",fila,columna);
+        errores.add(tmp);
         
     }
 
@@ -885,8 +887,8 @@ public class Analizador_sintactico extends java_cup.runtime.lr_parser {
         System.out.println("\t\tFila: "+fila);
         System.out.println("\t\tColumna: "+columna);
         
-        //TError tmp = new TError("Sintactico",lexema, "Caracter no esperado",fila,columna);
-        //errores.add(tmp);   
+        TError tmp = new TError("Sintactico",lexema, "Caracter no esperado",fila,columna);
+        errores.add(tmp);   
     }
 
 
@@ -932,19 +934,24 @@ class CUP$Analizador_sintactico$actions {
           case 1: // INICIO ::= pr_inicio GLOBALES pr_fin 
             {
               Object RESULT =null;
-		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).left;
-		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).right;
-		String a = (String)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).value;
 		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).left;
 		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).right;
 		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
-		int cleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
-		int cright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
-		String c = (String)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
-		
-                                                cache = a + c;
-                                              
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INICIO",2, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+		 nodo nuevo = new nodo("INICIO", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("(", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo(")", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos(nuevo2);
+
+                                            parser.padre = nuevo;
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INICIO",0, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -952,8 +959,21 @@ class CUP$Analizador_sintactico$actions {
           case 2: // GLOBALES ::= GLOBALES GLO 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
+		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
+		 nodo nuevo = new nodo("GLOBALES", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("GLOBALES",3, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos((nodo) b);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("GLOBALES",1, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -961,8 +981,16 @@ class CUP$Analizador_sintactico$actions {
           case 3: // GLOBALES ::= GLO 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
+		 nodo nuevo = new nodo("GLOBALES", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("GLOBALES",3, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos((nodo) a);
+                                            RESULT = nuevo;
+                                         
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("GLOBALES",1, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -970,8 +998,15 @@ class CUP$Analizador_sintactico$actions {
           case 4: // GLO ::= GLOBAL 
             {
               Object RESULT =null;
-
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("GLO",26, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
+		 nodo nuevo = new nodo("GLO", parser.contador);
+                    parser.contador ++;
+                    nuevo.AddHijos((nodo) a);
+                    RESULT = nuevo;
+                
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("GLO",24, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -981,9 +1016,13 @@ class CUP$Analizador_sintactico$actions {
               Object RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
-		String a = (String)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
-		cache = cache  + a; 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("GLO",26, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
+		 nodo nuevo = new nodo("GLO", parser.contador);
+                        parser.contador ++;
+                        nuevo.AddHijos((nodo) a);
+                        RESULT = nuevo;
+                        
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("GLO",24, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -991,8 +1030,15 @@ class CUP$Analizador_sintactico$actions {
           case 6: // GLOBAL ::= METODO 
             {
               Object RESULT =null;
-
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("GLOBAL",4, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
+		 nodo nuevo = new nodo("GLOBAL", parser.contador);
+                        parser.contador ++;
+                        nuevo.AddHijos((nodo) a);
+                        RESULT = nuevo;
+                        
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("GLOBAL",2, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1000,8 +1046,15 @@ class CUP$Analizador_sintactico$actions {
           case 7: // GLOBAL ::= FUNCION 
             {
               Object RESULT =null;
-
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("GLOBAL",4, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
+		 nodo nuevo = new nodo("GLOBAL", parser.contador);
+                        parser.contador ++;
+                        nuevo.AddHijos((nodo) a);
+                        RESULT = nuevo;
+                        
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("GLOBAL",2, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1009,8 +1062,21 @@ class CUP$Analizador_sintactico$actions {
           case 8: // INSTRUCCIONES ::= INSTRUCCIONES INSTRUCCION 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
+		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
+		 nodo nuevo = new nodo("INSTRUCCIONES", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCIONES",5, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos((nodo) b);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCIONES",3, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1018,8 +1084,16 @@ class CUP$Analizador_sintactico$actions {
           case 9: // INSTRUCCIONES ::= INSTRUCCION 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
+		  nodo nuevo = new nodo("INSTRUCCIONES", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCIONES",5, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos((nodo) a);
+                                            RESULT = nuevo;
+                                        
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCIONES",3, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1027,8 +1101,22 @@ class CUP$Analizador_sintactico$actions {
           case 10: // INSTRUCCIONES_R ::= INSTRUCCIONES_R INSTRUCCION_R 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
+		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
+		 
+                                            nodo nuevo = new nodo("INSTRUCCIONES_R", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCIONES_R",24, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos((nodo) b);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCIONES_R",22, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1036,8 +1124,16 @@ class CUP$Analizador_sintactico$actions {
           case 11: // INSTRUCCIONES_R ::= INSTRUCCION_R 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
+		  nodo nuevo = new nodo("INSTRUCCIONES_R", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCIONES_R",24, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos((nodo) a);
+                                            RESULT = nuevo;
+                                        
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCIONES_R",22, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1045,8 +1141,20 @@ class CUP$Analizador_sintactico$actions {
           case 12: // INSTRUCCION_R ::= ASIGNACION_ pyc 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
+		 nodo nuevo = new nodo("INSTRUCCION_R", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("(", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION_R",23, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo1);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION_R",21, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1054,8 +1162,20 @@ class CUP$Analizador_sintactico$actions {
           case 13: // INSTRUCCION_R ::= DECLARACION pyc 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
+		 nodo nuevo = new nodo("INSTRUCCION_R", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("(", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION_R",23, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo1);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION_R",21, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1063,8 +1183,20 @@ class CUP$Analizador_sintactico$actions {
           case 14: // INSTRUCCION_R ::= PRINT pyc 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
+		 nodo nuevo = new nodo("INSTRUCCION_R", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("(", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION_R",23, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo1);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION_R",21, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1072,8 +1204,20 @@ class CUP$Analizador_sintactico$actions {
           case 15: // INSTRUCCION_R ::= RETORNO pyc 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
+		 nodo nuevo = new nodo("INSTRUCCION_R", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("(", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION_R",23, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo1);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION_R",21, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1081,8 +1225,20 @@ class CUP$Analizador_sintactico$actions {
           case 16: // INSTRUCCION_R ::= EJECUCION pyc 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
+		 nodo nuevo = new nodo("INSTRUCCION_R", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("(", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION_R",23, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo1);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION_R",21, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1090,8 +1246,16 @@ class CUP$Analizador_sintactico$actions {
           case 17: // INSTRUCCION_R ::= SI 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
+		  nodo nuevo = new nodo("INSTRUCCION_R", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION_R",23, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos((nodo) a);
+                                            RESULT = nuevo;
+                                        
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION_R",21, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1099,8 +1263,16 @@ class CUP$Analizador_sintactico$actions {
           case 18: // INSTRUCCION_R ::= SEGUN 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
+		   nodo nuevo = new nodo("INSTRUCCION_R", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION_R",23, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos((nodo) a);
+                                            RESULT = nuevo;
+                                        
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION_R",21, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1108,8 +1280,16 @@ class CUP$Analizador_sintactico$actions {
           case 19: // INSTRUCCION_R ::= PARA 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
+		    nodo nuevo = new nodo("INSTRUCCION_R", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION_R",23, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos((nodo) a);
+                                            RESULT = nuevo;
+                                        
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION_R",21, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1117,8 +1297,17 @@ class CUP$Analizador_sintactico$actions {
           case 20: // INSTRUCCION_R ::= MIENTRAS 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
+		 
+                                            nodo nuevo = new nodo("INSTRUCCION_R", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION_R",23, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos((nodo) a);
+                                            RESULT = nuevo;
+                                        
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION_R",21, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1126,8 +1315,17 @@ class CUP$Analizador_sintactico$actions {
           case 21: // INSTRUCCION_R ::= REPETIR 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
+		 
+                                            nodo nuevo = new nodo("INSTRUCCION_R", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION_R",23, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos((nodo) a);
+                                            RESULT = nuevo;
+                                        
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION_R",21, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1135,101 +1333,214 @@ class CUP$Analizador_sintactico$actions {
           case 22: // INSTRUCCION_R ::= error 
             {
               Object RESULT =null;
+		 
+                                            nodo nuevo = new nodo("INSTRUCCION_R", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("error", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION_R",23, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos(nuevo1);
+                                            RESULT = nuevo;
+                                        
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION_R",21, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 23: // INSTRUCCION ::= ASIGNACION_ pyc 
             {
-              String RESULT =null;
+              Object RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).right;
-		String a = (String)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
-		  RESULT = a ; 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION",0, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
+		 nodo nuevo = new nodo("INSTRUCCION", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("(", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo1);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION",25, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 24: // INSTRUCCION ::= DECLARACION pyc 
             {
-              String RESULT =null;
+              Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
+		 nodo nuevo = new nodo("INSTRUCCION", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("(", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION",0, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo1);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION",25, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 25: // INSTRUCCION ::= PRINT pyc 
             {
-              String RESULT =null;
+              Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
+		 nodo nuevo = new nodo("INSTRUCCION", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("(", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION",0, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo1);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION",25, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 26: // INSTRUCCION ::= EJECUCION pyc 
             {
-              String RESULT =null;
+              Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
+		 nodo nuevo = new nodo("INSTRUCCION", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("(", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION",0, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo1);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION",25, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 27: // INSTRUCCION ::= SI 
             {
-              String RESULT =null;
+              Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
+		      nodo nuevo = new nodo("INSTRUCCION", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION",0, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos((nodo) a);
+                                            RESULT = nuevo;
+                                            
+                                        
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION",25, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 28: // INSTRUCCION ::= SEGUN 
             {
-              String RESULT =null;
+              Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
+		 
+                                            nodo nuevo = new nodo("INSTRUCCION", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION",0, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos((nodo) a);
+                                            RESULT = nuevo;
+                                            
+                                        
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION",25, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 29: // INSTRUCCION ::= PARA 
             {
-              String RESULT =null;
+              Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
+		 
+                                            nodo nuevo = new nodo("INSTRUCCION", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION",0, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos((nodo) a);
+                                            RESULT = nuevo;
+                                            
+                                        
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION",25, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 30: // INSTRUCCION ::= MIENTRAS 
             {
-              String RESULT =null;
+              Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
+		 
+                                            nodo nuevo = new nodo("INSTRUCCION", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION",0, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos((nodo) a);
+                                            RESULT = nuevo;
+                                            
+                                        
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION",25, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 31: // INSTRUCCION ::= REPETIR 
             {
-              String RESULT =null;
+              Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
+		 
+                                            nodo nuevo = new nodo("INSTRUCCION", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION",0, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos((nodo) a);
+                                            RESULT = nuevo;
+                                            
+                                        
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION",25, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 32: // INSTRUCCION ::= error 
             {
-              String RESULT =null;
-
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION",0, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+              Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
+		 
+                                            nodo nuevo = new nodo("INSTRUCCION", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("error", parser.contador);
+                                            parser.contador ++;
+                                            nuevo.AddHijos(nuevo1);
+                                            RESULT = nuevo;
+                                            
+                                        
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("INSTRUCCION",25, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1237,21 +1548,61 @@ class CUP$Analizador_sintactico$actions {
           case 33: // DECLARACION ::= pr_ingresar LISTA_ID pr_como TIPO pr_con_valor EXPRE 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).right;
+		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).value;
+		int cleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
+		int cright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
+		Object c = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
+		 
+                                            nodo nuevo = new nodo("DECLARACION", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("ingresar", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("como", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("con_valor", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("DECLARACION",6, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-5)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos(nuevo3);
+                                            nuevo.AddHijos((nodo) c);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("DECLARACION",4, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-5)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 34: // ASIGNACION_ ::= LISTA_ID asignacion EXPRE 
             {
-              String RESULT =null;
-		int wleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
-		int wright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
-		Object w = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
-		  RESULT = lista_iid + " = " + w ;  
-                                                lista_iid = ""; 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("ASIGNACION_",1, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+              Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
+		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
+		 
+                                            nodo nuevo = new nodo("ASIGNACION_", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("->", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) b);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("ASIGNACION_",26, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1262,8 +1613,21 @@ class CUP$Analizador_sintactico$actions {
 		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).right;
 		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
-		  RESULT=" ( " + a + " ) ";  
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EXPRE",7, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+		 
+                                            nodo nuevo = new nodo("EXPRE", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("(", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo(")", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo2);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EXPRE",5, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1277,8 +1641,19 @@ class CUP$Analizador_sintactico$actions {
 		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
 		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
 		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
-		  RESULT=a + " + " + b;  
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EXPRE",7, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+		 
+                                            nodo nuevo = new nodo("EXPRE", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("+", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) b);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EXPRE",5, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1292,8 +1667,19 @@ class CUP$Analizador_sintactico$actions {
 		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
 		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
 		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
-		  RESULT=a + " - " + b;  
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EXPRE",7, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+		 
+                                            nodo nuevo = new nodo("EXPRE", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("-", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) b);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EXPRE",5, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1307,8 +1693,19 @@ class CUP$Analizador_sintactico$actions {
 		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
 		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
 		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
-		  RESULT=a + " * " + b;  
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EXPRE",7, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+		 
+                                            nodo nuevo = new nodo("EXPRE", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("*", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) b);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EXPRE",5, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1322,8 +1719,19 @@ class CUP$Analizador_sintactico$actions {
 		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
 		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
 		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
-		  RESULT=a + " / " + b;  
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EXPRE",7, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+		 
+                                            nodo nuevo = new nodo("EXPRE", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("/", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) b);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EXPRE",5, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1337,8 +1745,25 @@ class CUP$Analizador_sintactico$actions {
 		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).left;
 		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).right;
 		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
-		  RESULT=a + " ** " + b;  
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EXPRE",7, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+		 
+                                            nodo nuevo = new nodo("EXPRE", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("potencia", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("[", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("]", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos(nuevo3);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EXPRE",5, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1352,8 +1777,19 @@ class CUP$Analizador_sintactico$actions {
 		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
 		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
 		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
-		  RESULT=a + " % " + b;  
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EXPRE",7, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+		 
+                                            nodo nuevo = new nodo("EXPRE", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("mod", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) b);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EXPRE",5, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1367,8 +1803,19 @@ class CUP$Analizador_sintactico$actions {
 		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
 		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
 		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
-		  RESULT=a + " or " + b;  
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EXPRE",7, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+		 
+                                            nodo nuevo = new nodo("EXPRE", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("or", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) b);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EXPRE",5, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1382,8 +1829,19 @@ class CUP$Analizador_sintactico$actions {
 		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
 		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
 		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
-		  RESULT=a + " and " + b;  
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EXPRE",7, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+		 
+                                            nodo nuevo = new nodo("EXPRE", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("and", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) b);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EXPRE",5, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1394,8 +1852,18 @@ class CUP$Analizador_sintactico$actions {
 		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
 		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
-		  RESULT="not " + a;  
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EXPRE",7, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+		 
+                                            nodo nuevo = new nodo("EXPRE", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("not", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EXPRE",5, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1409,8 +1877,19 @@ class CUP$Analizador_sintactico$actions {
 		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
 		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
 		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
-		  RESULT=a + " > " + b;  
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EXPRE",7, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+		 
+                                            nodo nuevo = new nodo("EXPRE", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("mayor", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) b);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EXPRE",5, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1424,8 +1903,19 @@ class CUP$Analizador_sintactico$actions {
 		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
 		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
 		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
-		  RESULT=a + " < " + b;  
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EXPRE",7, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+		 
+                                            nodo nuevo = new nodo("EXPRE", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("menor", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) b);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EXPRE",5, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1439,8 +1929,19 @@ class CUP$Analizador_sintactico$actions {
 		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
 		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
 		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
-		  RESULT=a + " >= " + b;  
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EXPRE",7, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+		 
+                                            nodo nuevo = new nodo("EXPRE", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("mayor_o_igual", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) b);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EXPRE",5, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1454,8 +1955,19 @@ class CUP$Analizador_sintactico$actions {
 		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
 		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
 		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
-		  RESULT=a + " <= " + b;  
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EXPRE",7, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+		 
+                                            nodo nuevo = new nodo("EXPRE", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("menor_o_igual", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) b);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EXPRE",5, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1469,8 +1981,19 @@ class CUP$Analizador_sintactico$actions {
 		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
 		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
 		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
-		  RESULT=a + " == " + b;  
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EXPRE",7, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+		 
+                                            nodo nuevo = new nodo("EXPRE", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("es_igual", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) b);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EXPRE",5, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1484,8 +2007,19 @@ class CUP$Analizador_sintactico$actions {
 		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
 		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
 		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
-		  RESULT=a + " != " + b;  
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EXPRE",7, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+		 
+                                            nodo nuevo = new nodo("EXPRE", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("es_diferente", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) b);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EXPRE",5, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1496,8 +2030,13 @@ class CUP$Analizador_sintactico$actions {
 		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
 		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
-		  RESULT=a;  
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EXPRE",7, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+		                    nodo nuevo = new nodo("EXPRE", parser.contador);
+                                            parser.contador ++;
+                                            nuevo.AddHijos((nodo) a);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EXPRE",5, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1508,8 +2047,16 @@ class CUP$Analizador_sintactico$actions {
 		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
 		String a = (String)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
-		  RESULT=a;  
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("VALOR",8, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+		            nodo nuevo = new nodo("VALOR", parser.contador);
+                                parser.contador ++;
+                                nodo nuevo1 = new nodo(a, parser.contador);
+                                parser.contador ++;
+
+                                nuevo.AddHijos(nuevo1);
+
+                                RESULT = nuevo;
+                                
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("VALOR",6, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1520,8 +2067,16 @@ class CUP$Analizador_sintactico$actions {
 		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
 		String a = (String)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
-		  RESULT=a;  
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("VALOR",8, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+		           nodo nuevo = new nodo("VALOR", parser.contador);
+                                parser.contador ++;
+                                nodo nuevo1 = new nodo("id: "+a, parser.contador);
+                                parser.contador ++;
+
+                                nuevo.AddHijos(nuevo1);
+
+                                RESULT = nuevo;
+                                
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("VALOR",6, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1532,8 +2087,16 @@ class CUP$Analizador_sintactico$actions {
 		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
 		String a = (String)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
-		  RESULT=a;  
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("VALOR",8, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+		       nodo nuevo = new nodo("VALOR", parser.contador);
+                                parser.contador ++;
+                                nodo nuevo1 = new nodo(a, parser.contador);
+                                parser.contador ++;
+
+                                nuevo.AddHijos(nuevo1);
+
+                                RESULT = nuevo;
+                                
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("VALOR",6, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1544,8 +2107,17 @@ class CUP$Analizador_sintactico$actions {
 		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
 		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
-		  RESULT="true";  
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("VALOR",8, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+		 
+                                nodo nuevo = new nodo("VALOR", parser.contador);
+                                parser.contador ++;
+                                nodo nuevo1 = new nodo("verdadero", parser.contador);
+                                parser.contador ++;
+
+                                nuevo.AddHijos(nuevo1);
+
+                                RESULT = nuevo;
+                                
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("VALOR",6, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1556,8 +2128,16 @@ class CUP$Analizador_sintactico$actions {
 		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
 		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
-		  RESULT="false";  
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("VALOR",8, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+		     nodo nuevo = new nodo("VALOR", parser.contador);
+                                parser.contador ++;
+                                nodo nuevo1 = new nodo("falso", parser.contador);
+                                parser.contador ++;
+
+                                nuevo.AddHijos(nuevo1);
+
+                                RESULT = nuevo;
+                                
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("VALOR",6, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1568,8 +2148,16 @@ class CUP$Analizador_sintactico$actions {
 		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
 		String a = (String)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
-		  RESULT=a;  
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("VALOR",8, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+		     nodo nuevo = new nodo("VALOR", parser.contador);
+                                parser.contador ++;
+                                nodo nuevo1 = new nodo(a, parser.contador);
+                                parser.contador ++;
+
+                                nuevo.AddHijos(nuevo1);
+
+                                RESULT = nuevo;
+                                
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("VALOR",6, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1577,8 +2165,16 @@ class CUP$Analizador_sintactico$actions {
           case 58: // TIPO ::= td_cadena 
             {
               Object RESULT =null;
+		      nodo nuevo = new nodo("TIPO", parser.contador);
+                                parser.contador ++;
+                                nodo nuevo1 = new nodo("cadena", parser.contador);
+                                parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("TIPO",9, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                nuevo.AddHijos(nuevo1);
+
+                                RESULT = nuevo;
+                                
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("TIPO",7, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1586,8 +2182,16 @@ class CUP$Analizador_sintactico$actions {
           case 59: // TIPO ::= td_numero 
             {
               Object RESULT =null;
+		       nodo nuevo = new nodo("TIPO", parser.contador);
+                                parser.contador ++;
+                                nodo nuevo1 = new nodo("numero", parser.contador);
+                                parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("TIPO",9, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                nuevo.AddHijos(nuevo1);
+
+                                RESULT = nuevo;
+                                
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("TIPO",7, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1595,8 +2199,16 @@ class CUP$Analizador_sintactico$actions {
           case 60: // TIPO ::= td_boolean 
             {
               Object RESULT =null;
+		      nodo nuevo = new nodo("TIPO", parser.contador);
+                                parser.contador ++;
+                                nodo nuevo1 = new nodo("boolean", parser.contador);
+                                parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("TIPO",9, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                nuevo.AddHijos(nuevo1);
+
+                                RESULT = nuevo;
+                                
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("TIPO",7, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1604,8 +2216,16 @@ class CUP$Analizador_sintactico$actions {
           case 61: // TIPO ::= td_caracter 
             {
               Object RESULT =null;
+		      nodo nuevo = new nodo("TIPO", parser.contador);
+                                parser.contador ++;
+                                nodo nuevo1 = new nodo("caracter", parser.contador);
+                                parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("TIPO",9, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                nuevo.AddHijos(nuevo1);
+
+                                RESULT = nuevo;
+                                
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("TIPO",7, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1613,14 +2233,27 @@ class CUP$Analizador_sintactico$actions {
           case 62: // LISTA_ID ::= LISTA_ID coma id 
             {
               Object RESULT =null;
-		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).left;
-		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).right;
-		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).value;
 		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
 		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
 		String b = (String)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
-		 lista_iid +=  a + " "+ b + lista_iid ;
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("LISTA_ID",10, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+		       nodo nuevo = new nodo("LISTA_ID", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo(",", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("id: "+b, parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos(nuevo2);
+
+                                            RESULT = nuevo;
+
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("LISTA_ID",8, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1631,8 +2264,15 @@ class CUP$Analizador_sintactico$actions {
 		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
 		String a = (String)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
-		 lista_iid +=  a + lista_iid ;
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("LISTA_ID",10, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+		 nodo nuevo = new nodo("LISTA_ID", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("id: "+a, parser.contador);
+                                            parser.contador ++;
+                                            nuevo.AddHijos(nuevo2);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("LISTA_ID",8, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1640,8 +2280,30 @@ class CUP$Analizador_sintactico$actions {
           case 64: // LISTA_PARAMETROS ::= LISTA_PARAMETROS coma EXPRE TIPO 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).right;
+		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
+		int cleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
+		int cright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
+		Object c = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
+		       
+                                            nodo nuevo = new nodo("LISTA_PARAMETROS", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo(",", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("LISTA_PARAMETROS",11, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos((nodo) c);
+
+                                            RESULT = nuevo;
+
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("LISTA_PARAMETROS",9, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1649,8 +2311,23 @@ class CUP$Analizador_sintactico$actions {
           case 65: // LISTA_PARAMETROS ::= EXPRE TIPO 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
+		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
+		       
+                                            nodo nuevo = new nodo("LISTA_PARAMETROS", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("LISTA_PARAMETROS",11, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos((nodo) b);
+
+                                            RESULT = nuevo;
+
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("LISTA_PARAMETROS",9, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1658,8 +2335,24 @@ class CUP$Analizador_sintactico$actions {
           case 66: // LISTA_PARAMETROS ::= pare1 LISTA_PARAMETROS pare2 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
+		 
+                                            nodo nuevo = new nodo("LISTA_PARAMETROS", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("(", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo(")", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("LISTA_PARAMETROS",11, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo2);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("LISTA_PARAMETROS",9, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1667,8 +2360,21 @@ class CUP$Analizador_sintactico$actions {
           case 67: // PRINT ::= pr_imprimir EXPRE 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
+		 
+                                            nodo nuevo = new nodo("PRINT", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("imprimir", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("PRINT",12, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("PRINT",10, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1676,8 +2382,21 @@ class CUP$Analizador_sintactico$actions {
           case 68: // PRINT ::= pr_imprimir_nl EXPRE 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
+		 
+                                            nodo nuevo = new nodo("PRINT", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("imprimir_nl", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("PRINT",12, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("PRINT",10, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1685,8 +2404,21 @@ class CUP$Analizador_sintactico$actions {
           case 69: // RETORNO ::= pr_retornar EXPRE 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
+		 
+                                            nodo nuevo = new nodo("RETORNO", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("retornar", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("RETORNO",13, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("RETORNO",11, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1694,8 +2426,29 @@ class CUP$Analizador_sintactico$actions {
           case 70: // EJECUCION ::= pr_ejecutar id pare1 pare2 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).right;
+		String a = (String)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).value;
+		 
+                                            nodo nuevo = new nodo("EJECUCION", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("ejecutar", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("id = "+a, parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("(", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo4 = new nodo(")", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EJECUCION",14, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos(nuevo3);
+                                            nuevo.AddHijos(nuevo4);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EJECUCION",12, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1703,8 +2456,28 @@ class CUP$Analizador_sintactico$actions {
           case 71: // EJECUCION ::= pr_ejecutar id LISTA_PARAMETROS 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).right;
+		String a = (String)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
+		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
+		 
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EJECUCION",14, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nodo nuevo = new nodo("EJECUCION", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("ejecutar", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("id = "+a, parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) b);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("EJECUCION",12, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1712,8 +2485,30 @@ class CUP$Analizador_sintactico$actions {
           case 72: // METODO ::= pr_metodo id INSTRUCCIONES pr_fin_metodo 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).right;
+		String a = (String)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).right;
+		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
+		 
+                                            nodo nuevo = new nodo("METODO", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("metodo", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("id = "+a, parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("fin_metodo", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("METODO",15, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos(nuevo3);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("METODO",13, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1721,8 +2516,37 @@ class CUP$Analizador_sintactico$actions {
           case 73: // METODO ::= pr_metodo id pr_con_parametros LISTA_PARAMETROS INSTRUCCIONES pr_fin_metodo 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)).right;
+		String a = (String)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).right;
+		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).value;
+		int cleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).left;
+		int cright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).right;
+		Object c = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
+		 
+                                            nodo nuevo = new nodo("METODO", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("metodo", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("id = "+a, parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("con_parametros", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo4 = new nodo("fin_metodo", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("METODO",15, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-5)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos(nuevo3);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos((nodo) c);
+                                            nuevo.AddHijos(nuevo4);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("METODO",13, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-5)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1730,8 +2554,34 @@ class CUP$Analizador_sintactico$actions {
           case 74: // FUNCION ::= pr_funcion id TIPO INSTRUCCIONES_R pr_fin_funcion 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)).right;
+		String a = (String)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).right;
+		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).value;
+		int cleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).left;
+		int cright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).right;
+		Object c = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
+		 
+                                            nodo nuevo = new nodo("FUNCION", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("funcion", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("id = "+a, parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("fin_funcion", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("FUNCION",16, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos((nodo) c);
+                                            nuevo.AddHijos(nuevo3);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("FUNCION",14, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1739,8 +2589,43 @@ class CUP$Analizador_sintactico$actions {
           case 75: // FUNCION ::= pr_funcion id TIPO pr_con_parametros LISTA_PARAMETROS INSTRUCCIONES_R pr_fin_funcion 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-5)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-5)).right;
+		String a = (String)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-5)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)).right;
+		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)).value;
+		int cleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).left;
+		int cright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).right;
+		Object c = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).value;
+		int dleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).left;
+		int dright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).right;
+		Object d = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
+		 
+                                            nodo nuevo = new nodo("FUNCION", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("funcion", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("con_parametros", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("id = "+a, parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo4 = new nodo("fin_funcion", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("FUNCION",16, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-6)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos(nuevo3);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) c);
+                                            nuevo.AddHijos((nodo) d);
+                                            nuevo.AddHijos(nuevo4);
+       
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("FUNCION",14, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-6)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1748,8 +2633,31 @@ class CUP$Analizador_sintactico$actions {
           case 76: // SI ::= pr_si EXPRE pr_entonces INSTRUCCIONES pr_fin_si 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).right;
+		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
+		 
+                                            nodo nuevo = new nodo("SI", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("si", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("entonces", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("fin_si", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("SI",22, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos(nuevo3);
+       
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("SI",20, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1757,8 +2665,38 @@ class CUP$Analizador_sintactico$actions {
           case 77: // SI ::= pr_si EXPRE pr_entonces INSTRUCCIONES pr_de_lo_contrario INSTRUCCIONES pr_fin_si 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-5)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-5)).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-5)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)).right;
+		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)).value;
+		int cleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).left;
+		int cright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).right;
+		Object c = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
+		 
+                                            nodo nuevo = new nodo("SI", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("si", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("entonces", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("de_lo_contrario", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo4 = new nodo("fin_si", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("SI",22, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-6)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos(nuevo3);
+                                            nuevo.AddHijos((nodo) c);
+                                            nuevo.AddHijos(nuevo4);
+       
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("SI",20, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-6)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1766,8 +2704,35 @@ class CUP$Analizador_sintactico$actions {
           case 78: // SI ::= pr_si EXPRE pr_entonces INSTRUCCIONES RAMIFICACION pr_fin_si 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).right;
+		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).value;
+		int cleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).left;
+		int cright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).right;
+		Object c = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
+		 
+                                            nodo nuevo = new nodo("SI", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("si", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("entonces", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("fin_si", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("SI",22, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-5)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos((nodo) c);
+                                            nuevo.AddHijos(nuevo3);
+       
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("SI",20, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-5)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1775,8 +2740,42 @@ class CUP$Analizador_sintactico$actions {
           case 79: // SI ::= pr_si EXPRE pr_entonces INSTRUCCIONES RAMIFICACION pr_de_lo_contrario INSTRUCCIONES pr_fin_si 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-6)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-6)).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-6)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)).right;
+		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)).value;
+		int cleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)).left;
+		int cright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)).right;
+		Object c = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)).value;
+		int dleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).left;
+		int dright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).right;
+		Object d = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
+		 
+                                            nodo nuevo = new nodo("SI", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("si", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("entonces", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("de_lo_contrario", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo4 = new nodo("fin_si", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("SI",22, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-7)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos((nodo) c);
+                                            nuevo.AddHijos(nuevo3);
+                                            nuevo.AddHijos((nodo) d);
+                                            nuevo.AddHijos(nuevo4);
+       
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("SI",20, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-7)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1784,8 +2783,32 @@ class CUP$Analizador_sintactico$actions {
           case 80: // RAMIFICACION ::= RAMIFICACION pr_o_si EXPRE pr_entonces INSTRUCCIONES 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).right;
+		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).value;
+		int cleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
+		int cright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
+		Object c = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
+		 
+                                            nodo nuevo = new nodo("RAMIFICACION", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("o_si", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("entonces", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("RAMIFICACION",17, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) c);
+       
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("RAMIFICACION",15, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1793,8 +2816,28 @@ class CUP$Analizador_sintactico$actions {
           case 81: // RAMIFICACION ::= pr_o_si EXPRE pr_entonces INSTRUCCIONES 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
+		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
+		 
+                                            nodo nuevo = new nodo("RAMIFICACION", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("o_si", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("entonces", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("RAMIFICACION",17, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) b);
+       
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("RAMIFICACION",15, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1802,8 +2845,31 @@ class CUP$Analizador_sintactico$actions {
           case 82: // SEGUN ::= pr_segun EXPRE pr_hacer LISTA_SEGUN pr_fin_segun 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).right;
+		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
+		 
+                                            nodo nuevo = new nodo("SEGUN", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("segun", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("hacer", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("fin_segun", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("SEGUN",18, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos(nuevo3);
+       
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("SEGUN",16, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1811,8 +2877,41 @@ class CUP$Analizador_sintactico$actions {
           case 83: // SEGUN ::= pr_segun EXPRE pr_hacer LISTA_SEGUN pr_de_lo_contrario pr_entonces INSTRUCCIONES pr_fin_segun 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-6)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-6)).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-6)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)).right;
+		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)).value;
+		int cleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).left;
+		int cright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).right;
+		Object c = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
+		 
+                                            nodo nuevo = new nodo("SEGUN", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("segun", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("hacer", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("de_lo_contrario", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo4 = new nodo("entonces", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo5 = new nodo("fin_segun", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("SEGUN",18, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-7)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos(nuevo3);
+                                            nuevo.AddHijos(nuevo4);
+                                            nuevo.AddHijos((nodo) c);
+                                            nuevo.AddHijos(nuevo5);
+       
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("SEGUN",16, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-7)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1820,8 +2919,35 @@ class CUP$Analizador_sintactico$actions {
           case 84: // LISTA_SEGUN ::= LISTA_SEGUN duda1 EXPRE duda2 pr_entonces INSTRUCCIONES 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-5)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-5)).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-5)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)).right;
+		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)).value;
+		int cleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
+		int cright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
+		Object c = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
+		 
+                                            nodo nuevo = new nodo("LISTA_SEGUN", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("¿", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("?", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("entonces", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("LISTA_SEGUN",19, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-5)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos(nuevo3);
+                                            nuevo.AddHijos((nodo) c);
+       
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("LISTA_SEGUN",17, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-5)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1829,8 +2955,31 @@ class CUP$Analizador_sintactico$actions {
           case 85: // LISTA_SEGUN ::= duda1 EXPRE duda2 pr_entonces INSTRUCCIONES 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
+		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
+		 
+                                            nodo nuevo = new nodo("LISTA_SEGUN", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("¿", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("?", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("entonces", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("LISTA_SEGUN",19, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos(nuevo3);
+                                            nuevo.AddHijos((nodo) b);
+       
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("LISTA_SEGUN",17, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1838,8 +2987,45 @@ class CUP$Analizador_sintactico$actions {
           case 86: // PARA ::= pr_para EXPRE asignacion EXPRE pr_hasta EXPRE pr_hacer INSTRUCCIONES pr_fin_para 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-7)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-7)).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-7)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-5)).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-5)).right;
+		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-5)).value;
+		int cleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)).left;
+		int cright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)).right;
+		Object c = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)).value;
+		int dleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).left;
+		int dright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).right;
+		Object d = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
+		 
+                                            nodo nuevo = new nodo("PARA", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("para", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("asignacion", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("hasta", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo4 = new nodo("hacer", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo5 = new nodo("fin_para", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("PARA",25, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-8)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos(nuevo3);
+                                            nuevo.AddHijos((nodo) c);
+                                            nuevo.AddHijos(nuevo4);
+                                            nuevo.AddHijos((nodo) d);
+                                            nuevo.AddHijos(nuevo5);
+       
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("PARA",23, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-8)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1847,8 +3033,41 @@ class CUP$Analizador_sintactico$actions {
           case 87: // PARA ::= pr_para EXPRE asignacion EXPRE pr_hasta EXPRE pr_hacer pr_fin_para 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-6)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-6)).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-6)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)).right;
+		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)).value;
+		int cleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).left;
+		int cright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).right;
+		Object c = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).value;
+		 
+                                            nodo nuevo = new nodo("PARA", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("para", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("asignacion", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("hasta", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo4 = new nodo("hacer", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo5 = new nodo("fin_para", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("PARA",25, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-7)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos(nuevo3);
+                                            nuevo.AddHijos((nodo) c);
+                                            nuevo.AddHijos(nuevo4);
+                                            nuevo.AddHijos(nuevo5);
+       
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("PARA",23, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-7)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1856,8 +3075,52 @@ class CUP$Analizador_sintactico$actions {
           case 88: // PARA ::= pr_para EXPRE asignacion EXPRE pr_hasta EXPRE pr_con_incremental EXPRE pr_hacer INSTRUCCIONES pr_fin_para 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-9)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-9)).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-9)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-7)).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-7)).right;
+		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-7)).value;
+		int cleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-5)).left;
+		int cright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-5)).right;
+		Object c = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-5)).value;
+		int dleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)).left;
+		int dright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)).right;
+		Object d = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)).value;
+		int fleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).left;
+		int fright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).right;
+		Object f = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
+		 
+                                            nodo nuevo = new nodo("PARA", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("para", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("asignacion", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("hasta", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo4 = new nodo("con_incremental", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo5 = new nodo("hacer", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo6 = new nodo("fin_para", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("PARA",25, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-10)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos(nuevo3);
+                                            nuevo.AddHijos((nodo) c);
+                                            nuevo.AddHijos(nuevo4);
+                                            nuevo.AddHijos((nodo) d);
+                                            nuevo.AddHijos(nuevo5);
+                                            nuevo.AddHijos((nodo) f);
+                                            nuevo.AddHijos(nuevo6);
+       
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("PARA",23, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-10)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1865,8 +3128,48 @@ class CUP$Analizador_sintactico$actions {
           case 89: // PARA ::= pr_para EXPRE asignacion EXPRE pr_hasta EXPRE pr_con_incremental EXPRE pr_hacer pr_fin_para 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-8)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-8)).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-8)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-6)).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-6)).right;
+		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-6)).value;
+		int cleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)).left;
+		int cright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)).right;
+		Object c = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)).value;
+		int dleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).left;
+		int dright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).right;
+		Object d = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).value;
+		 
+                                            nodo nuevo = new nodo("PARA", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("para", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("asignacion", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("hasta", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo4 = new nodo("con_incremental", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo5 = new nodo("hacer", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo6 = new nodo("fin_para", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("PARA",25, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-9)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos(nuevo3);
+                                            nuevo.AddHijos((nodo) c);
+                                            nuevo.AddHijos(nuevo4);
+                                            nuevo.AddHijos((nodo) d);
+                                            nuevo.AddHijos(nuevo5);
+                                            nuevo.AddHijos(nuevo6);
+       
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("PARA",23, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-9)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1874,8 +3177,31 @@ class CUP$Analizador_sintactico$actions {
           case 90: // MIENTRAS ::= pr_mientras EXPRE pr_hacer INSTRUCCIONES pr_fin_mientras 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).right;
+		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
+		 
+                                            nodo nuevo = new nodo("MIENTRAS", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("mientras", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("hacer", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("fin_mientras", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("MIENTRAS",20, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos(nuevo3);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("MIENTRAS",18, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1883,8 +3209,27 @@ class CUP$Analizador_sintactico$actions {
           case 91: // MIENTRAS ::= pr_mientras EXPRE pr_hacer pr_fin_mientras 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).value;
+		 
+                                            nodo nuevo = new nodo("MIENTRAS", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("mientras", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("hacer", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("fin_mientras", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("MIENTRAS",20, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos(nuevo3);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("MIENTRAS",18, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1892,8 +3237,28 @@ class CUP$Analizador_sintactico$actions {
           case 92: // REPETIR ::= pr_repetir INSTRUCCIONES pr_hasta_que EXPRE 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
+		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
+		 
+                                            nodo nuevo = new nodo("REPETIR", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("repetir", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("hasta_que", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("REPETIR",21, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) b);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("REPETIR",19, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
@@ -1901,8 +3266,24 @@ class CUP$Analizador_sintactico$actions {
           case 93: // REPETIR ::= pr_repetir pr_hasta_que EXPRE 
             {
               Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
+		 
+                                            nodo nuevo = new nodo("REPETIR", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("repetir", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("hasta_que", parser.contador);
+                                            parser.contador ++;
 
-              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("REPETIR",21, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) a);
+
+                                            RESULT = nuevo;
+                                            
+              CUP$Analizador_sintactico$result = parser.getSymbolFactory().newSymbol("REPETIR",19, ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_sintactico$stack.peek()), RESULT);
             }
           return CUP$Analizador_sintactico$result;
 
