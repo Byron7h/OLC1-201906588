@@ -176,8 +176,11 @@ GLOBALES ::=    GLOBALES:a GLO:b         {: nodo nuevo = new nodo("GLOBALES", pa
                                             RESULT = nuevo;
                                             :}
 
-                |GLO:a                   {: 
-                                            RESULT = a;
+                |GLO:a                   {: nodo nuevo = new nodo("GLOBALES", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos((nodo) a);
+                                            RESULT = nuevo;
                                          :}
 
 ;
@@ -222,12 +225,16 @@ INSTRUCCIONES ::=   INSTRUCCIONES:a INSTRUCCION:b {: nodo nuevo = new nodo("INST
 
 
 
-                |   INSTRUCCION:a       {: 
-                                            RESULT = a;
+                |   INSTRUCCION:a       {:  nodo nuevo = new nodo("INSTRUCCIONES", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos((nodo) a);
+                                            RESULT = nuevo;
                                         :}
 ;
 
-INSTRUCCIONES_R ::=     INSTRUCCIONES_R:a INSTRUCCION_R:b {: nodo nuevo = new nodo("INSTRUCCIONES_R", parser.contador);
+INSTRUCCIONES_R ::=     INSTRUCCIONES_R:a INSTRUCCION_R:b {: 
+                                            nodo nuevo = new nodo("INSTRUCCIONES_R", parser.contador);
                                             parser.contador ++;
 
                                             nuevo.AddHijos((nodo) a);
@@ -235,8 +242,12 @@ INSTRUCCIONES_R ::=     INSTRUCCIONES_R:a INSTRUCCION_R:b {: nodo nuevo = new no
 
                                             RESULT = nuevo;
                                             :} 
-                    |   INSTRUCCION_R:a {: 
-                                            RESULT = a;
+
+                    |   INSTRUCCION_R:a {:  nodo nuevo = new nodo("INSTRUCCIONES_R", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos((nodo) a);
+                                            RESULT = nuevo;
                                         :}
 ;
 
@@ -296,28 +307,51 @@ INSTRUCCION_R   ::= ASIGNACION_:a pyc       {: nodo nuevo = new nodo("INSTRUCCIO
                                             RESULT = nuevo;
                                             :} 
 
-                |   SI:a                {: 
-                                            RESULT = a;
+                |   SI:a                {:  nodo nuevo = new nodo("INSTRUCCION_R", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos((nodo) a);
+                                            RESULT = nuevo;
                                         :}
 
-                |   SEGUN:a            {: 
-                                            RESULT = a;
+                |   SEGUN:a            {:   nodo nuevo = new nodo("INSTRUCCION_R", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos((nodo) a);
+                                            RESULT = nuevo;
                                         :}
 
-                |   PARA:a            {: 
-                                            RESULT = a;
+                |   PARA:a            {:    nodo nuevo = new nodo("INSTRUCCION_R", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos((nodo) a);
+                                            RESULT = nuevo;
                                         :} 
 
                 |   MIENTRAS:a            {: 
-                                            RESULT = a;
+                                            nodo nuevo = new nodo("INSTRUCCION_R", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos((nodo) a);
+                                            RESULT = nuevo;
                                         :}
 
                 |   REPETIR:a            {: 
-                                            RESULT = a;
+                                            nodo nuevo = new nodo("INSTRUCCION_R", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos((nodo) a);
+                                            RESULT = nuevo;
                                         :}
 
-                |   error:a             {: 
-                                            RESULT = a;
+                |   error             {: 
+                                            nodo nuevo = new nodo("INSTRUCCION_R", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("error", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos(nuevo1);
+                                            RESULT = nuevo;
                                         :}
 ;
 
@@ -364,23 +398,59 @@ INSTRUCCION   ::=   ASIGNACION_:a pyc       {: nodo nuevo = new nodo("INSTRUCCIO
 
                                             RESULT = nuevo;
                                             :}
-                |   SI:a            {: 
-                                            RESULT = a;
+
+                |   SI:a            {:      nodo nuevo = new nodo("INSTRUCCION", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos((nodo) a);
+                                            RESULT = nuevo;
+                                            :}
                                         :}
+
                 |   SEGUN:a            {: 
-                                            RESULT = a;
+                                            nodo nuevo = new nodo("INSTRUCCION", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos((nodo) a);
+                                            RESULT = nuevo;
+                                            :}
                                         :}
+
                 |   PARA:a            {: 
-                                            RESULT = a;
+                                            nodo nuevo = new nodo("INSTRUCCION", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos((nodo) a);
+                                            RESULT = nuevo;
+                                            :}
                                         :} 
+
                 |   MIENTRAS:a            {: 
-                                            RESULT = a;
+                                            nodo nuevo = new nodo("INSTRUCCION", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos((nodo) a);
+                                            RESULT = nuevo;
+                                            :}
                                         :}
+
                 |   REPETIR:a            {: 
-                                            RESULT = a;
+                                            nodo nuevo = new nodo("INSTRUCCION", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos((nodo) a);
+                                            RESULT = nuevo;
+                                            :}
                                         :}
+
                 |   error:a            {: 
-                                            RESULT = a;
+                                            nodo nuevo = new nodo("INSTRUCCION", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("error", parser.contador);
+                                            parser.contador ++;
+                                            nuevo.AddHijos(nuevo1);
+                                            RESULT = nuevo;
+                                            :}
                                         :}
 ;
                 
@@ -636,49 +706,342 @@ EXPRE   ::=  pare1 EXPRE:a pare2 {:
                                             RESULT = nuevo;
                                             :} 
 
-            | VALOR:a {:  RESULT=a;  :}
+            | VALOR:a {:                    nodo nuevo = new nodo("EXPRE", parser.contador);
+                                            parser.contador ++;
+                                            nuevo.AddHijos((nodo) a);
+
+                                            RESULT = nuevo;);
+                                            :}
 ;
 
-VALOR ::=   num:a {:  RESULT=a;  :}
-            | id:a {:  RESULT=a;  :}
-            | cadena:a {:  RESULT=a;  :}
-            | pr_verdadero:a {:  RESULT="true";  :}
-            | pr_falso:a {:  RESULT="false";  :}
-            | caracter:a {:  RESULT=a;  :}
+VALOR ::=   num:a {:            nodo nuevo = new nodo("VALOR", parser.contador);
+                                parser.contador ++;
+                                nodo nuevo1 = new nodo(a, parser.contador);
+                                parser.contador ++;
+
+                                nuevo.AddHijos(nuevo1);
+
+                                RESULT = nuevo;
+                                :} 
+
+            | id:a {:           nodo nuevo = new nodo("VALOR", parser.contador);
+                                parser.contador ++;
+                                nodo nuevo1 = new nodo("id: "+a, parser.contador);
+                                parser.contador ++;
+
+                                nuevo.AddHijos(nuevo1);
+
+                                RESULT = nuevo;
+                                :} 
+
+            | cadena:a {:       nodo nuevo = new nodo("VALOR", parser.contador);
+                                parser.contador ++;
+                                nodo nuevo1 = new nodo(a, parser.contador);
+                                parser.contador ++;
+
+                                nuevo.AddHijos(nuevo1);
+
+                                RESULT = nuevo;
+                                :} 
+
+            | pr_verdadero:a {: 
+                                nodo nuevo = new nodo("VALOR", parser.contador);
+                                parser.contador ++;
+                                nodo nuevo1 = new nodo("verdadero", parser.contador);
+                                parser.contador ++;
+
+                                nuevo.AddHijos(nuevo1);
+
+                                RESULT = nuevo;
+                                :} 
+
+            | pr_falso:a {:     nodo nuevo = new nodo("VALOR", parser.contador);
+                                parser.contador ++;
+                                nodo nuevo1 = new nodo("falso", parser.contador);
+                                parser.contador ++;
+
+                                nuevo.AddHijos(nuevo1);
+
+                                RESULT = nuevo;
+                                :} 
+
+            | caracter:a {:     nodo nuevo = new nodo("VALOR", parser.contador);
+                                parser.contador ++;
+                                nodo nuevo1 = new nodo(a, parser.contador);
+                                parser.contador ++;
+
+                                nuevo.AddHijos(nuevo1);
+
+                                RESULT = nuevo;
+                                :} 
+
 ;
 
-TIPO ::=    td_cadena
-            | td_numero
-            | td_boolean
-            | td_caracter   
+TIPO ::=    td_cadena   {:      nodo nuevo = new nodo("TIPO", parser.contador);
+                                parser.contador ++;
+                                nodo nuevo1 = new nodo("cadena", parser.contador);
+                                parser.contador ++;
+
+                                nuevo.AddHijos(nuevo1);
+
+                                RESULT = nuevo;
+                                :}
+ 
+            | td_numero{:       nodo nuevo = new nodo("TIPO", parser.contador);
+                                parser.contador ++;
+                                nodo nuevo1 = new nodo("numero", parser.contador);
+                                parser.contador ++;
+
+                                nuevo.AddHijos(nuevo1);
+
+                                RESULT = nuevo;
+                                :} 
+
+            | td_boolean{:      nodo nuevo = new nodo("TIPO", parser.contador);
+                                parser.contador ++;
+                                nodo nuevo1 = new nodo("boolean", parser.contador);
+                                parser.contador ++;
+
+                                nuevo.AddHijos(nuevo1);
+
+                                RESULT = nuevo;
+                                :} 
+
+            | td_caracter{:      nodo nuevo = new nodo("TIPO", parser.contador);
+                                parser.contador ++;
+                                nodo nuevo1 = new nodo("caracter", parser.contador);
+                                parser.contador ++;
+
+                                nuevo.AddHijos(nuevo1);
+
+                                RESULT = nuevo;
+                                :}    
 ;
 
-LISTA_ID ::=  LISTA_ID coma:a id:b  {: lista_iid +=  a + " "+ b + lista_iid ;:}
-            | id:a   {: lista_iid +=  a + lista_iid ;:} 
+LISTA_ID ::=  LISTA_ID:a coma id:b {:       nodo nuevo = new nodo("LISTA_ID", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo(",", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("id: "+b, parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos(nuevo2);
+
+                                            RESULT = nuevo;
+
+                                            :} 
+
+            | id:a                       {: nodo nuevo = new nodo("LISTA_ID", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("id: "+a, parser.contador);
+                                            parser.contador ++;
+                                            nuevo.AddHijos(nuevo2);
+
+                                            RESULT = nuevo;);
+                                            :} 
 ;
 
-LISTA_PARAMETROS ::= LISTA_PARAMETROS coma EXPRE TIPO
-            | EXPRE TIPO
-            | pare1 LISTA_PARAMETROS pare2
+LISTA_PARAMETROS ::= LISTA_PARAMETROS:a coma EXPRE:b TIPO:c {:       
+                                            nodo nuevo = new nodo("LISTA_PARAMETROS", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo(",", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos((nodo) c);
+
+                                            RESULT = nuevo;
+
+                                            :}
+
+            | EXPRE:a TIPO:b {:       
+                                            nodo nuevo = new nodo("LISTA_PARAMETROS", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos((nodo) b);
+
+                                            RESULT = nuevo;
+
+                                            :}
+
+            | pare1 LISTA_PARAMETROS:a pare2 {: 
+                                            nodo nuevo = new nodo(LISTA_PARAMETROS, parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("(", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo(")", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo2);
+
+                                            RESULT = nuevo;
+                                            :}
+
 ;
 
-PRINT ::=   pr_imprimir EXPRE
-        |   pr_imprimir_nl EXPRE
+PRINT ::=   pr_imprimir EXPRE:a {: 
+                                            nodo nuevo = new nodo(PRINT, parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("imprimir", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+
+                                            RESULT = nuevo;
+                                            :}
+        |   pr_imprimir_nl EXPRE:a {: 
+                                            nodo nuevo = new nodo(PRINT, parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("imprimir_nl", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+
+                                            RESULT = nuevo;
+                                            :}
 ;
 
-RETORNO ::= pr_retornar EXPRE
+RETORNO ::= pr_retornar EXPRE:a {: 
+                                            nodo nuevo = new nodo(RETORNO, parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("retornar", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+
+                                            RESULT = nuevo;
+                                            :}
 ;
 
-EJECUCION ::= pr_ejecutar id pare1 pare2
-            | pr_ejecutar id LISTA_PARAMETROS 
+EJECUCION ::= pr_ejecutar id:a pare1 pare2 {: 
+                                            nodo nuevo = new nodo(EJECUCION, parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("ejecutar", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("id = "+a, parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("(", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo4 = new nodo(")", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos(nuevo3);
+                                            nuevo.AddHijos(nuevo4);
+
+                                            RESULT = nuevo;
+                                            :}
+
+            | pr_ejecutar id:a LISTA_PARAMETROS:b {: 
+
+                                            nodo nuevo = new nodo(EJECUCION, parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("ejecutar", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("id = "+a, parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) b);
+
+                                            RESULT = nuevo;
+                                            :}
 ;
 
-METODO ::=  pr_metodo id INSTRUCCIONES pr_fin_metodo
-            | pr_metodo id pr_con_parametros LISTA_PARAMETROS INSTRUCCIONES pr_fin_metodo
+METODO ::=  pr_metodo id:a INSTRUCCIONES:b pr_fin_metodo{: 
+                                            nodo nuevo = new nodo(METODO, parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("metodo", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("id = "+a, parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("fin_metodo", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos(nuevo3);
+
+                                            RESULT = nuevo;
+                                            :}
+
+            | pr_metodo id:a pr_con_parametros LISTA_PARAMETROS:b INSTRUCCIONES:c pr_fin_metodo{: 
+                                            nodo nuevo = new nodo(METODO, parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("metodo", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("id = "+a, parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("con_parametros", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo4 = new nodo("fin_metodo", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos(nuevo3);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos((nodo) c);
+                                            nuevo.AddHijos(nuevo4);
+
+                                            RESULT = nuevo;
+                                            :}
 ;
 
-FUNCION ::= pr_funcion id TIPO INSTRUCCIONES_R pr_fin_funcion
-            | pr_funcion id TIPO pr_con_parametros LISTA_PARAMETROS INSTRUCCIONES_R pr_fin_funcion
+FUNCION ::= pr_funcion id:a TIPO:b INSTRUCCIONES_R:c pr_fin_funcion {: 
+                                            nodo nuevo = new nodo(FUNCION, parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("funcion", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("id = "+a, parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("fin_funcion", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos((nodo) c);
+                                            nuevo.AddHijos(nuevo3);
+       
+                                            nuevo.AddHijos(nuevo4);
+
+                                            RESULT = nuevo;
+                                            :}
+
+            | pr_funcion id TIPO pr_con_parametros LISTA_PARAMETROS INSTRUCCIONES_R pr_fin_funcion {: 
+                                            nodo nuevo = new nodo(FUNCION, parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("funcion", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("id = "+a, parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("fin_funcion", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos((nodo) c);
+                                            nuevo.AddHijos(nuevo3);
+       
+                                            nuevo.AddHijos(nuevo4);
+
+                                            RESULT = nuevo;
+                                            :}
 ;
 
 SI ::=        pr_si EXPRE pr_entonces INSTRUCCIONES pr_fin_si
