@@ -6,6 +6,7 @@
 package proyecto_1;
 
 import analizadores.Analizador_Lexico;
+import analizadores.nodo;
 import analizadores.Analizador_sintactico;
 import analizadores.TError;
 import java.io.BufferedReader;
@@ -14,6 +15,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 
@@ -22,9 +24,9 @@ import java.util.LinkedList;
 
 public class Proyecto_1 {
 
-    /**
-     * @param args the command line arguments
-     */
+    public static String cache = "";
+    public static nodo padre = Analizador_sintactico.padre;
+    
     public static void main(String[] args) {
         try {
             
@@ -38,11 +40,13 @@ public class Proyecto_1 {
             
             if ( Analizador_Lexico.errores.isEmpty()  && Analizador_sintactico.errores.isEmpty()){ //hacemos todo el proceso
                 System.out.println("No se encontraron errores");
+                AST();
 
             }else{
 
                 System.out.println("Se encontraron errores en el archivo de entrada");
                 reporte_errores(Analizador_Lexico.errores,Analizador_sintactico.errores );
+                AST();
             }
             
             
@@ -54,10 +58,51 @@ public class Proyecto_1 {
             
         }
     }
+    public static void AST(){
+        
+       cache  = "digraph structs {\n"+
+                "    fontname=\"Helvetica,Arial,sans-serif\"\n"+
+                "    node [shape=record, fontname=\"Helvetica,Arial,sans-serif\" ];\n ";
+       
+       AST(Analizador_sintactico.padre);
+       cache += "}";
+        System.out.println(cache);
+        
+
+        
     
-    public void AST(){
     
     
+    }
+    public static void AST(nodo actual){
+        
+        if(actual.cadena){
+            cache += "    "+actual.getId()+" [label="+actual.getEtiqueta()+"];\n";
+        }else{
+     
+            cache += "    "+actual.getId()+" [label=\""+actual.getEtiqueta()+"\"];\n";
+        }
+        ArrayList<nodo> hijos = actual.getHijos();
+        String aux= ""; 
+        
+        if(!hijos.isEmpty() ){
+
+            for(nodo i : hijos){        
+                cache += "    "+actual.getId()+" -> "+i.getId()+";\n";
+                AST(i);
+            }
+                  
+        }
+
+        
+        
+        
+        
+      /*                           result += "    subgraph cluster_"+nombre_padre+" {\n"
+                                    + "      color = white;\n"
+                                    + "      "+nombre_izquierda+"; "+nombre_derecha+"; }\n";/          
+          
+    */
     }
         public static void GenerarImagen(String nombre, String txtDTO) {
         try {

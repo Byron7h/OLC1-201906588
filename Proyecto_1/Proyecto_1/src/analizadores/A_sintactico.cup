@@ -9,7 +9,7 @@ parser code
   
 
 {:
-    public nodo padre;
+    public static nodo padre;
     public int contador = 0;
 
     public static String cache = "";
@@ -154,9 +154,9 @@ start with INICIO;
 
 INICIO  ::= pr_inicio GLOBALES:b pr_fin  {: nodo nuevo = new nodo("INICIO", parser.contador);
                                             parser.contador ++;
-                                            nodo nuevo1 = new nodo("(", parser.contador);
+                                            nodo nuevo1 = new nodo("inicio", parser.contador);
                                             parser.contador ++;
-                                            nodo nuevo2 = new nodo(")", parser.contador);
+                                            nodo nuevo2 = new nodo("fin", parser.contador);
                                             parser.contador ++;
 
                                             nuevo.AddHijos(nuevo1);
@@ -254,7 +254,7 @@ INSTRUCCIONES_R ::=     INSTRUCCIONES_R:a INSTRUCCION_R:b {:
 // instrucciones 
 INSTRUCCION_R   ::= ASIGNACION_:a pyc       {: nodo nuevo = new nodo("INSTRUCCION_R", parser.contador);
                                             parser.contador ++;
-                                            nodo nuevo1 = new nodo("(", parser.contador);
+                                            nodo nuevo1 = new nodo(";", parser.contador);
                                             parser.contador ++;
 
                                             nuevo.AddHijos((nodo) a);
@@ -265,7 +265,7 @@ INSTRUCCION_R   ::= ASIGNACION_:a pyc       {: nodo nuevo = new nodo("INSTRUCCIO
 
                 |   DECLARACION:a pyc       {: nodo nuevo = new nodo("INSTRUCCION_R", parser.contador);
                                             parser.contador ++;
-                                            nodo nuevo1 = new nodo("(", parser.contador);
+                                            nodo nuevo1 = new nodo(";", parser.contador);
                                             parser.contador ++;
 
                                             nuevo.AddHijos((nodo) a);
@@ -276,7 +276,7 @@ INSTRUCCION_R   ::= ASIGNACION_:a pyc       {: nodo nuevo = new nodo("INSTRUCCIO
 
                 |   PRINT:a pyc             {: nodo nuevo = new nodo("INSTRUCCION_R", parser.contador);
                                             parser.contador ++;
-                                            nodo nuevo1 = new nodo("(", parser.contador);
+                                            nodo nuevo1 = new nodo(";", parser.contador);
                                             parser.contador ++;
 
                                             nuevo.AddHijos((nodo) a);
@@ -287,7 +287,7 @@ INSTRUCCION_R   ::= ASIGNACION_:a pyc       {: nodo nuevo = new nodo("INSTRUCCIO
 
                 |   RETORNO:a pyc           {: nodo nuevo = new nodo("INSTRUCCION_R", parser.contador);
                                             parser.contador ++;
-                                            nodo nuevo1 = new nodo("(", parser.contador);
+                                            nodo nuevo1 = new nodo(";", parser.contador);
                                             parser.contador ++;
 
                                             nuevo.AddHijos((nodo) a);
@@ -298,7 +298,7 @@ INSTRUCCION_R   ::= ASIGNACION_:a pyc       {: nodo nuevo = new nodo("INSTRUCCIO
 
                 |   EJECUCION:a pyc         {: nodo nuevo = new nodo("INSTRUCCION_R", parser.contador);
                                             parser.contador ++;
-                                            nodo nuevo1 = new nodo("(", parser.contador);
+                                            nodo nuevo1 = new nodo(";", parser.contador);
                                             parser.contador ++;
 
                                             nuevo.AddHijos((nodo) a);
@@ -357,7 +357,7 @@ INSTRUCCION_R   ::= ASIGNACION_:a pyc       {: nodo nuevo = new nodo("INSTRUCCIO
 
 INSTRUCCION   ::=   ASIGNACION_:a pyc       {: nodo nuevo = new nodo("INSTRUCCION", parser.contador);
                                             parser.contador ++;
-                                            nodo nuevo1 = new nodo("(", parser.contador);
+                                            nodo nuevo1 = new nodo(";", parser.contador);
                                             parser.contador ++;
 
                                             nuevo.AddHijos((nodo) a);
@@ -368,7 +368,7 @@ INSTRUCCION   ::=   ASIGNACION_:a pyc       {: nodo nuevo = new nodo("INSTRUCCIO
 
                 |   DECLARACION:a pyc       {: nodo nuevo = new nodo("INSTRUCCION", parser.contador);
                                             parser.contador ++;
-                                            nodo nuevo1 = new nodo("(", parser.contador);
+                                            nodo nuevo1 = new nodo(";", parser.contador);
                                             parser.contador ++;
 
                                             nuevo.AddHijos((nodo) a);
@@ -379,7 +379,7 @@ INSTRUCCION   ::=   ASIGNACION_:a pyc       {: nodo nuevo = new nodo("INSTRUCCIO
 
                 |   PRINT:a pyc             {: nodo nuevo = new nodo("INSTRUCCION", parser.contador);
                                             parser.contador ++;
-                                            nodo nuevo1 = new nodo("(", parser.contador);
+                                            nodo nuevo1 = new nodo(";", parser.contador);
                                             parser.contador ++;
 
                                             nuevo.AddHijos((nodo) a);
@@ -390,7 +390,7 @@ INSTRUCCION   ::=   ASIGNACION_:a pyc       {: nodo nuevo = new nodo("INSTRUCCIO
 
                 |   EJECUCION:a pyc         {: nodo nuevo = new nodo("INSTRUCCION", parser.contador);
                                             parser.contador ++;
-                                            nodo nuevo1 = new nodo("(", parser.contador);
+                                            nodo nuevo1 = new nodo(";", parser.contador);
                                             parser.contador ++;
 
                                             nuevo.AddHijos((nodo) a);
@@ -716,7 +716,7 @@ EXPRE   ::=  pare1 EXPRE:a pare2 {:
 
 VALOR ::=   num:a {:            nodo nuevo = new nodo("VALOR", parser.contador);
                                 parser.contador ++;
-                                nodo nuevo1 = new nodo(a, parser.contador);
+                                nodo nuevo1 = new nodo(""+a, parser.contador);
                                 parser.contador ++;
 
                                 nuevo.AddHijos(nuevo1);
@@ -740,6 +740,7 @@ VALOR ::=   num:a {:            nodo nuevo = new nodo("VALOR", parser.contador);
                                 parser.contador ++;
 
                                 nuevo.AddHijos(nuevo1);
+                                nuevo1.cadena = true;
 
                                 RESULT = nuevo;
                                 :} 

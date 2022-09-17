@@ -840,7 +840,7 @@ public class Analizador_sintactico extends java_cup.runtime.lr_parser {
 
 
 
-    public nodo padre;
+    public static nodo padre;
     public int contador = 0;
 
     public static String cache = "";
@@ -939,9 +939,9 @@ class CUP$Analizador_sintactico$actions {
 		Object b = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
 		 nodo nuevo = new nodo("INICIO", parser.contador);
                                             parser.contador ++;
-                                            nodo nuevo1 = new nodo("(", parser.contador);
+                                            nodo nuevo1 = new nodo("inicio", parser.contador);
                                             parser.contador ++;
-                                            nodo nuevo2 = new nodo(")", parser.contador);
+                                            nodo nuevo2 = new nodo("fin", parser.contador);
                                             parser.contador ++;
 
                                             nuevo.AddHijos(nuevo1);
@@ -1146,7 +1146,7 @@ class CUP$Analizador_sintactico$actions {
 		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
 		 nodo nuevo = new nodo("INSTRUCCION_R", parser.contador);
                                             parser.contador ++;
-                                            nodo nuevo1 = new nodo("(", parser.contador);
+                                            nodo nuevo1 = new nodo(";", parser.contador);
                                             parser.contador ++;
 
                                             nuevo.AddHijos((nodo) a);
@@ -1167,7 +1167,7 @@ class CUP$Analizador_sintactico$actions {
 		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
 		 nodo nuevo = new nodo("INSTRUCCION_R", parser.contador);
                                             parser.contador ++;
-                                            nodo nuevo1 = new nodo("(", parser.contador);
+                                            nodo nuevo1 = new nodo(";", parser.contador);
                                             parser.contador ++;
 
                                             nuevo.AddHijos((nodo) a);
@@ -1188,7 +1188,7 @@ class CUP$Analizador_sintactico$actions {
 		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
 		 nodo nuevo = new nodo("INSTRUCCION_R", parser.contador);
                                             parser.contador ++;
-                                            nodo nuevo1 = new nodo("(", parser.contador);
+                                            nodo nuevo1 = new nodo(";", parser.contador);
                                             parser.contador ++;
 
                                             nuevo.AddHijos((nodo) a);
@@ -1209,7 +1209,7 @@ class CUP$Analizador_sintactico$actions {
 		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
 		 nodo nuevo = new nodo("INSTRUCCION_R", parser.contador);
                                             parser.contador ++;
-                                            nodo nuevo1 = new nodo("(", parser.contador);
+                                            nodo nuevo1 = new nodo(";", parser.contador);
                                             parser.contador ++;
 
                                             nuevo.AddHijos((nodo) a);
@@ -1230,7 +1230,7 @@ class CUP$Analizador_sintactico$actions {
 		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
 		 nodo nuevo = new nodo("INSTRUCCION_R", parser.contador);
                                             parser.contador ++;
-                                            nodo nuevo1 = new nodo("(", parser.contador);
+                                            nodo nuevo1 = new nodo(";", parser.contador);
                                             parser.contador ++;
 
                                             nuevo.AddHijos((nodo) a);
@@ -1355,7 +1355,7 @@ class CUP$Analizador_sintactico$actions {
 		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
 		 nodo nuevo = new nodo("INSTRUCCION", parser.contador);
                                             parser.contador ++;
-                                            nodo nuevo1 = new nodo("(", parser.contador);
+                                            nodo nuevo1 = new nodo(";", parser.contador);
                                             parser.contador ++;
 
                                             nuevo.AddHijos((nodo) a);
@@ -1376,7 +1376,7 @@ class CUP$Analizador_sintactico$actions {
 		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
 		 nodo nuevo = new nodo("INSTRUCCION", parser.contador);
                                             parser.contador ++;
-                                            nodo nuevo1 = new nodo("(", parser.contador);
+                                            nodo nuevo1 = new nodo(";", parser.contador);
                                             parser.contador ++;
 
                                             nuevo.AddHijos((nodo) a);
@@ -1397,7 +1397,7 @@ class CUP$Analizador_sintactico$actions {
 		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
 		 nodo nuevo = new nodo("INSTRUCCION", parser.contador);
                                             parser.contador ++;
-                                            nodo nuevo1 = new nodo("(", parser.contador);
+                                            nodo nuevo1 = new nodo(";", parser.contador);
                                             parser.contador ++;
 
                                             nuevo.AddHijos((nodo) a);
@@ -1418,7 +1418,7 @@ class CUP$Analizador_sintactico$actions {
 		Object a = (Object)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.elementAt(CUP$Analizador_sintactico$top-1)).value;
 		 nodo nuevo = new nodo("INSTRUCCION", parser.contador);
                                             parser.contador ++;
-                                            nodo nuevo1 = new nodo("(", parser.contador);
+                                            nodo nuevo1 = new nodo(";", parser.contador);
                                             parser.contador ++;
 
                                             nuevo.AddHijos((nodo) a);
@@ -2049,7 +2049,7 @@ class CUP$Analizador_sintactico$actions {
 		String a = (String)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
 		            nodo nuevo = new nodo("VALOR", parser.contador);
                                 parser.contador ++;
-                                nodo nuevo1 = new nodo(a, parser.contador);
+                                nodo nuevo1 = new nodo(""+a, parser.contador);
                                 parser.contador ++;
 
                                 nuevo.AddHijos(nuevo1);
@@ -2093,6 +2093,7 @@ class CUP$Analizador_sintactico$actions {
                                 parser.contador ++;
 
                                 nuevo.AddHijos(nuevo1);
+                                nuevo1.cadena = true;
 
                                 RESULT = nuevo;
                                 
