@@ -870,7 +870,7 @@ LISTA_PARAMETROS ::= LISTA_PARAMETROS:a coma EXPRE:b TIPO:c {:
                                             :}
 
             | pare1 LISTA_PARAMETROS:a pare2 {: 
-                                            nodo nuevo = new nodo(LISTA_PARAMETROS, parser.contador);
+                                            nodo nuevo = new nodo("LISTA_PARAMETROS", parser.contador);
                                             parser.contador ++;
                                             nodo nuevo1 = new nodo("(", parser.contador);
                                             parser.contador ++;
@@ -887,7 +887,7 @@ LISTA_PARAMETROS ::= LISTA_PARAMETROS:a coma EXPRE:b TIPO:c {:
 ;
 
 PRINT ::=   pr_imprimir EXPRE:a {: 
-                                            nodo nuevo = new nodo(PRINT, parser.contador);
+                                            nodo nuevo = new nodo("PRINT", parser.contador);
                                             parser.contador ++;
                                             nodo nuevo1 = new nodo("imprimir", parser.contador);
                                             parser.contador ++;
@@ -898,7 +898,7 @@ PRINT ::=   pr_imprimir EXPRE:a {:
                                             RESULT = nuevo;
                                             :}
         |   pr_imprimir_nl EXPRE:a {: 
-                                            nodo nuevo = new nodo(PRINT, parser.contador);
+                                            nodo nuevo = new nodo("PRINT", parser.contador);
                                             parser.contador ++;
                                             nodo nuevo1 = new nodo("imprimir_nl", parser.contador);
                                             parser.contador ++;
@@ -911,7 +911,7 @@ PRINT ::=   pr_imprimir EXPRE:a {:
 ;
 
 RETORNO ::= pr_retornar EXPRE:a {: 
-                                            nodo nuevo = new nodo(RETORNO, parser.contador);
+                                            nodo nuevo = new nodo("RETORNO", parser.contador);
                                             parser.contador ++;
                                             nodo nuevo1 = new nodo("retornar", parser.contador);
                                             parser.contador ++;
@@ -924,7 +924,7 @@ RETORNO ::= pr_retornar EXPRE:a {:
 ;
 
 EJECUCION ::= pr_ejecutar id:a pare1 pare2 {: 
-                                            nodo nuevo = new nodo(EJECUCION, parser.contador);
+                                            nodo nuevo = new nodo("EJECUCION", parser.contador);
                                             parser.contador ++;
                                             nodo nuevo1 = new nodo("ejecutar", parser.contador);
                                             parser.contador ++;
@@ -945,7 +945,7 @@ EJECUCION ::= pr_ejecutar id:a pare1 pare2 {:
 
             | pr_ejecutar id:a LISTA_PARAMETROS:b {: 
 
-                                            nodo nuevo = new nodo(EJECUCION, parser.contador);
+                                            nodo nuevo = new nodo("EJECUCION", parser.contador);
                                             parser.contador ++;
                                             nodo nuevo1 = new nodo("ejecutar", parser.contador);
                                             parser.contador ++;
@@ -961,7 +961,7 @@ EJECUCION ::= pr_ejecutar id:a pare1 pare2 {:
 ;
 
 METODO ::=  pr_metodo id:a INSTRUCCIONES:b pr_fin_metodo{: 
-                                            nodo nuevo = new nodo(METODO, parser.contador);
+                                            nodo nuevo = new nodo("METODO", parser.contador);
                                             parser.contador ++;
                                             nodo nuevo1 = new nodo("metodo", parser.contador);
                                             parser.contador ++;
@@ -979,7 +979,7 @@ METODO ::=  pr_metodo id:a INSTRUCCIONES:b pr_fin_metodo{:
                                             :}
 
             | pr_metodo id:a pr_con_parametros LISTA_PARAMETROS:b INSTRUCCIONES:c pr_fin_metodo{: 
-                                            nodo nuevo = new nodo(METODO, parser.contador);
+                                            nodo nuevo = new nodo("METODO", parser.contador);
                                             parser.contador ++;
                                             nodo nuevo1 = new nodo("metodo", parser.contador);
                                             parser.contador ++;
@@ -1002,7 +1002,7 @@ METODO ::=  pr_metodo id:a INSTRUCCIONES:b pr_fin_metodo{:
 ;
 
 FUNCION ::= pr_funcion id:a TIPO:b INSTRUCCIONES_R:c pr_fin_funcion {: 
-                                            nodo nuevo = new nodo(FUNCION, parser.contador);
+                                            nodo nuevo = new nodo("FUNCION", parser.contador);
                                             parser.contador ++;
                                             nodo nuevo1 = new nodo("funcion", parser.contador);
                                             parser.contador ++;
@@ -1016,64 +1016,430 @@ FUNCION ::= pr_funcion id:a TIPO:b INSTRUCCIONES_R:c pr_fin_funcion {:
                                             nuevo.AddHijos((nodo) b);
                                             nuevo.AddHijos((nodo) c);
                                             nuevo.AddHijos(nuevo3);
-       
-                                            nuevo.AddHijos(nuevo4);
 
                                             RESULT = nuevo;
                                             :}
 
-            | pr_funcion id TIPO pr_con_parametros LISTA_PARAMETROS INSTRUCCIONES_R pr_fin_funcion {: 
-                                            nodo nuevo = new nodo(FUNCION, parser.contador);
+            | pr_funcion id:a TIPO:b pr_con_parametros LISTA_PARAMETROS:c INSTRUCCIONES_R:d pr_fin_funcion {: 
+                                            nodo nuevo = new nodo("FUNCION", parser.contador);
                                             parser.contador ++;
                                             nodo nuevo1 = new nodo("funcion", parser.contador);
                                             parser.contador ++;
-                                            nodo nuevo2 = new nodo("id = "+a, parser.contador);
+                                            nodo nuevo2 = new nodo("con_parametros", parser.contador);
                                             parser.contador ++;
-                                            nodo nuevo3 = new nodo("fin_funcion", parser.contador);
+                                            nodo nuevo3 = new nodo("id = "+a, parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo4 = new nodo("fin_funcion", parser.contador);
+                                            parser.contador ++;
+
+
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos(nuevo3);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) c);
+                                            nuevo.AddHijos((nodo) d);
+                                            nuevo.AddHijos(nuevo4);
+       
+
+                                            RESULT = nuevo;
+                                            :}
+;
+
+SI ::=        pr_si EXPRE:a pr_entonces INSTRUCCIONES:b pr_fin_si{: 
+                                            nodo nuevo = new nodo("SI", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("si", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("entonces", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("fin_si", parser.contador);
                                             parser.contador ++;
 
                                             nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos(nuevo3);
+       
+                                            RESULT = nuevo;
+                                            :}
+
+            | pr_si EXPRE:a pr_entonces INSTRUCCIONES:b pr_de_lo_contrario INSTRUCCIONES:c pr_fin_si {: 
+                                            nodo nuevo = new nodo("SI", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("si", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("entonces", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("de_lo_contrario", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo4 = new nodo("fin_si", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos(nuevo3);
+                                            nuevo.AddHijos((nodo) c);
+                                            nuevo.AddHijos(nuevo4);
+       
+                                            RESULT = nuevo;
+                                            :}
+
+            | pr_si EXPRE:a pr_entonces INSTRUCCIONES:b RAMIFICACION:c  pr_fin_si{: 
+                                            nodo nuevo = new nodo("SI", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("si", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("entonces", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("fin_si", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
                                             nuevo.AddHijos(nuevo2);
                                             nuevo.AddHijos((nodo) b);
                                             nuevo.AddHijos((nodo) c);
                                             nuevo.AddHijos(nuevo3);
        
+                                            RESULT = nuevo;
+                                            :}
+
+            | pr_si EXPRE:a pr_entonces INSTRUCCIONES:b RAMIFICACION:c  pr_de_lo_contrario INSTRUCCIONES:d pr_fin_si{: 
+                                            nodo nuevo = new nodo("SI", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("si", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("entonces", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("de_lo_contrario", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo4 = new nodo("fin_si", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos((nodo) c);
+                                            nuevo.AddHijos(nuevo3);
+                                            nuevo.AddHijos((nodo) d);
                                             nuevo.AddHijos(nuevo4);
+       
+                                            RESULT = nuevo;
+                                            :}
+;
+
+RAMIFICACION ::= RAMIFICACION:a pr_o_si EXPRE:b pr_entonces INSTRUCCIONES:c {: 
+                                            nodo nuevo = new nodo("RAMIFICACION", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("o_si", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("entonces", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) c);
+       
+                                            RESULT = nuevo;
+                                            :}
+
+                |pr_o_si EXPRE:a pr_entonces INSTRUCCIONES:b {: 
+                                            nodo nuevo = new nodo("RAMIFICACION", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("o_si", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("entonces", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) b);
+       
+                                            RESULT = nuevo;
+                                            :}
+;
+
+SEGUN ::=   pr_segun EXPRE:a pr_hacer LISTA_SEGUN:b pr_fin_segun {: 
+                                            nodo nuevo = new nodo("SEGUN", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("segun", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("hacer", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("fin_segun", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos(nuevo3);
+       
+                                            RESULT = nuevo;
+                                            :}
+
+            | pr_segun EXPRE:a pr_hacer LISTA_SEGUN:b pr_de_lo_contrario pr_entonces INSTRUCCIONES:c pr_fin_segun {: 
+                                            nodo nuevo = new nodo("SEGUN", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("segun", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("hacer", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("de_lo_contrario", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo4 = new nodo("entonces", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo5 = new nodo("fin_segun", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos(nuevo3);
+                                            nuevo.AddHijos(nuevo4);
+                                            nuevo.AddHijos((nodo) c);
+                                            nuevo.AddHijos(nuevo5);
+       
+                                            RESULT = nuevo;
+                                            :}
+;
+
+LISTA_SEGUN ::= LISTA_SEGUN:a duda1 EXPRE:b duda2 pr_entonces INSTRUCCIONES:c {: 
+                                            nodo nuevo = new nodo("LISTA_SEGUN", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("¿", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("?", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("entonces", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos(nuevo3);
+                                            nuevo.AddHijos((nodo) c);
+       
+                                            RESULT = nuevo;
+                                            :}
+;
+
+            |   duda1 EXPRE:a duda2 pr_entonces INSTRUCCIONES:b {: 
+                                            nodo nuevo = new nodo("LISTA_SEGUN", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("¿", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("?", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("entonces", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos(nuevo3);
+                                            nuevo.AddHijos((nodo) b);
+       
+                                            RESULT = nuevo;
+                                            :}
+;
+
+PARA ::=     pr_para EXPRE:a asignacion EXPRE:b pr_hasta EXPRE:c pr_hacer INSTRUCCIONE:d pr_fin_para {: 
+                                            nodo nuevo = new nodo("PARA", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("para", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("asignacion", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("hasta", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo4 = new nodo("hacer", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo5 = new nodo("fin_para", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos(nuevo3);
+                                            nuevo.AddHijos((nodo) c);
+                                            nuevo.AddHijos(nuevo4);
+                                            nuevo.AddHijos((nodo) d);
+                                            nuevo.AddHijos(nuevo5);
+       
+                                            RESULT = nuevo;
+                                            :}
+
+            |pr_para EXPRE:a asignacion EXPRE:b pr_hasta EXPRE:c pr_hacer pr_fin_para {: 
+                                            nodo nuevo = new nodo("PARA", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("para", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("asignacion", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("hasta", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo4 = new nodo("hacer", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo5 = new nodo("fin_para", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos(nuevo3);
+                                            nuevo.AddHijos((nodo) c);
+                                            nuevo.AddHijos(nuevo4);
+                                            nuevo.AddHijos(nuevo5);
+       
+                                            RESULT = nuevo;
+                                            :}
+
+
+            |pr_para EXPRE:a asignacion EXPRE:b pr_hasta EXPRE:c pr_con_incremental EXPRE:d pr_hacer INSTRUCCIONES:e pr_fin_para {: 
+                                            nodo nuevo = new nodo("PARA", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("para", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("asignacion", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("hasta", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo4 = new nodo("con_incremental", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo5 = new nodo("hacer", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo6 = new nodo("fin_para", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos(nuevo3);
+                                            nuevo.AddHijos((nodo) c);
+                                            nuevo.AddHijos(nuevo4);
+                                            nuevo.AddHijos((nodo) d);
+                                            nuevo.AddHijos(nuevo5);
+                                            nuevo.AddHijos((nodo) e);
+                                            nuevo.AddHijos(nuevo6);
+       
+                                            RESULT = nuevo;
+                                            :}
+
+            |pr_para EXPRE:a asignacion EXPRE:b pr_hasta EXPRE:c pr_con_incremental EXPRE:d pr_hacer  pr_fin_para {: 
+                                            nodo nuevo = new nodo("PARA", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("para", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("asignacion", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("hasta", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo4 = new nodo("con_incremental", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo5 = new nodo("hacer", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo6 = new nodo("fin_para", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos(nuevo3);
+                                            nuevo.AddHijos((nodo) c);
+                                            nuevo.AddHijos(nuevo4);
+                                            nuevo.AddHijos((nodo) d);
+                                            nuevo.AddHijos(nuevo5);
+                                            nuevo.AddHijos((nodo) e);
+                                            nuevo.AddHijos(nuevo6);
+       
+                                            RESULT = nuevo;
+                                            :}
+
+;
+
+MIENTRAS ::= pr_mientras EXPRE:a pr_hacer INSTRUCCIONES:b pr_fin_mientras {: 
+                                            nodo nuevo = new nodo("MIENTRAS", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("mientras", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("hacer", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("fin_mientras", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) b);
+                                            nuevo.AddHijos(nuevo3);
+
+                                            RESULT = nuevo;
+                                            :}
+
+            |pr_mientras EXPRE:a pr_hacer pr_fin_mientras {: 
+                                            nodo nuevo = new nodo("MIENTRAS", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("mientras", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("hacer", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo3 = new nodo("fin_mientras", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos(nuevo3);
 
                                             RESULT = nuevo;
                                             :}
 ;
 
-SI ::=        pr_si EXPRE pr_entonces INSTRUCCIONES pr_fin_si
-            | pr_si EXPRE pr_entonces INSTRUCCIONES pr_de_lo_contrario INSTRUCCIONES pr_fin_si
-            | pr_si EXPRE pr_entonces INSTRUCCIONES RAMIFICACION pr_fin_si
-            | pr_si EXPRE pr_entonces INSTRUCCIONES RAMIFICACION pr_de_lo_contrario INSTRUCCIONES pr_fin_si
-;
+REPETIR ::=  pr_repetir INSTRUCCIONES:a pr_hasta_que EXPRE:b {: 
+                                            nodo nuevo = new nodo("REPETIR", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("repetir", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("hasta_que", parser.contador);
+                                            parser.contador ++;
 
-RAMIFICACION ::= RAMIFICACION pr_o_si EXPRE pr_entonces INSTRUCCIONES
-                |pr_o_si EXPRE pr_entonces INSTRUCCIONES
-;
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos((nodo) a);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) b);
 
-SEGUN ::=   pr_segun EXPRE pr_hacer LISTA_SEGUN pr_fin_segun
-            | pr_segun EXPRE pr_hacer LISTA_SEGUN pr_de_lo_contrario pr_entonces INSTRUCCIONES pr_fin_segun
-;
+                                            RESULT = nuevo;
+                                            :}
 
-LISTA_SEGUN ::= LISTA_SEGUN duda1 EXPRE duda2 pr_entonces INSTRUCCIONES
-            |   duda1 EXPRE duda2 pr_entonces INSTRUCCIONES
-;
+            |pr_repetir pr_hasta_que EXPRE:a {: 
+                                            nodo nuevo = new nodo("REPETIR", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo1 = new nodo("repetir", parser.contador);
+                                            parser.contador ++;
+                                            nodo nuevo2 = new nodo("hasta_que", parser.contador);
+                                            parser.contador ++;
 
-PARA ::=     pr_para EXPRE asignacion EXPRE pr_hasta EXPRE pr_hacer INSTRUCCIONES pr_fin_para
-            |pr_para EXPRE asignacion EXPRE pr_hasta EXPRE pr_hacer  pr_fin_para
-            |pr_para EXPRE asignacion EXPRE pr_hasta EXPRE pr_con_incremental EXPRE pr_hacer INSTRUCCIONES pr_fin_para
-            |pr_para EXPRE asignacion EXPRE pr_hasta EXPRE pr_con_incremental EXPRE pr_hacer  pr_fin_para
-;
+                                            nuevo.AddHijos(nuevo1);
+                                            nuevo.AddHijos(nuevo2);
+                                            nuevo.AddHijos((nodo) a);
 
-MIENTRAS ::= pr_mientras EXPRE pr_hacer INSTRUCCIONES pr_fin_mientras
-            |pr_mientras EXPRE pr_hacer pr_fin_mientras
-;
-
-REPETIR ::=  pr_repetir INSTRUCCIONES pr_hasta_que EXPRE
-            |pr_repetir pr_hasta_que EXPRE
+                                            RESULT = nuevo;
+                                            :}
 ;
 
 
