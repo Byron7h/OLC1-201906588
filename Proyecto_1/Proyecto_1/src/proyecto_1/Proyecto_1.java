@@ -60,13 +60,15 @@ public class Proyecto_1 {
     }
     public static void AST(){
         
-       cache  = "digraph structs {\n"+
+        cache  = "digraph structs {\n"+
                 "    fontname=\"Helvetica,Arial,sans-serif\"\n"+
                 "    node [shape=record, fontname=\"Helvetica,Arial,sans-serif\" ];\n ";
        
-       AST(Analizador_sintactico.padre);
-       cache += "}";
+        AST(Analizador_sintactico.padre);
+        cache += "}";
         System.out.println(cache);
+        GenerarImagen("AST", cache);
+        cache ="";
         
 
         
@@ -108,7 +110,7 @@ public class Proyecto_1 {
         try {
             // creamos un nuevo archivo txt
             String contenido = txtDTO;
-            File file = new File("C:\\Users\\usuario\\Documents\\Byron\\7mo semestre\\Compi 1\\P1\\-OLC1-PROYECTO_1_201906588\\P1_COMPI1\\imagenes\\"+nombre + ".txt");
+            File file = new File("C:\\Users\\usuario\\Documents\\Byron\\U\\8vo Semestre\\Compi_1\\OLC1-201906588\\Proyecto_1\\Proyecto_1\\Reportes\\AST\\"+nombre + ".txt");
 
             if (!file.exists()) {
                 file.createNewFile();

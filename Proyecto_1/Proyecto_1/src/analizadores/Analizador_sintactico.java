@@ -1593,7 +1593,7 @@ class CUP$Analizador_sintactico$actions {
 		 
                                             nodo nuevo = new nodo("ASIGNACION_", parser.contador);
                                             parser.contador ++;
-                                            nodo nuevo1 = new nodo("->", parser.contador);
+                                            nodo nuevo1 = new nodo("-\\>", parser.contador);
                                             parser.contador ++;
 
                                             nuevo.AddHijos((nodo) a);
@@ -2151,7 +2151,16 @@ class CUP$Analizador_sintactico$actions {
 		String a = (String)((java_cup.runtime.Symbol) CUP$Analizador_sintactico$stack.peek()).value;
 		     nodo nuevo = new nodo("VALOR", parser.contador);
                                 parser.contador ++;
-                                nodo nuevo1 = new nodo(a, parser.contador);
+
+                                String cade = a;
+                                boolean s = cade.contains("$");
+                                if(s){
+                                    cade = cade.replace("{", "(");
+                                    cade = cade.replace("}", ")");
+                                }
+
+
+                                nodo nuevo1 = new nodo(cade, parser.contador);
                                 parser.contador ++;
 
                                 nuevo.AddHijos(nuevo1);

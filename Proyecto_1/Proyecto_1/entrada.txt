@@ -1,30 +1,34 @@
 inicio
-/////inicio de la traduccion
-
-/*
-        Primer archivo de entrada para proyecto organizacion de lenguajes y compiladores 1
-*/
-
-@$& //errores lexicos, se tienen que recuperar!
-
-//seccion de declraciones de funciones de variables
-Ingresar _variable1_      coMo NumEro cOn_valor 5;
-Ingresar _variable2_      coMo NumEro cOn_valor 50;   //ERROR sintactico, reportar que falta un punto y coma, recuperarse del error
-ingresaR _v1_, _v2_, _v3_ cOmo CadenA con_vAlor "esta es una cadena";
-ingresaR _curso1_         cOmo cadena con_vAlor "olc";
-ingresaR _curso2_         cOmo cadena con_vAlor "olc";
-ingresaR _curso3_         cOmo cadena con_vAlor "olc";
-ingresar _pi1_            como numero con_valor 3;
-ingresar _pi2_            como numero con_valor 3.1;
-ingresar _pi3_            como numero con_valor 3.14;
-ingresar _pi4_            como numero con_valor 3.141;
-ingresar _anio1_          como numero con_valor 1;
-ingresar _anio2_          como numero con_valor 9;
-ingresar _anio3_          como numero con_valor 4;
-ingresar _anio4_          como numero con_valor 5;
-ingresar _variableNeg_    como numero con_valor 5.0;
-ingresar _encabezado1_    como cadena con_valor "Universidad San Carlos de Guatemala...;";
 
 
+
+/*Ahora empezamos con las funciones y procedimientos*/
+
+metodo _potenciaManual_ con_parametros (_base_ Numero, _exponenete_ Numero)
+	ingresar _i_ como Numero con_valor 0;
+	ingresar _acumulado_ como Numero con_valor 0;
+	para _i_->0 hasta _exponente_-1 hacer
+		_acumulado_ -> _acumulado_ + _acumulado_;
+	fin_para	
+	imprimir _acumulado_;
+	imprimir_nl " Esta es la potencia Manual";	
+fin_metodo
+
+funcion _potenciaFuncion_ Numero con_parametros (_base_ Numero, _exponente_ Numero) 
+	ingresar _potencia_ como Numero con_valor _base_ potencia [_exponente_];
+	retornar _potencia_;
+fin_funcion
+// la funcion está a partir
+ejecutar _metodo_1_ ();
+metodo _metodo_1_
+	imprimir_nl "estamos entrando al metodo 1";	
+	ejecutar _potenciaManual_(3*1+4/2 NUMERO, 3+2 NUMERO);
+	ejecutar _potenciaFuncion_(3*1+4/2 NUMERO, 3+2 NUMERO);
+	imprimiR_nl " Esta es la potencia Funcion";
+fin_metodo
+
+ejecutar _metodo_1_ ();
+ejecutar _metodo_1_ ();
+ejecutar _metodo_1_ ();
 
 fin

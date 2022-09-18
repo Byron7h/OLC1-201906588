@@ -252,7 +252,7 @@ INSTRUCCIONES_R ::=     INSTRUCCIONES_R:a INSTRUCCION_R:b {:
 ;
 
 // instrucciones 
-INSTRUCCION_R   ::= ASIGNACION_:a pyc       {: nodo nuevo = new nodo("INSTRUCCION_R", parser.contador);
+    INSTRUCCION_R   ::= ASIGNACION_:a pyc       {: nodo nuevo = new nodo("INSTRUCCION_R", parser.contador);
                                             parser.contador ++;
                                             nodo nuevo1 = new nodo(";", parser.contador);
                                             parser.contador ++;
@@ -479,7 +479,7 @@ DECLARACION   ::=   pr_ingresar LISTA_ID:a pr_como TIPO:b pr_con_valor EXPRE:c  
 ASIGNACION_   ::=   LISTA_ID:a asignacion EXPRE:b {: 
                                             nodo nuevo = new nodo("ASIGNACION_", parser.contador);
                                             parser.contador ++;
-                                            nodo nuevo1 = new nodo("->", parser.contador);
+                                            nodo nuevo1 = new nodo("-\\>", parser.contador);
                                             parser.contador ++;
 
                                             nuevo.AddHijos((nodo) a);
@@ -768,7 +768,16 @@ VALOR ::=   num:a {:            nodo nuevo = new nodo("VALOR", parser.contador);
 
             | caracter:a {:     nodo nuevo = new nodo("VALOR", parser.contador);
                                 parser.contador ++;
-                                nodo nuevo1 = new nodo(a, parser.contador);
+
+                                String cade = a;
+                                boolean s = cade.contains("$");
+                                if(s){
+                                    cade = cade.replace("{", "(");
+                                    cade = cade.replace("}", ")");
+                                }
+
+
+                                nodo nuevo1 = new nodo(cade, parser.contador);
                                 parser.contador ++;
 
                                 nuevo.AddHijos(nuevo1);
