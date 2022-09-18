@@ -2153,14 +2153,21 @@ class CUP$Analizador_sintactico$actions {
                                 parser.contador ++;
 
                                 String cade = a;
+                                String aux = a;
                                 boolean s = cade.contains("$");
+
                                 if(s){
-                                    cade = cade.replace("{", "(");
-                                    cade = cade.replace("}", ")");
+                                    cade = cade.substring(2, cade.length()-1 );
+                                    cade = Character.toString((char) Integer.parseInt(cade));
+                                    aux = "$("+cade+")";
+                                }else{
+                                    cade = cade.replace("'", "\"");
+                                    
                                 }
 
 
-                                nodo nuevo1 = new nodo(cade, parser.contador);
+                                nodo nuevo1 = new nodo(aux, parser.contador);
+                                nuevo1.setValor(cade);
                                 parser.contador ++;
 
                                 nuevo.AddHijos(nuevo1);

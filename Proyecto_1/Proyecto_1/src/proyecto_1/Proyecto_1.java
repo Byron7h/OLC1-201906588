@@ -23,11 +23,27 @@ import java.util.LinkedList;
 
 
 public class Proyecto_1 {
+    
+    
+    
 
     public static String cache = "";
     public static nodo padre = Analizador_sintactico.padre;
     
     public static void main(String[] args) {
+        
+        String a = "${111}";
+        String b = a.substring(2, a.length()-1 );
+        System.out.println(b);
+        String cha = Character.toString((char) Integer.parseInt(b));
+        System.out.println(cha);
+        String cade = "'a'";
+        cade = cade.replace("'", "\n");
+        System.out.println(cade); 
+
+        
+        
+        /*
         try {
             
             Analizador_Lexico lexico = new Analizador_Lexico(
@@ -57,6 +73,8 @@ public class Proyecto_1 {
         } catch (Exception e) {
             
         }
+        
+        */
     }
     public static void AST(){
         

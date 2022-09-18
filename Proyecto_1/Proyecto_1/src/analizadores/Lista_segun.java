@@ -13,10 +13,11 @@ public class Lista_segun {
     //duda1 EXPRE duda2 pr_entonces INSTRUCCIONES
     public String cache = "";
   
-    public Lista_segun(String variable, String expre, String instruccion){
+    public Lista_segun(String variable, String expre, String instrucciones){
+        Tabulacion tab = new Tabulacion(instrucciones);
         
         cache = "elif " + variable + " == "+ expre+" : \n" + 
-                "   "+ instruccion + "\n";
+                "   "+ tab.getCodigo() + "\n";
     }     
     
     public String get_codigo(){

@@ -13,8 +13,10 @@ public class Para {
 
     // Con incremento e instrucciones
     public Para(String variable,String R1, String R2, String incremento, String instrucciones){
+        
+        Tabulacion tab = new Tabulacion(instrucciones);
         cache = "for " + variable + " in range( "+ R1 + " , "+ R2 +" , "+ incremento+"):"+
-                "   "+ instrucciones; 
+                "   "+ tab.getCodigo() +"\n"; 
     }
     
     
@@ -23,8 +25,10 @@ public class Para {
         
         // con istruccion, sin incremento
         if (instru){
+            
+            Tabulacion tab = new Tabulacion(instrucciones);
             cache = "for " + variable + " in range( "+ R1 + " , "+ R2 +" , "+ incremento+"):"+
-            "   "+ tentativa; 
+            "   "+ tab.getCodigo(); 
             
         // sin istruccion, con incremento    
         }else{
@@ -37,7 +41,7 @@ public class Para {
         cache = "for " + variable + " in range( "+ incremento +" , " +R1+" , "+ R2 + "):"; 
     }
 
-    public String get_codigo(){
+    public String getCodigo(){
         return cache;   
     }
  

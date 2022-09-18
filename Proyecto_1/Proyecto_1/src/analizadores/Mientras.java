@@ -6,8 +6,10 @@ public class Mientras {
     public String instrucciones;
     public String cache ;
     
-    public Mientras(String condicion, String instrucciones){       
-        cache = "while( " + condicion + "): \n"+
+    public Mientras(String condicion, String instrucciones){
+        
+        Tabulacion tab = new Tabulacion(instrucciones);
+        cache = "while( " +tab.getCodigo()+ "): \n"+
                 "   "+ instrucciones +"\n";
     }
     
@@ -15,7 +17,7 @@ public class Mientras {
         cache = "while( " + condicion + "): \n";          
     }
     
-    public String get_codigo(){
+    public String getCodigo(){
         return cache;   
     }
 

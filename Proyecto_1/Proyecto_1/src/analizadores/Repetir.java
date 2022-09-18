@@ -9,9 +9,11 @@ public class Repetir {
     
     public Repetir ( String instrucciones, String condicion){
         
+        Tabulacion tab = new Tabulacion(instrucciones);
+        
         cache = "valor = "+condicion+"\n"+
                 "while valor == true \n"+
-                "   "+ instrucciones +"\n"+
+                "   "+ tab.getCodigo() +"\n"+
                 "   if valor == false:\n "+
                 "       break\n";
  
@@ -26,7 +28,7 @@ public class Repetir {
     }
     
     
-    public String get_codigo(){
+    public String getCodigo(){
         return cache;   
     }
 
