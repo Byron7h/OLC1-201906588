@@ -16,7 +16,7 @@ public class Para {
         
         Tabulacion tab = new Tabulacion(instrucciones);
         cache = "for " + variable + " in range( "+ R1 + " , "+ R2 +" , "+ incremento+"):"+
-                "   "+ tab.getCodigo() +"\n"; 
+                tab.getCodigo() +"\n"; 
     }
     
     
@@ -28,7 +28,7 @@ public class Para {
             
             Tabulacion tab = new Tabulacion(instrucciones);
             cache = "for " + variable + " in range( "+ R1 + " , "+ R2 +" , "+ incremento+"):"+
-            "   "+ tab.getCodigo(); 
+            tab.getCodigo(); 
             
         // sin istruccion, con incremento    
         }else{

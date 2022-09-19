@@ -20,39 +20,45 @@ public class Si {
 
     public Si (String expre, String instrucciones){
         
+        Tabulacion tab = new Tabulacion(instrucciones);
         cache = "if " + expre +" : \n"+
-                "   "+ instrucciones +"\n";  
+                tab.getCodigo() +"\n";  
 
     }
     
     public Si (boolean de_lo_contra, String expre, String instrucciones, String tentativa){
         
+        Tabulacion tab = new Tabulacion(instrucciones);
+
+        
         // tiene else y no elif
         if (de_lo_contra){
+            Tabulacion tab1 = new Tabulacion(tentativa);
             cache = "if " + expre +" : \n"+
-            "   "+ instrucciones +"\n"+
+            tab.getCodigo() +"\n"+
             "else: \n"+
-            "   "+ tentativa +"\n";           
+            tab1.getCodigo() +"\n";           
             
         // tiene elif sin else
         }else{
             cache = "if " + expre +" : \n"+
-                "   "+ instrucciones +"\n"+
+                tab.getCodigo() +"\n"+
                 tentativa + "\n";             
             }   
     }
     
     
     public Si (String expre, String instrucciones, String ramificacion, String I_de_lo_contra){
-           
+        Tabulacion tab = new Tabulacion(instrucciones);
+        Tabulacion tab1 = new Tabulacion(I_de_lo_contra);
         cache = "if " + expre +" : \n"+
-                "   "+ instrucciones +"\n"+
+                tab.getCodigo() +"\n"+
                 ramificacion + "\n"+
                 "else: \n"+
-                "   "+ I_de_lo_contra +"\n";             
+                tab1.getCodigo() +"\n";             
     } 
     
-    public String get_codigo(){
+    public String getCodigo(){
         return cache;
     }
 }

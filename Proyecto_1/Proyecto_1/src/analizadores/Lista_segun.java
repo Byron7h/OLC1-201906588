@@ -17,7 +17,7 @@ public class Lista_segun {
         Tabulacion tab = new Tabulacion(instrucciones);
         
         cache = "elif " + variable + " == "+ expre+" : \n" + 
-                "   "+ tab.getCodigo() + "\n";
+                 tab.getCodigo() + "\n";
     }     
     
     public String get_codigo(){

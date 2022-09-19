@@ -32,49 +32,45 @@ public class Proyecto_1 {
     
     public static void main(String[] args) {
         
-        String a = "${111}";
-        String b = a.substring(2, a.length()-1 );
-        System.out.println(b);
-        String cha = Character.toString((char) Integer.parseInt(b));
-        System.out.println(cha);
-        String cade = "'a'";
-        cade = cade.replace("'", "\n");
-        System.out.println(cade); 
+
 
         
         
-        /*
+        
         try {
             
             Analizador_Lexico lexico = new Analizador_Lexico(
             new BufferedReader(new FileReader("./entrada.txt"))
 
             );
-            
+                        System.out.println("llego1");
             Analizador_sintactico sintactico = new Analizador_sintactico(lexico);
+            System.out.println("");
             sintactico.parse();
             
+                        System.out.println("llego2");
             if ( Analizador_Lexico.errores.isEmpty()  && Analizador_sintactico.errores.isEmpty()){ //hacemos todo el proceso
                 System.out.println("No se encontraron errores");
                 AST();
-
+            System.out.println("llego4");
             }else{
 
                 System.out.println("Se encontraron errores en el archivo de entrada");
                 reporte_errores(Analizador_Lexico.errores,Analizador_sintactico.errores );
+                            System.out.println("llego5");
                 AST();
             }
             
             
             
             
-            String cache = Analizador_sintactico.cache;
-            System.out.println(cache);
+            String cach = Analizador_sintactico.padre.valor;
+            System.out.println(cach);
         } catch (Exception e) {
             
         }
         
-        */
+        
     }
     public static void AST(){
         

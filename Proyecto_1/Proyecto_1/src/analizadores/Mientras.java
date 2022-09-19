@@ -9,12 +9,12 @@ public class Mientras {
     public Mientras(String condicion, String instrucciones){
         
         Tabulacion tab = new Tabulacion(instrucciones);
-        cache = "while( " +tab.getCodigo()+ "): \n"+
-                "   "+ instrucciones +"\n";
+        cache = "while( " + condicion + " ): \n"+
+                tab.getCodigo() +"\n";
     }
     
     public Mientras(String condicion){       
-        cache = "while( " + condicion + "): \n";          
+        cache = "while( " + condicion + " ): \n";          
     }
     
     public String getCodigo(){

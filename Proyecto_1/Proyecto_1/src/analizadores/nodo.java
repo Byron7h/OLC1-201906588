@@ -5,8 +5,9 @@ public class nodo {
     
     private String etiqueta;
     private ArrayList<nodo> hijos = new ArrayList<>();
-    public String valor = null;
+    public String valor = "";
     public boolean cadena = false;
+    public String aux = "";
     private int id ;
 
     public nodo (String etiqueta, int id){

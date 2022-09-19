@@ -5,13 +5,14 @@ public class Ramificacion {
     
     public String cache = "";
   
-    public Ramificacion(String condicion, String instruccion){
-        
+    public Ramificacion(String condicion, String instrucciones){
+ 
+        Tabulacion tab = new Tabulacion(instrucciones);
         cache = "elif"+" " + condicion + " : \n" + 
-                "   "+ instruccion + "\n";
+                tab.getCodigo() + "\n";
     }     
     
-    public String get_codigo(){
+    public String getCodigo(){
         return cache;
     }
 }

@@ -164,8 +164,6 @@ non terminal nodo INSTRUCCION;
 non terminal nodo ASIGNACION_;
 non terminal nodo MIENTRAS;
 
-
-
 precedence left pr_or;
 precedence left pr_and;
 precedence left pr_not;
@@ -1811,4 +1809,6 @@ REPETIR ::=  pr_repetir INSTRUCCIONES:a pr_hasta_que EXPRE:b {:
                                             RESULT = nuevo;
                                             :}
 ;
+
+
 

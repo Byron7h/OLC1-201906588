@@ -24,7 +24,7 @@ public class Metodo {
         cache += nueva.getCodigo();   
     }
     
-    public String get_codigo(){
+    public String getCodigo(){
         return cache;   
     }
 }

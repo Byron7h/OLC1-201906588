@@ -13,7 +13,7 @@ public class Repetir {
         
         cache = "valor = "+condicion+"\n"+
                 "while valor == true \n"+
-                "   "+ tab.getCodigo() +"\n"+
+                tab.getCodigo() +"\n"+
                 "   if valor == false:\n "+
                 "       break\n";
  
