@@ -7,15 +7,4 @@ metodo _potenciaManual_ con_parametros (_base_ Numero, _exponenete_ Numero)
 	imprimir_nl " Esta es la potencia Manual";	
 fin_metodo
 
-imprimir _anio1_ ;
-imprimir _anio2_ ;
-imprimir _anio3_ ;
-imprimir _anio4_ ;
-imprimir_nl ".";
-
-funcion _potenciaFuncion_ Numero con_parametros (_base_ Numero, _exponente_ Numero) 
-	ingresar _potencia_ como Numero con_valor _base_ potencia [_exponente_];
-	retornar _potencia_;
-fin_funcion
-
 fin
