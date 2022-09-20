@@ -267,7 +267,12 @@ public class Ventana_principal extends javax.swing.JFrame {
             }
         });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Manuales", "Técnico", "De Usuario" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -373,7 +378,7 @@ public class Ventana_principal extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(this, "Errores");
             
-         }else{
+         }else if("AST".equals(item)){
             try {
                 File objetofile = new File ("C:\\Users\\usuario\\Documents\\Byron\\U\\8vo Semestre\\Compi_1\\OLC1-201906588\\Proyecto_1\\Proyecto_1\\Reportes\\AST\\AST.jpg");
                 Desktop.getDesktop().open(objetofile);
@@ -386,6 +391,39 @@ public class Ventana_principal extends javax.swing.JFrame {
         
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        String item = (String)jComboBox2.getSelectedItem();
+        
+
+        if ("Técnico".equals(item)) {
+
+            try {
+                File objetofile = new File ("C:\\Users\\usuario\\Documents\\Byron\\U\\8vo Semestre\\Compi_1\\OLC1-201906588\\Proyecto_1\\Proyecto_1\\Entregables\\Manual_técnico.pdf");
+                Desktop.getDesktop().open(objetofile);
+
+            }catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "Archivo no válido");
+                System.out.println(ex);
+            }
+            
+            
+            
+            JOptionPane.showMessageDialog(this, "Abriendo manual técnico");
+            
+         }else if("De Usuario".equals(item)){
+            try {
+                File objetofile = new File ("C:\\Users\\usuario\\Documents\\Byron\\U\\8vo Semestre\\Compi_1\\OLC1-201906588\\Proyecto_1\\Proyecto_1\\Entregables\\Manual_de_usuario.pdf");
+                Desktop.getDesktop().open(objetofile);
+
+            }catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "Archivo no válido");
+                System.out.println(ex);
+            }
+            JOptionPane.showMessageDialog(this, "Abriendo manual de Usuario");
+        
+        }
+    }//GEN-LAST:event_jComboBox2ActionPerformed
 
     /**
      * @param args the command line arguments

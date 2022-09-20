@@ -1,10 +1,210 @@
-inicio
 
-metodo _potenciaManual_ con_parametros (_base_ Numero, _exponenete_ Numero)
-	ingresar _i_ como Numero con_valor 0;
-	ingresar _acumulado_ como Numero con_valor 0;	
-	imprimir _acumulado_;
-	imprimir_nl " Esta es la potencia Manual";	
-fin_metodo
+INICIO  ::= pr_inicio GLOBALES pr_fin  
 
-fin
+ 
+GLOBALES ::=    GLOBALES GLO  
+      
+                |GLO     
+             
+GLO ::= GLOBAL  
+
+        |INSTRUCCION   
+
+
+GLOBAL ::=   METODO    
+
+           | FUNCION  
+
+
+INSTRUCCIONES ::=   INSTRUCCIONES INSTRUCCION
+
+                |   INSTRUCCION
+     
+
+INSTRUCCIONES_R ::=     INSTRUCCIONES_R INSTRUCCION_R 
+
+                    |   INSTRUCCION_R 
+
+
+INSTRUCCION_R   ::= ASIGNACION_ pyc    
+
+                |   DECLARACION pyc       
+
+                |   PRINT pyc           
+
+                |   RETORNO pyc            
+
+                |   EJECUCION pyc        
+
+                |   SI   
+             
+                |   SEGUN
+           
+                |   PARA 
+          
+                |   MIENTRAS
+            
+                |   REPETIR           
+
+                |   error             
+
+
+INSTRUCCION   ::=   ASIGNACION_ pyc    
+ 
+                |   DECLARACION pyc     
+
+                |   PRINT pyc 
+          
+                |   EJECUCION pyc      
+
+                |   SI         
+
+                |   SEGUN        
+
+                |   PARA          
+
+                |   MIENTRAS       
+
+                |   REPETIR          
+
+                |   error            
+               
+
+DECLARACION   ::=   pr_ingresar LISTA_ID pr_como TIPO pr_con_valor EXPRE  
+
+
+ASIGNACION_   ::=   LISTA_ID asignacion EXPRE 
+
+
+EXPRE   ::=  pare1 EXPRE pare2 
+
+            |EXPRE suma EXPRE 
+
+            |EXPRE resta EXPRE
+
+            |EXPRE mult EXPRE
+  
+            |EXPRE  div EXPRE 
+
+            |EXPRE  pot cor1 EXPRE  cor2 
+
+            |EXPRE  pr_or EXPRE  
+
+            |EXPRE  pr_and EXPRE  
+
+            |pr_not EXPRE  
+
+            |EXPRE   pr_mayor EXPRE  
+
+            |EXPRE   pr_menor EXPRE  
+
+            |EXPRE   pr_mayor_o_igual EXPRE
+  
+            |EXPRE   pr_menor_o_igual EXPRE  
+
+            |EXPRE   pr_es_igual EXPRE  
+
+            |EXPRE   pr_es_diferente EXPRE  
+
+            | VALOR  
+
+
+VALOR ::=   num  
+
+            | id  
+
+            | cadena  
+
+            | pr_verdadero  
+
+            | pr_falso  
+
+            | caracter  
+
+
+TIPO ::=    td_cadena 
+ 
+            | td_numero
+
+            | td_boolean
+
+            | td_caracter   
+;
+
+LISTA_ID ::=  LISTA_ID  coma id  
+
+            | id                        
+
+
+LISTA_PARAMETROS ::= LISTA_PARAMETROS  coma EXPRE  TIPO  
+
+            | EXPRE  TIPO  
+
+            | pare1 LISTA_PARAMETROS  pare2 
+
+
+PRINT ::=   pr_imprimir EXPRE 
+ 
+        |   pr_imprimir_nl EXPRE  
+
+
+RETORNO ::= pr_retornar EXPRE  
+
+
+EJECUCION ::= pr_ejecutar id  pare1 pare2 
+
+            | pr_ejecutar id  LISTA_PARAMETROS  
+
+
+METODO ::=  pr_metodo id  INSTRUCCIONES  pr_fin_metodo
+
+            | pr_metodo id  pr_con_parametros LISTA_PARAMETROS  INSTRUCCIONES  pr_fin_metodo
+
+
+FUNCION ::= pr_funcion id  TIPO  INSTRUCCIONES_R  pr_fin_funcion 
+
+            | pr_funcion id  TIPO  pr_con_parametros LISTA_PARAMETROS  INSTRUCCIONES_R  pr_fin_funcion 
+
+
+SI ::=        pr_si EXPRE  pr_entonces INSTRUCCIONES  pr_fin_si
+                                           
+            | pr_si EXPRE  pr_entonces INSTRUCCIONES  pr_de_lo_contrario INSTRUCCIONES  pr_fin_si  
+                                          
+            | pr_si EXPRE  pr_entonces INSTRUCCIONES  RAMIFICACION   pr_fin_si 
+
+            | pr_si EXPRE  pr_entonces INSTRUCCIONES  RAMIFICACION   pr_de_lo_contrario INSTRUCCIONES  pr_fin_si
+
+
+RAMIFICACION ::= RAMIFICACION  pr_o_si EXPRE  pr_entonces INSTRUCCIONES  
+
+                |pr_o_si EXPRE  pr_entonces INSTRUCCIONES  
+
+
+SEGUN ::=   pr_segun EXPRE  pr_hacer LISTA_SEGUN   pr_fin_segun
+ 
+            | pr_segun EXPRE  pr_hacer LISTA_SEGUN  pr_de_lo_contrario pr_entonces INSTRUCCIONES  pr_fin_segun 
+
+
+LISTA_SEGUN ::= LISTA_SEGUN  duda1 EXPRE  duda2 pr_entonces INSTRUCCIONES  
+
+            |   duda1 EXPRE  duda2 pr_entonces INSTRUCCIONES  
+
+
+PARA ::=     pr_para EXPRE  asignacion EXPRE  pr_hasta EXPRE  pr_hacer INSTRUCCIONES  pr_fin_para 
+
+            |pr_para EXPRE  asignacion EXPRE  pr_hasta EXPRE  pr_hacer pr_fin_para
+
+            |pr_para EXPRE  asignacion EXPRE  pr_hasta EXPRE  pr_con_incremental EXPRE  pr_hacer INSTRUCCIONES  pr_fin_para 
+                                        
+            |pr_para EXPRE  asignacion EXPRE  pr_hasta EXPRE  pr_con_incremental EXPRE  pr_hacer  pr_fin_para 
+
+
+MIENTRAS ::= pr_mientras EXPRE  pr_hacer INSTRUCCIONES  pr_fin_mientras 
+
+            |pr_mientras EXPRE  pr_hacer pr_fin_mientras 
+
+
+REPETIR ::=  pr_repetir INSTRUCCIONES  pr_hasta_que EXPRE  
+
+            |pr_repetir pr_hasta_que EXPRE  
+
