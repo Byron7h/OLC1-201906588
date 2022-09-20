@@ -1,0 +1,760 @@
+package analizadores;
+import java_cup.runtime.Symbol;
+import java.util.LinkedList;
+
+
+
+parser code
+
+  
+
+{:
+    public static nodo padre;
+    public int contador = 0;
+
+    public static String cache = "";
+    String lista_iid = "";
+
+    
+    // listas que nos van a servir
+    public static LinkedList<TError> errores = new LinkedList<TError>();
+    
+
+    // esta función nata de la herramienta, manda a llamar todos los errores sintacticos
+    // necesita un objeto simbolo
+   
+    public void syntax_error(Symbol s)
+    {        
+
+        //obtenemos los valores de los parámetros del objeto s
+        String lexema = s.value.toString();
+        int fila = s.right;
+        int columna = s.left;
+      
+        System.out.println("!!!!!!! Error Sintactico Recuperado !!!!!!!");
+        System.out.println("\t\tLexema: "+lexema);
+        System.out.println("\t\tFila: "+fila);
+        System.out.println("\t\tColumna: "+columna);
+
+        // error de tipo sintáctico
+        TError tmp = new TError("Sintactico",lexema,"Caracter no esperado",fila,columna);
+        errores.add(tmp);
+        
+    }
+
+
+    //Metodo al que se llama en el momento en que ya no es posible una recuperacion de errores, se reporta y termina el análisis
+    // en caso de que se pueda recurer este no saldrá
+    public void unrecovered_syntax_error(Symbol s) throws java.lang.Exception
+    {        
+        String lexema = s.value.toString();
+        int fila = s.right;
+        int columna = s.left;
+        
+        System.out.println("!!!!!!! Error Sintactico, Panic Mode !!!!!!! ");
+        System.out.println("\t\tLexema: "+lexema);
+        System.out.println("\t\tFila: "+fila);
+        System.out.println("\t\tColumna: "+columna);
+        
+        TError tmp = new TError("Sintactico",lexema, "Caracter no esperado",fila,columna);
+        errores.add(tmp);   
+    }
+:}
+
+
+
+
+
+
+
+terminal suma;
+terminal resta;
+terminal mult;
+terminal div;
+terminal pot;
+terminal mod;
+terminal pare1;
+terminal pare2;
+terminal cor1;
+terminal cor2;
+terminal asignacion;
+terminal pyc;
+terminal coma;
+terminal duda1;
+terminal duda2;
+
+terminal pr_verdadero;
+terminal pr_falso;
+terminal pr_ingresar;
+terminal pr_como;
+terminal pr_con_valor;
+terminal pr_si;
+terminal pr_entonces;
+terminal pr_fin_si;
+terminal pr_de_lo_contrario;
+terminal pr_segun;
+terminal pr_hacer;
+terminal pr_fin_segun;
+terminal pr_para;
+terminal pr_hasta;
+terminal pr_fin_para;
+terminal pr_mientras;
+terminal pr_fin_mientras;
+terminal pr_repetir;
+terminal pr_hasta_que;
+terminal pr_retornar;
+terminal pr_metodo;
+terminal pr_fin_metodo;
+terminal pr_con_parametros;
+terminal pr_funcion;
+terminal pr_fin_funcion;
+terminal pr_ejecutar;
+terminal pr_imprimir;
+terminal pr_imprimir_nl;
+terminal pr_or;
+terminal pr_and;
+terminal pr_not;
+terminal pr_mayor;
+terminal pr_menor;
+terminal pr_mayor_o_igual;
+terminal pr_menor_o_igual;
+terminal pr_es_igual;
+terminal pr_es_diferente;
+terminal String pr_inicio;
+terminal String pr_fin;
+terminal pr_con_incremental;
+terminal pr_o_si;
+
+
+terminal td_cadena;
+terminal td_numero;
+terminal td_boolean;
+terminal td_caracter;
+
+terminal String num;
+terminal String id;
+terminal String cadena;
+terminal String caracter;
+
+non terminal String INICIO;
+non terminal String GLOBALES; 
+non terminal String GLOBAL;
+non terminal String INSTRUCCIONES; 
+non terminal String DECLARACION; 
+non terminal String EXPRE;
+non terminal String VALOR;
+non terminal String TIPO;
+non terminal String LISTA_ID;
+non terminal String LISTA_PARAMETROS;
+non terminal String PRINT;
+non terminal String RETORNO; 
+non terminal String EJECUCION;
+non terminal String METODO; 
+non terminal String FUNCION; 
+non terminal String RAMIFICACION;
+non terminal String SEGUN;
+non terminal String LISTA_SEGUN;
+non terminal String REPETIR;
+non terminal String SI; 
+non terminal String INSTRUCCION_R;
+non terminal String INSTRUCCIONES_R;
+non terminal String PARA;
+non terminal String GLO; 
+non terminal String INSTRUCCION;
+non terminal String ASIGNACION_;
+non terminal String MIENTRAS;
+
+
+
+precedence left pr_or;
+precedence left pr_and;
+precedence left pr_not;
+precedence left pr_mayor, pr_menor, pr_mayor_o_igual, pr_menor_o_igual, pr_es_igual, pr_es_diferente;
+precedence left suma, resta;
+precedence left mult, div, mod;
+precedence left pot;
+
+start with INICIO;
+
+INICIO  ::= pr_inicio GLOBALES:b pr_fin  {: 
+
+                                            // traduccion Python 
+                                            cache = b;
+                                            System.out.println(b);
+                                            :}
+ ;  
+GLOBALES ::=    GLOBALES:a GLO:b         {:
+                                            // traduccion Python 
+                                            String codigo =  a + b ;
+                                            RESULT = codigo;
+                                        :}
+
+                |GLO:a                   {:
+
+                                            // traduccion Python 
+                                            String codigo =  a ;
+                                            RESULT = codigo;
+                                         :}
+
+;
+GLO ::= GLOBAL:a {:
+                        // traduccion Python 
+                        String codigo =  a ;
+                        RESULT = codigo;
+                :}
+                           
+
+
+        |INSTRUCCION:a  {:
+
+                        // traduccion Python 
+                        String codigo =  a ;
+                        RESULT = codigo;
+                        :}
+;
+
+GLOBAL ::=   METODO:a   {:
+
+                        // traduccion Python 
+                        String codigo =  a ;
+                        RESULT = codigo;
+                        :}
+
+           | FUNCION:a {:
+
+                        // traduccion Python 
+                        String codigo =  a ;
+                        RESULT = codigo;
+                        :}
+
+;
+
+INSTRUCCIONES ::=   INSTRUCCIONES:a INSTRUCCION:b {: 
+
+                                            // traduccion Python 
+                                            String codigo =  a + b ;
+                                            RESULT = codigo;
+                                            :}
+
+
+
+
+                |   INSTRUCCION:a       {:
+
+                                            // traduccion Python 
+                                            String codigo =  a ;
+                                            RESULT = codigo;
+                                        :}
+;
+
+INSTRUCCIONES_R ::=     INSTRUCCIONES_R:a INSTRUCCION_R:b {: 
+
+                                            // traduccion Python 
+                                            String codigo =  a + b ;
+                                            RESULT = codigo;
+                                            :} 
+
+                    |   INSTRUCCION_R:a {:        
+                                            RESULT = a;
+                                        :}
+;
+
+// instrucciones 
+    INSTRUCCION_R   ::= ASIGNACION_:a pyc       {:
+                                            RESULT = a;
+                                            :} 
+
+                |   DECLARACION:a pyc       {:
+                                            RESULT = a;
+                                            :} 
+
+                |   PRINT:a pyc             {:
+                                            RESULT = a;
+                                            :} 
+
+                |   RETORNO:a pyc           {: 
+                                            RESULT = a;
+                                            :} 
+
+                |   EJECUCION:a pyc         {:
+                                            RESULT = a;
+
+                                            :} 
+
+                |   SI:a                {:  
+                                            RESULT = a;
+                                        :}
+
+                |   SEGUN:a            {:
+                                            RESULT = a;
+                                        :}
+
+                |   PARA:a            {:
+                                            RESULT = a;
+                                        :} 
+
+                |   MIENTRAS:a            {: 
+                                            RESULT = a;
+                                        :}
+
+                |   REPETIR:a            {: 
+                                            RESULT = a;
+                                        :}
+
+                |   error             {: 
+                                        :}
+;
+
+INSTRUCCION   ::=   ASIGNACION_:a pyc       {:
+                                            RESULT = a;
+                                            :} 
+
+                |   DECLARACION:a pyc       {:
+                                            RESULT = a;
+                                            :} 
+
+                |   PRINT:a pyc             {:
+                                            RESULT = a;
+                                            :}
+
+                |   EJECUCION:a pyc         {:
+                                            RESULT = a;
+                                            :}
+
+                |   SI:a            {:             
+                                            RESULT = a;
+                                            
+                                        :}
+
+                |   SEGUN:a            {: 
+                                            RESULT = a;
+                                            
+                                        :}
+
+                |   PARA:a            {: 
+                                            RESULT = a;
+                                            
+                                        :} 
+
+                |   MIENTRAS:a            {: 
+                                            RESULT = a;
+                                            
+                                        :}
+
+                |   REPETIR:a            {: 
+
+                                            RESULT = a;
+                                            
+                                        :}
+
+                |   error:a            {: 
+                                            
+                                        :}
+;
+                
+
+DECLARACION   ::=   pr_ingresar LISTA_ID:a pr_como TIPO:b pr_con_valor EXPRE:c  {: 
+                                            RESULT =  a  + " = " + c + "\n" ;
+                                            :}
+;
+
+ASIGNACION_   ::=   LISTA_ID:a asignacion EXPRE:b {: 
+                                            RESULT =  a  + " = "+ b + "\n";
+                                            :}
+;
+
+
+EXPRE   ::=  pare1 EXPRE:a pare2 {: 
+                                            RESULT = " ( " + a  + " ) ";
+                                            :}
+
+            |EXPRE:a suma EXPRE:b {: 
+
+                                            RESULT =  a  + " + " + b ;
+                                            :}
+ 
+            |EXPRE:a resta EXPRE:b{: 
+
+                                            RESULT =  a  + " - " + b ;
+                                            :}
+ 
+            |EXPRE:a mult EXPRE:b{: 
+                                            RESULT =  a  + " * " + b ;
+                                            :}
+  
+            |EXPRE:a div EXPRE:b{: 
+                                            RESULT = a  + " / " + b ;
+                                            :}
+  
+            |EXPRE:a pot cor1 EXPRE:b cor2 {: 
+
+                                            RESULT =  a  + " ** " + b ;
+                                            :} 
+            |EXPRE:a mod EXPRE:b{: 
+
+                                            RESULT = a  + " % " + b ;
+                                            :} 
+
+            |EXPRE:a pr_or EXPRE:b {: 
+                                            RESULT = a  + " or " + b ;
+                                            :} 
+
+            |EXPRE:a pr_and EXPRE:b {: 
+
+                                            RESULT = a  + " and " + b;
+                                            :} 
+
+            |pr_not EXPRE:a {: 
+                                            RESULT = "not "+ a;
+                                            :} 
+
+
+            |EXPRE:a  pr_mayor EXPRE:b {:
+                                            RESULT = a + " > " + b;
+                                            :} 
+
+            |EXPRE:a  pr_menor EXPRE:b {:
+                                            RESULT = a + " < " + b;
+                                            :} 
+
+            |EXPRE:a  pr_mayor_o_igual EXPRE:b {:
+
+                                            RESULT = a + " >= " + b;
+                                            :} 
+
+            |EXPRE:a  pr_menor_o_igual EXPRE:b {:
+
+                                            RESULT =  a + " <= " + b;
+                                            :} 
+
+            |EXPRE:a  pr_es_igual EXPRE:b {: 
+
+                                            RESULT = a + " == " + b;
+                                            :} 
+
+            |EXPRE:a  pr_es_diferente EXPRE:b {: 
+                                                
+                                            RESULT = a + " != " + b;
+                                            :} 
+
+            | VALOR:a {:
+                                            RESULT = a;
+                                            :}
+;
+
+VALOR ::=   num:a {:
+                                RESULT = a;
+                                :} 
+
+            | id:a {:
+                                RESULT = a;
+                                :} 
+
+            | cadena:a {:
+                                RESULT = a;
+                                :} 
+
+            | pr_verdadero:a {: 
+                                RESULT = "true";
+                                :} 
+
+            | pr_falso:a {: 
+                                RESULT = "false";
+                                :} 
+
+            | caracter:a {:
+                                String cade = a;
+                                String aux = a;
+                                boolean s = cade.contains("$");
+
+                                if(s){
+                                    cade = cade.substring(2, cade.length()-1 );
+                                    cade = Character.toString((char) Integer.parseInt(cade));
+                                    aux = "$("+cade+")";
+                                }else{
+                                    cade = cade.replace("'", "\"");                                  
+                                }
+
+                                RESULT = cade;
+                                :} 
+
+;
+
+TIPO ::=    td_cadena   {:  
+                                :}
+ 
+            | td_numero{: 
+                                :} 
+
+            | td_boolean{: 
+                                :} 
+
+            | td_caracter{:
+                                :}    
+;
+
+LISTA_ID ::=  LISTA_ID:a coma id:b {: 
+
+                                            // traduccion Python 
+                                            String codigo =  a +", " +b;
+                                            RESULT = codigo;
+
+                                            :} 
+
+            | id:a                       {:
+                                            // traduccion Python 
+                                            String codigo =  a ;
+                                            RESULT = codigo;
+                                            :} 
+;
+
+LISTA_PARAMETROS ::= LISTA_PARAMETROS:a coma EXPRE:b TIPO:c {:       
+
+                                            // traduccion Python 
+                                            String codigo =  a +", " +b ;
+                                            RESULT = codigo;
+
+                                            :}
+
+            | EXPRE:a TIPO:b {: 
+
+                                            // traduccion Python 
+                                            String codigo =  a  ;
+                                            RESULT = codigo;
+
+                                            :}
+
+            | pare1 LISTA_PARAMETROS:a pare2 {: 
+
+                                            // traduccion Python 
+                                            String codigo =  "(" + a  + ")" ;
+                                            RESULT = codigo;
+                                            :}
+
+;
+
+PRINT ::=   pr_imprimir EXPRE:a {: 
+
+                                            // traduccion Python print(“Esta es una salida”)
+                                            String codigo = "print(" + a  +")";
+                                            RESULT = codigo + "\n";
+                                            :}
+        |   pr_imprimir_nl EXPRE:a {:
+                                            // traduccion Python print(“Esta es una salida”)
+                                            String codigo = "println(" + a  +")";
+                                            RESULT = codigo + "\n";
+                                            :}
+;
+
+RETORNO ::= pr_retornar EXPRE:a {: 
+
+                                            // traduccion Python
+                                            String codigo = "return" + a ;
+                                            RESULT = codigo + "\n";
+                                            :}
+;
+
+EJECUCION ::= pr_ejecutar id:a pare1 pare2 {: 
+
+                                            // traduccion Python
+                                            String codigo = a +"()";
+                                            RESULT = codigo + "\n";
+                                            :}
+
+            | pr_ejecutar id:a LISTA_PARAMETROS:b {: 
+
+                                            // traduccion Python
+                                            String codigo = a +"( "+ b  +" )";
+                                            RESULT = codigo + "\n";
+                                            :}
+;
+
+METODO ::=  pr_metodo id:a INSTRUCCIONES:b pr_fin_metodo{: 
+                                            // traduccion Python
+                                            //Metodo(String id, String instrucciones)
+                                            Metodo n = new Metodo(a, b );
+                                            String codigo = n.getCodigo();
+                                            RESULT = codigo + "\n";
+                                            :}
+
+            | pr_metodo id:a pr_con_parametros LISTA_PARAMETROS:b INSTRUCCIONES:c pr_fin_metodo{: 
+
+                                            // traduccion Python
+                                            //Metodo(String id,String parametros,String instrucciones)
+                                            Metodo n = new Metodo(a, b , c );
+                                            String codigo = n.getCodigo();
+                                            RESULT = codigo + "\n";
+                                            :}
+;
+
+FUNCION ::= pr_funcion id:a TIPO:b INSTRUCCIONES_R:c pr_fin_funcion {: 
+
+                                            // traduccion Python
+                                            //Metodo(String id, String instrucciones)
+                                            Metodo n = new Metodo(a, c );
+                                            String codigo = n.getCodigo();
+                                            RESULT = codigo + "\n";
+                                            :}
+
+            | pr_funcion id:a TIPO:b pr_con_parametros LISTA_PARAMETROS:c INSTRUCCIONES_R:d pr_fin_funcion {: 
+
+                                            // traduccion Python
+                                            //Metodo(String id,String parametros,String instrucciones)
+                                            Metodo n = new Metodo(a, c , d );
+                                            String codigo = n.getCodigo();
+                                            RESULT = codigo + "\n";
+                                            :}
+;
+
+SI ::=        pr_si EXPRE:a pr_entonces INSTRUCCIONES:b pr_fin_si{:
+
+                                            // traduccion Python
+                                            //Si (String expre, String instrucciones)
+                                            Si n = new Si(a , b );
+                                            String codigo = n.getCodigo();
+                                            RESULT = codigo + "\n";
+                                            :}
+
+            | pr_si EXPRE:a pr_entonces INSTRUCCIONES:b pr_de_lo_contrario INSTRUCCIONES:c pr_fin_si {: 
+                                            // traduccion Python, 
+                                            // Si (boolean de_lo_contra, String expre, String instrucciones, String tentativa)
+                                            Si n = new Si(true, a , b , c );
+                                            String codigo = n.getCodigo();
+                                            RESULT = codigo + "\n";
+                                            :}
+
+            | pr_si EXPRE:a pr_entonces INSTRUCCIONES:b RAMIFICACION:c  pr_fin_si{: 
+
+                                            // traduccion Python, 
+                                            // Si (boolean de_lo_contra, String expre, String instrucciones, String tentativa)
+                                            Si n = new Si(false, a , b , c );
+                                            String codigo = n.getCodigo();
+                                            RESULT = codigo + "\n";
+                                            :}
+
+            | pr_si EXPRE:a pr_entonces INSTRUCCIONES:b RAMIFICACION:c  pr_de_lo_contrario INSTRUCCIONES:d pr_fin_si{: 
+                                            // traduccion Python
+                                            //Si (String expre, String instrucciones, String ramificacion, String I_de_lo_contra)
+                                            Si n = new Si(a , b , c , d );
+                                            String codigo = n.getCodigo();
+                                            RESULT = codigo + "\n";
+                                            :}
+;
+
+RAMIFICACION ::= RAMIFICACION:a pr_o_si EXPRE:b pr_entonces INSTRUCCIONES:c {: 
+
+                                            // traduccion Python
+                                            // Ramificacion(String condicion, String instrucciones)
+                                            Ramificacion n = new Ramificacion(b , c );
+                                            String codigo = a  + n.getCodigo();
+                                            RESULT = codigo + "\n";
+                                            :}
+
+                |pr_o_si EXPRE:a pr_entonces INSTRUCCIONES:b {: 
+       
+                                            // traduccion Python
+                                            // Ramificacion(String condicion, String instrucciones)
+                                            Ramificacion n = new Ramificacion(a , b );
+                                            String codigo = n.getCodigo();
+                                            RESULT = codigo + "\n";
+                                            :}
+;
+
+SEGUN ::=   pr_segun EXPRE:a pr_hacer LISTA_SEGUN:b  pr_fin_segun {: 
+                                            :}
+
+            | pr_segun EXPRE:a pr_hacer LISTA_SEGUN:b pr_de_lo_contrario pr_entonces INSTRUCCIONES:c pr_fin_segun {: 
+                                            :}
+;
+
+LISTA_SEGUN ::= LISTA_SEGUN:a duda1 EXPRE:b duda2 pr_entonces INSTRUCCIONES:c {: 
+                                            :}
+
+
+            |   duda1 EXPRE:a duda2 pr_entonces INSTRUCCIONES:b {: 
+
+                                            :}
+;
+
+PARA ::=     pr_para EXPRE:a asignacion EXPRE:b pr_hasta EXPRE:c pr_hacer INSTRUCCIONES:d pr_fin_para {: 
+
+                                            // traduccion Python
+                                            // Para(boolean instru, String variable,String R1, String R2, String tentativa)
+                                            Para n = new Para(true, a , b , c , d );
+                                            String codigo = n.getCodigo();
+                                            RESULT = codigo + "\n";
+                                            :}
+
+            |pr_para EXPRE:a asignacion EXPRE:b pr_hasta EXPRE:c pr_hacer pr_fin_para {: 
+
+                                            // traduccion Python
+                                            // Para(String variable,String R1, String R2
+                                            Para n = new Para(a , b , c );
+                                            String codigo = n.getCodigo();
+                                            RESULT = codigo + "\n";
+                                            :}
+
+
+            |pr_para EXPRE:a asignacion EXPRE:b pr_hasta EXPRE:c pr_con_incremental EXPRE:d pr_hacer INSTRUCCIONES:f pr_fin_para {:
+
+                                            // traduccion Python
+                                            // Para(String variable,String R1, String R2, String incremento, String instrucciones)
+                                            Para n = new Para(a , b , c , d , f );
+                                            String codigo = n.getCodigo();
+                                            RESULT = codigo + "\n";
+                                            :}
+
+            |pr_para EXPRE:a asignacion EXPRE:b pr_hasta EXPRE:c pr_con_incremental EXPRE:d pr_hacer  pr_fin_para {: 
+
+                                            // traduccion Python
+                                            // Para(boolean instru, String variable,String R1, String R2, String tentativa)
+                                            Para n = new Para(false, a , b , c , d );
+                                            String codigo = n.getCodigo();
+                                            RESULT = codigo + "\n";
+                                            :}
+
+;
+
+MIENTRAS ::= pr_mientras EXPRE:a pr_hacer INSTRUCCIONES:b pr_fin_mientras {: 
+
+
+                                            // traduccion Python
+                                            // Mientras(String condicion, String instrucciones)
+                                            Mientras n = new Mientras(a , b );
+                                            String codigo = n.getCodigo();
+                                            RESULT = codigo + "\n";
+                                            :}
+
+            |pr_mientras EXPRE:a pr_hacer pr_fin_mientras {: 
+
+                                            // traduccion Python
+                                            // Mientras(String condicion)
+                                            Mientras n = new Mientras(a );
+                                            String codigo = n.getCodigo();
+                                            RESULT = codigo + "\n";
+                                            :}
+
+
+;
+
+REPETIR ::=  pr_repetir INSTRUCCIONES:a pr_hasta_que EXPRE:b {: 
+
+
+                                            // traduccion Python
+                                            // Repetir ( String instrucciones, String condicion)
+                                            Repetir n = new Repetir(a , b );
+                                            String codigo = n.getCodigo();
+
+                                            RESULT = codigo + "\n";
+                                            :}
+
+            |pr_repetir pr_hasta_que EXPRE:a {: 
+
+                                            Repetir n = new Repetir(a);
+                                            String codigo = n.getCodigo();
+
+                                            RESULT = codigo + "\n";
+                                            :}
+;
+
+

@@ -136,35 +136,11 @@ terminal String id;
 terminal String cadena;
 terminal String caracter;
 
-non terminal nodo INICIO;
-non terminal nodo GLOBALES; 
-non terminal nodo GLOBAL;
-non terminal nodo INSTRUCCIONES; 
-non terminal nodo DECLARACION; 
-non terminal nodo EXPRE;
-non terminal nodo VALOR;
-non terminal nodo TIPO;
-non terminal nodo LISTA_ID;
-non terminal nodo LISTA_PARAMETROS;
-non terminal nodo PRINT;
-non terminal nodo RETORNO; 
-non terminal nodo EJECUCION;
-non terminal nodo METODO; 
-non terminal nodo FUNCION; 
-non terminal nodo RAMIFICACION;
-non terminal nodo SEGUN;
-non terminal nodo LISTA_SEGUN;
-non terminal nodo REPETIR;
-non terminal nodo SI; 
-non terminal nodo INSTRUCCION_R;
-non terminal nodo INSTRUCCIONES_R;
-non terminal nodo PARA;
-non terminal nodo GLO; 
-non terminal nodo INSTRUCCION;
-non terminal nodo ASIGNACION_;
-non terminal nodo MIENTRAS;
-
-
+non terminal INICIO, GLOBALES, GLOBAL, INSTRUCCIONES; 
+non terminal DECLARACION, EXPRE, VALOR, TIPO, LISTA_ID, LISTA_PARAMETROS;
+non terminal PRINT, RETORNO, EJECUCION, METODO, FUNCION, RAMIFICACION;
+non terminal SEGUN, LISTA_SEGUN, MIENTRAS, REPETIR, SI, INSTRUCCION_R;
+non terminal INSTRUCCIONES_R, PARA, GLO, INSTRUCCION, ASIGNACION_;
 
 precedence left pr_or;
 precedence left pr_and;
@@ -188,13 +164,6 @@ INICIO  ::= pr_inicio GLOBALES:b pr_fin  {: nodo nuevo = new nodo("INICIO", pars
                                             nuevo.AddHijos(nuevo2);
 
                                             parser.padre = nuevo;
-
-                                            nodo aux_b = b; 
-
-                                            // traduccion Python 
-                                            String codigo =  aux_b.getValor();
-                                            nuevo.setValor(codigo);
-
                                             RESULT = nuevo;
                                             :}
  ;  
@@ -204,10 +173,6 @@ GLOBALES ::=    GLOBALES:a GLO:b         {: nodo nuevo = new nodo("GLOBALES", pa
                                             nuevo.AddHijos((nodo) a);
                                             nuevo.AddHijos((nodo) b);
 
-                                            // traduccion Python 
-                                            String codigo =  a.getValor()+b.getValor();
-                                            nuevo.setValor(codigo);
-
                                             RESULT = nuevo;
                                             :}
 
@@ -215,11 +180,6 @@ GLOBALES ::=    GLOBALES:a GLO:b         {: nodo nuevo = new nodo("GLOBALES", pa
                                             parser.contador ++;
 
                                             nuevo.AddHijos((nodo) a);
-
-                                            // traduccion Python 
-                                            String codigo =  a.getValor();
-                                            nuevo.setValor(codigo);
-
                                             RESULT = nuevo;
                                          :}
 
@@ -227,11 +187,6 @@ GLOBALES ::=    GLOBALES:a GLO:b         {: nodo nuevo = new nodo("GLOBALES", pa
 GLO ::= GLOBAL:a {: nodo nuevo = new nodo("GLO", parser.contador);
                     parser.contador ++;
                     nuevo.AddHijos((nodo) a);
-
-                        // traduccion Python 
-                        String codigo =  a.getValor();
-                        nuevo.setValor(codigo);
-
                     RESULT = nuevo;
                 :}
                            
@@ -240,11 +195,6 @@ GLO ::= GLOBAL:a {: nodo nuevo = new nodo("GLO", parser.contador);
         |INSTRUCCION:a  {: nodo nuevo = new nodo("GLO", parser.contador);
                         parser.contador ++;
                         nuevo.AddHijos((nodo) a);
-
-                        // traduccion Python 
-                        String codigo =  a.getValor();
-                        nuevo.setValor(codigo);
-
                         RESULT = nuevo;
                         :}
 ;
@@ -252,21 +202,12 @@ GLO ::= GLOBAL:a {: nodo nuevo = new nodo("GLO", parser.contador);
 GLOBAL ::=   METODO:a   {: nodo nuevo = new nodo("GLOBAL", parser.contador);
                         parser.contador ++;
                         nuevo.AddHijos((nodo) a);
-
-                        // traduccion Python 
-                        String codigo =  a.getValor();
-                        nuevo.setValor(codigo);
                         RESULT = nuevo;
                         :}
 
            | FUNCION:a {: nodo nuevo = new nodo("GLOBAL", parser.contador);
                         parser.contador ++;
                         nuevo.AddHijos((nodo) a);
-
-                        // traduccion Python 
-                        String codigo =  a.getValor();
-                        nuevo.setValor(codigo);
-
                         RESULT = nuevo;
                         :}
 
@@ -277,9 +218,6 @@ INSTRUCCIONES ::=   INSTRUCCIONES:a INSTRUCCION:b {: nodo nuevo = new nodo("INST
 
                                             nuevo.AddHijos((nodo) a);
                                             nuevo.AddHijos((nodo) b);
-                                            // traduccion Python 
-                                            String codigo =  a.getValor()+b.getValor();
-                                            nuevo.setValor(codigo);
 
                                             RESULT = nuevo;
                                             :}
@@ -291,11 +229,6 @@ INSTRUCCIONES ::=   INSTRUCCIONES:a INSTRUCCION:b {: nodo nuevo = new nodo("INST
                                             parser.contador ++;
 
                                             nuevo.AddHijos((nodo) a);
-
-                                            // traduccion Python 
-                                            String codigo =  a.getValor();
-                                            nuevo.setValor(codigo);
-
                                             RESULT = nuevo;
                                         :}
 ;
@@ -307,10 +240,6 @@ INSTRUCCIONES_R ::=     INSTRUCCIONES_R:a INSTRUCCION_R:b {:
                                             nuevo.AddHijos((nodo) a);
                                             nuevo.AddHijos((nodo) b);
 
-                                            // traduccion Python 
-                                            String codigo =  a.getValor()+b.getValor();
-                                            nuevo.setValor(codigo);
-
                                             RESULT = nuevo;
                                             :} 
 
@@ -318,13 +247,6 @@ INSTRUCCIONES_R ::=     INSTRUCCIONES_R:a INSTRUCCION_R:b {:
                                             parser.contador ++;
 
                                             nuevo.AddHijos((nodo) a);
-
-                                            // traduccion Python
-                                            nuevo.setValor(a.getValor());
-                                            // traduccion Python 
-                                            String codigo =  a.getValor();
-                                            nuevo.setValor(codigo);
-
                                             RESULT = nuevo;
                                         :}
 ;
@@ -337,8 +259,6 @@ INSTRUCCIONES_R ::=     INSTRUCCIONES_R:a INSTRUCCION_R:b {:
 
                                             nuevo.AddHijos((nodo) a);
                                             nuevo.AddHijos(nuevo1);
-                                            // traduccion Python
-                                            nuevo.setValor(a.getValor());
 
                                             RESULT = nuevo;
                                             :} 
@@ -350,8 +270,6 @@ INSTRUCCIONES_R ::=     INSTRUCCIONES_R:a INSTRUCCION_R:b {:
 
                                             nuevo.AddHijos((nodo) a);
                                             nuevo.AddHijos(nuevo1);
-                                            // traduccion Python
-                                            nuevo.setValor(a.getValor());
 
                                             RESULT = nuevo;
                                             :} 
@@ -363,8 +281,6 @@ INSTRUCCIONES_R ::=     INSTRUCCIONES_R:a INSTRUCCION_R:b {:
 
                                             nuevo.AddHijos((nodo) a);
                                             nuevo.AddHijos(nuevo1);
-                                            // traduccion Python
-                                            nuevo.setValor(a.getValor());
 
                                             RESULT = nuevo;
                                             :} 
@@ -376,8 +292,6 @@ INSTRUCCIONES_R ::=     INSTRUCCIONES_R:a INSTRUCCION_R:b {:
 
                                             nuevo.AddHijos((nodo) a);
                                             nuevo.AddHijos(nuevo1);
-                                            // traduccion Python
-                                            nuevo.setValor(a.getValor());
 
                                             RESULT = nuevo;
                                             :} 
@@ -389,8 +303,6 @@ INSTRUCCIONES_R ::=     INSTRUCCIONES_R:a INSTRUCCION_R:b {:
 
                                             nuevo.AddHijos((nodo) a);
                                             nuevo.AddHijos(nuevo1);
-                                            // traduccion Python
-                                            nuevo.setValor(a.getValor());
 
                                             RESULT = nuevo;
                                             :} 
@@ -399,8 +311,6 @@ INSTRUCCIONES_R ::=     INSTRUCCIONES_R:a INSTRUCCION_R:b {:
                                             parser.contador ++;
 
                                             nuevo.AddHijos((nodo) a);
-                                            // traduccion Python
-                                            nuevo.setValor(a.getValor());
                                             RESULT = nuevo;
                                         :}
 
@@ -408,8 +318,6 @@ INSTRUCCIONES_R ::=     INSTRUCCIONES_R:a INSTRUCCION_R:b {:
                                             parser.contador ++;
 
                                             nuevo.AddHijos((nodo) a);
-                                            // traduccion Python
-                                            nuevo.setValor(a.getValor());
                                             RESULT = nuevo;
                                         :}
 
@@ -417,8 +325,6 @@ INSTRUCCIONES_R ::=     INSTRUCCIONES_R:a INSTRUCCION_R:b {:
                                             parser.contador ++;
 
                                             nuevo.AddHijos((nodo) a);
-                                            // traduccion Python
-                                            nuevo.setValor(a.getValor());
                                             RESULT = nuevo;
                                         :} 
 
@@ -427,8 +333,6 @@ INSTRUCCIONES_R ::=     INSTRUCCIONES_R:a INSTRUCCION_R:b {:
                                             parser.contador ++;
 
                                             nuevo.AddHijos((nodo) a);
-                                            // traduccion Python
-                                            nuevo.setValor(a.getValor());
                                             RESULT = nuevo;
                                         :}
 
@@ -437,8 +341,6 @@ INSTRUCCIONES_R ::=     INSTRUCCIONES_R:a INSTRUCCION_R:b {:
                                             parser.contador ++;
 
                                             nuevo.AddHijos((nodo) a);
-                                            // traduccion Python
-                                            nuevo.setValor(a.getValor());
                                             RESULT = nuevo;
                                         :}
 
@@ -461,9 +363,6 @@ INSTRUCCION   ::=   ASIGNACION_:a pyc       {: nodo nuevo = new nodo("INSTRUCCIO
                                             nuevo.AddHijos((nodo) a);
                                             nuevo.AddHijos(nuevo1);
 
-                                            // traduccion Python
-                                            nuevo.setValor(a.getValor());
-
                                             RESULT = nuevo;
                                             :} 
 
@@ -474,8 +373,6 @@ INSTRUCCION   ::=   ASIGNACION_:a pyc       {: nodo nuevo = new nodo("INSTRUCCIO
 
                                             nuevo.AddHijos((nodo) a);
                                             nuevo.AddHijos(nuevo1);
-                                            // traduccion Python
-                                            nuevo.setValor(a.getValor());
 
                                             RESULT = nuevo;
                                             :} 
@@ -487,8 +384,6 @@ INSTRUCCION   ::=   ASIGNACION_:a pyc       {: nodo nuevo = new nodo("INSTRUCCIO
 
                                             nuevo.AddHijos((nodo) a);
                                             nuevo.AddHijos(nuevo1);
-                                            // traduccion Python
-                                            nuevo.setValor(a.getValor());
 
                                             RESULT = nuevo;
                                             :}
@@ -501,9 +396,6 @@ INSTRUCCION   ::=   ASIGNACION_:a pyc       {: nodo nuevo = new nodo("INSTRUCCIO
                                             nuevo.AddHijos((nodo) a);
                                             nuevo.AddHijos(nuevo1);
 
-                                            // traduccion Python
-                                            nuevo.setValor(a.getValor());
-
                                             RESULT = nuevo;
                                             :}
 
@@ -511,8 +403,6 @@ INSTRUCCION   ::=   ASIGNACION_:a pyc       {: nodo nuevo = new nodo("INSTRUCCIO
                                             parser.contador ++;
 
                                             nuevo.AddHijos((nodo) a);
-                                            // traduccion Python
-                                            nuevo.setValor(a.getValor());
                                             RESULT = nuevo;
                                             
                                         :}
@@ -522,8 +412,6 @@ INSTRUCCION   ::=   ASIGNACION_:a pyc       {: nodo nuevo = new nodo("INSTRUCCIO
                                             parser.contador ++;
 
                                             nuevo.AddHijos((nodo) a);
-                                            // traduccion Python
-                                            nuevo.setValor(a.getValor());
                                             RESULT = nuevo;
                                             
                                         :}
@@ -533,8 +421,6 @@ INSTRUCCION   ::=   ASIGNACION_:a pyc       {: nodo nuevo = new nodo("INSTRUCCIO
                                             parser.contador ++;
 
                                             nuevo.AddHijos((nodo) a);
-                                            // traduccion Python
-                                            nuevo.setValor(a.getValor());
                                             RESULT = nuevo;
                                             
                                         :} 
@@ -544,9 +430,6 @@ INSTRUCCION   ::=   ASIGNACION_:a pyc       {: nodo nuevo = new nodo("INSTRUCCIO
                                             parser.contador ++;
 
                                             nuevo.AddHijos((nodo) a);
-                                            // traduccion Python
-                                            nuevo.setValor(a.getValor());
-
                                             RESULT = nuevo;
                                             
                                         :}
@@ -556,9 +439,6 @@ INSTRUCCION   ::=   ASIGNACION_:a pyc       {: nodo nuevo = new nodo("INSTRUCCIO
                                             parser.contador ++;
 
                                             nuevo.AddHijos((nodo) a);
-                                            // traduccion Python
-                                            nuevo.setValor(a.getValor());
-
                                             RESULT = nuevo;
                                             
                                         :}
@@ -592,10 +472,6 @@ DECLARACION   ::=   pr_ingresar LISTA_ID:a pr_como TIPO:b pr_con_valor EXPRE:c  
                                             nuevo.AddHijos(nuevo3);
                                             nuevo.AddHijos((nodo) c);
 
-                                            // traduccion Python
-                                            String codigo = a.getValor() + " = " + c.getValor();
-                                            nuevo.setValor(codigo + "\n");
-
                                             RESULT = nuevo;
                                             :}
 ;
@@ -609,10 +485,6 @@ ASIGNACION_   ::=   LISTA_ID:a asignacion EXPRE:b {:
                                             nuevo.AddHijos((nodo) a);
                                             nuevo.AddHijos(nuevo1);
                                             nuevo.AddHijos((nodo) b);
-
-                                            // traduccion Python
-                                            String codigo = a.getValor() + " = "+ b.getValor();
-                                            nuevo.setValor(codigo + "\n");
 
                                             RESULT = nuevo;
                                             :}
@@ -631,13 +503,6 @@ EXPRE   ::=  pare1 EXPRE:a pare2 {:
                                             nuevo.AddHijos((nodo) a);
                                             nuevo.AddHijos(nuevo2);
 
-
-                                            // traduccion Python
-                                            String codigo = " ( " + a.getValor() + " ) ";
-                                            nuevo.setValor(codigo);
-
-
-
                                             RESULT = nuevo;
                                             :}
 
@@ -650,10 +515,6 @@ EXPRE   ::=  pare1 EXPRE:a pare2 {:
                                             nuevo.AddHijos((nodo) a);
                                             nuevo.AddHijos(nuevo1);
                                             nuevo.AddHijos((nodo) b);
-
-                                            // traduccion Python
-                                            String codigo = a.getValor() + " + " + b.getValor();
-                                            nuevo.setValor(" "+codigo+" ");
 
                                             RESULT = nuevo;
                                             :}
@@ -668,10 +529,6 @@ EXPRE   ::=  pare1 EXPRE:a pare2 {:
                                             nuevo.AddHijos(nuevo1);
                                             nuevo.AddHijos((nodo) b);
 
-                                            // traduccion Python
-                                            String codigo = a.getValor() + " - " + b.getValor();
-                                            nuevo.setValor(" "+codigo+" ");
-
                                             RESULT = nuevo;
                                             :}
  
@@ -685,10 +542,6 @@ EXPRE   ::=  pare1 EXPRE:a pare2 {:
                                             nuevo.AddHijos(nuevo1);
                                             nuevo.AddHijos((nodo) b);
 
-                                            // traduccion Python
-                                            String codigo = a.getValor() + " * " + b.getValor();
-                                            nuevo.setValor(" "+codigo+" ");
-
                                             RESULT = nuevo;
                                             :}
   
@@ -701,10 +554,6 @@ EXPRE   ::=  pare1 EXPRE:a pare2 {:
                                             nuevo.AddHijos((nodo) a);
                                             nuevo.AddHijos(nuevo1);
                                             nuevo.AddHijos((nodo) b);
-
-                                            // traduccion Python
-                                            String codigo = a.getValor() + " / " + b.getValor();
-                                            nuevo.setValor(" "+codigo+" ");
 
                                             RESULT = nuevo;
                                             :}
@@ -725,10 +574,6 @@ EXPRE   ::=  pare1 EXPRE:a pare2 {:
                                             nuevo.AddHijos((nodo) b);
                                             nuevo.AddHijos(nuevo3);
 
-                                            // traduccion Python
-                                            String codigo = a.getValor() + " ** " + b.getValor();
-                                            nuevo.setValor(" "+codigo+" ");
-
                                             RESULT = nuevo;
                                             :} 
             |EXPRE:a mod EXPRE:b{: 
@@ -740,10 +585,6 @@ EXPRE   ::=  pare1 EXPRE:a pare2 {:
                                             nuevo.AddHijos((nodo) a);
                                             nuevo.AddHijos(nuevo1);
                                             nuevo.AddHijos((nodo) b);
-
-                                            // traduccion Python
-                                            String codigo = a.getValor() + " % " + b.getValor();
-                                            nuevo.setValor(" "+codigo+" ");
 
                                             RESULT = nuevo;
                                             :} 
@@ -758,10 +599,6 @@ EXPRE   ::=  pare1 EXPRE:a pare2 {:
                                             nuevo.AddHijos(nuevo1);
                                             nuevo.AddHijos((nodo) b);
 
-                                            // traduccion Python
-                                            String codigo = a.getValor() + " or " + b.getValor();
-                                            nuevo.setValor(" "+codigo+" ");
-
                                             RESULT = nuevo;
                                             :} 
 
@@ -775,10 +612,6 @@ EXPRE   ::=  pare1 EXPRE:a pare2 {:
                                             nuevo.AddHijos(nuevo1);
                                             nuevo.AddHijos((nodo) b);
 
-                                            // traduccion Python
-                                            String codigo = a.getValor() + " and " + b.getValor();
-                                            nuevo.setValor(" "+codigo+" ");
-
                                             RESULT = nuevo;
                                             :} 
 
@@ -790,10 +623,6 @@ EXPRE   ::=  pare1 EXPRE:a pare2 {:
 
                                             nuevo.AddHijos(nuevo1);
                                             nuevo.AddHijos((nodo) a);
-
-                                            // traduccion Python
-                                            String codigo = "not "+ a.getValor();
-                                            nuevo.setValor(" "+codigo+" ");
 
                                             RESULT = nuevo;
                                             :} 
@@ -809,10 +638,6 @@ EXPRE   ::=  pare1 EXPRE:a pare2 {:
                                             nuevo.AddHijos(nuevo1);
                                             nuevo.AddHijos((nodo) b);
 
-                                            // traduccion Python
-                                            String codigo = a.getValor() + " > " + b.getValor();
-                                            nuevo.setValor(" "+codigo+" ");
-
                                             RESULT = nuevo;
                                             :} 
 
@@ -825,10 +650,6 @@ EXPRE   ::=  pare1 EXPRE:a pare2 {:
                                             nuevo.AddHijos((nodo) a);
                                             nuevo.AddHijos(nuevo1);
                                             nuevo.AddHijos((nodo) b);
-
-                                            // traduccion Python
-                                            String codigo = a.getValor() + " < " + b.getValor();
-                                            nuevo.setValor(" "+codigo+" ");
 
                                             RESULT = nuevo;
                                             :} 
@@ -843,10 +664,6 @@ EXPRE   ::=  pare1 EXPRE:a pare2 {:
                                             nuevo.AddHijos(nuevo1);
                                             nuevo.AddHijos((nodo) b);
 
-                                            // traduccion Python
-                                            String codigo = a.getValor() + " >= " + b.getValor();
-                                            nuevo.setValor(" "+codigo+" ");
-
                                             RESULT = nuevo;
                                             :} 
 
@@ -859,10 +676,6 @@ EXPRE   ::=  pare1 EXPRE:a pare2 {:
                                             nuevo.AddHijos((nodo) a);
                                             nuevo.AddHijos(nuevo1);
                                             nuevo.AddHijos((nodo) b);
-
-                                            // traduccion Python
-                                            String codigo = a.getValor() + " <= " + b.getValor();
-                                            nuevo.setValor(" "+codigo+" ");
 
                                             RESULT = nuevo;
                                             :} 
@@ -877,10 +690,6 @@ EXPRE   ::=  pare1 EXPRE:a pare2 {:
                                             nuevo.AddHijos(nuevo1);
                                             nuevo.AddHijos((nodo) b);
 
-                                            // traduccion Python
-                                            String codigo = a.getValor() + " == " + b.getValor();
-                                            nuevo.setValor(" "+codigo+" ");
-
                                             RESULT = nuevo;
                                             :} 
 
@@ -893,11 +702,7 @@ EXPRE   ::=  pare1 EXPRE:a pare2 {:
                                             nuevo.AddHijos((nodo) a);
                                             nuevo.AddHijos(nuevo1);
                                             nuevo.AddHijos((nodo) b);
-                                            
-                                            // traduccion Python
-                                            String codigo = a.getValor() + " != " + b.getValor();
-                                            nuevo.setValor(" "+codigo+" ");
-                                                
+
                                             RESULT = nuevo;
                                             :} 
 
@@ -905,7 +710,6 @@ EXPRE   ::=  pare1 EXPRE:a pare2 {:
                                             parser.contador ++;
                                             nuevo.AddHijos((nodo) a);
 
-                                            nuevo.setValor(a.getValor());
                                             RESULT = nuevo;
                                             :}
 ;
@@ -917,7 +721,6 @@ VALOR ::=   num:a {:            nodo nuevo = new nodo("VALOR", parser.contador);
 
                                 nuevo.AddHijos(nuevo1);
 
-                                nuevo.setValor(a);
                                 RESULT = nuevo;
                                 :} 
 
@@ -928,7 +731,6 @@ VALOR ::=   num:a {:            nodo nuevo = new nodo("VALOR", parser.contador);
 
                                 nuevo.AddHijos(nuevo1);
 
-                                nuevo.setValor(a);
                                 RESULT = nuevo;
                                 :} 
 
@@ -940,7 +742,6 @@ VALOR ::=   num:a {:            nodo nuevo = new nodo("VALOR", parser.contador);
                                 nuevo.AddHijos(nuevo1);
                                 nuevo1.cadena = true;
 
-                                nuevo.setValor(a);
                                 RESULT = nuevo;
                                 :} 
 
@@ -952,7 +753,6 @@ VALOR ::=   num:a {:            nodo nuevo = new nodo("VALOR", parser.contador);
 
                                 nuevo.AddHijos(nuevo1);
 
-                                nuevo.setValor("true");
                                 RESULT = nuevo;
                                 :} 
 
@@ -963,7 +763,6 @@ VALOR ::=   num:a {:            nodo nuevo = new nodo("VALOR", parser.contador);
 
                                 nuevo.AddHijos(nuevo1);
 
-                                nuevo.setValor("false");
                                 RESULT = nuevo;
                                 :} 
 
@@ -971,22 +770,18 @@ VALOR ::=   num:a {:            nodo nuevo = new nodo("VALOR", parser.contador);
                                 parser.contador ++;
 
                                 String cade = a;
-                                String aux = a;
                                 boolean s = cade.contains("$");
-
                                 if(s){
-                                    cade = cade.substring(2, cade.length()-1 );
-                                    cade = Character.toString((char) Integer.parseInt(cade));
-                                    aux = "$("+cade+")";
-                                }else{
-                                    cade = cade.replace("'", "\"");                                  
+                                    cade = cade.replace("{", "(");
+                                    cade = cade.replace("}", ")");
                                 }
 
-                                nodo nuevo1 = new nodo(aux, parser.contador);                             
+
+                                nodo nuevo1 = new nodo(cade, parser.contador);
                                 parser.contador ++;
+
                                 nuevo.AddHijos(nuevo1);
 
-                                nuevo.setValor(cade);
                                 RESULT = nuevo;
                                 :} 
 
@@ -1044,10 +839,6 @@ LISTA_ID ::=  LISTA_ID:a coma id:b {:       nodo nuevo = new nodo("LISTA_ID", pa
                                             nuevo.AddHijos(nuevo1);
                                             nuevo.AddHijos(nuevo2);
 
-                                            // traduccion Python 
-                                            String codigo =  a.getValor()+", " +b;
-                                            nuevo.setValor(codigo);
-
                                             RESULT = nuevo;
 
                                             :} 
@@ -1057,10 +848,6 @@ LISTA_ID ::=  LISTA_ID:a coma id:b {:       nodo nuevo = new nodo("LISTA_ID", pa
                                             nodo nuevo2 = new nodo("id: "+a, parser.contador);
                                             parser.contador ++;
                                             nuevo.AddHijos(nuevo2);
-
-                                            // traduccion Python 
-                                            String codigo =  a ;
-                                            nuevo.setValor(codigo);
 
                                             RESULT = nuevo;
                                             :} 
@@ -1077,10 +864,6 @@ LISTA_PARAMETROS ::= LISTA_PARAMETROS:a coma EXPRE:b TIPO:c {:
                                             nuevo.AddHijos((nodo) b);
                                             nuevo.AddHijos((nodo) c);
 
-                                            // traduccion Python 
-                                            String codigo =  a.getValor()+", " +b.getValor();
-                                            nuevo.setValor(codigo);
-
                                             RESULT = nuevo;
 
                                             :}
@@ -1091,10 +874,6 @@ LISTA_PARAMETROS ::= LISTA_PARAMETROS:a coma EXPRE:b TIPO:c {:
 
                                             nuevo.AddHijos((nodo) a);
                                             nuevo.AddHijos((nodo) b);
-
-                                            // traduccion Python 
-                                            String codigo =  a.getValor() ;
-                                            nuevo.setValor(codigo);
 
                                             RESULT = nuevo;
 
@@ -1112,10 +891,6 @@ LISTA_PARAMETROS ::= LISTA_PARAMETROS:a coma EXPRE:b TIPO:c {:
                                             nuevo.AddHijos((nodo) a);
                                             nuevo.AddHijos(nuevo2);
 
-                                            // traduccion Python 
-                                            String codigo =  "(" + a.getValor() + ")" ;
-                                            nuevo.setValor(codigo);
-
                                             RESULT = nuevo;
                                             :}
 
@@ -1130,10 +905,6 @@ PRINT ::=   pr_imprimir EXPRE:a {:
                                             nuevo.AddHijos(nuevo1);
                                             nuevo.AddHijos((nodo) a);
 
-                                            // traduccion Python print(“Esta es una salida”)
-                                            String codigo = "print(" + a.getValor() +")";
-                                            nuevo.setValor(codigo + "\n");
-
                                             RESULT = nuevo;
                                             :}
         |   pr_imprimir_nl EXPRE:a {: 
@@ -1144,10 +915,6 @@ PRINT ::=   pr_imprimir EXPRE:a {:
 
                                             nuevo.AddHijos(nuevo1);
                                             nuevo.AddHijos((nodo) a);
-
-                                            // traduccion Python print(“Esta es una salida”)
-                                            String codigo = "println(" + a.getValor() +")";
-                                            nuevo.setValor(codigo + "\n");
 
                                             RESULT = nuevo;
                                             :}
@@ -1161,10 +928,6 @@ RETORNO ::= pr_retornar EXPRE:a {:
 
                                             nuevo.AddHijos(nuevo1);
                                             nuevo.AddHijos((nodo) a);
-
-                                            // traduccion Python
-                                            String codigo = "return" + a.getValor();
-                                            nuevo.setValor(codigo + "\n");
 
                                             RESULT = nuevo;
                                             :}
@@ -1187,10 +950,6 @@ EJECUCION ::= pr_ejecutar id:a pare1 pare2 {:
                                             nuevo.AddHijos(nuevo3);
                                             nuevo.AddHijos(nuevo4);
 
-                                            // traduccion Python
-                                            String codigo = a +"()";
-                                            nuevo.setValor(codigo + "\n");
-
                                             RESULT = nuevo;
                                             :}
 
@@ -1206,10 +965,6 @@ EJECUCION ::= pr_ejecutar id:a pare1 pare2 {:
                                             nuevo.AddHijos(nuevo1);
                                             nuevo.AddHijos(nuevo2);
                                             nuevo.AddHijos((nodo) b);
-
-                                            // traduccion Python
-                                            String codigo = a +"( "+ b.getValor() +" )";
-                                            nuevo.setValor(codigo + "\n");
 
                                             RESULT = nuevo;
                                             :}
@@ -1229,12 +984,6 @@ METODO ::=  pr_metodo id:a INSTRUCCIONES:b pr_fin_metodo{:
                                             nuevo.AddHijos(nuevo2);
                                             nuevo.AddHijos((nodo) b);
                                             nuevo.AddHijos(nuevo3);
-
-                                            // traduccion Python
-                                            //Metodo(String id, String instrucciones)
-                                            Metodo n = new Metodo(a, b.getValor());
-                                            String codigo = n.getCodigo();
-                                            nuevo.setValor(codigo + "\n");
 
                                             RESULT = nuevo;
                                             :}
@@ -1258,13 +1007,6 @@ METODO ::=  pr_metodo id:a INSTRUCCIONES:b pr_fin_metodo{:
                                             nuevo.AddHijos((nodo) c);
                                             nuevo.AddHijos(nuevo4);
 
-
-                                            // traduccion Python
-                                            //Metodo(String id,String parametros,String instrucciones)
-                                            Metodo n = new Metodo(a, b.getValor(), c.getValor());
-                                            String codigo = n.getCodigo();
-                                            nuevo.setValor(codigo + "\n");
-
                                             RESULT = nuevo;
                                             :}
 ;
@@ -1284,12 +1026,6 @@ FUNCION ::= pr_funcion id:a TIPO:b INSTRUCCIONES_R:c pr_fin_funcion {:
                                             nuevo.AddHijos((nodo) b);
                                             nuevo.AddHijos((nodo) c);
                                             nuevo.AddHijos(nuevo3);
-
-                                            // traduccion Python
-                                            //Metodo(String id, String instrucciones)
-                                            Metodo n = new Metodo(a, c.getValor());
-                                            String codigo = n.getCodigo();
-                                            nuevo.setValor(codigo + "\n");
 
                                             RESULT = nuevo;
                                             :}
@@ -1314,13 +1050,8 @@ FUNCION ::= pr_funcion id:a TIPO:b INSTRUCCIONES_R:c pr_fin_funcion {:
                                             nuevo.AddHijos((nodo) c);
                                             nuevo.AddHijos((nodo) d);
                                             nuevo.AddHijos(nuevo4);
-
-                                            // traduccion Python
-                                            //Metodo(String id,String parametros,String instrucciones)
-                                            Metodo n = new Metodo(a, c.getValor(), d.getValor());
-                                            String codigo = n.getCodigo();
-                                            nuevo.setValor(codigo + "\n");
        
+
                                             RESULT = nuevo;
                                             :}
 ;
@@ -1340,12 +1071,6 @@ SI ::=        pr_si EXPRE:a pr_entonces INSTRUCCIONES:b pr_fin_si{:
                                             nuevo.AddHijos(nuevo2);
                                             nuevo.AddHijos((nodo) b);
                                             nuevo.AddHijos(nuevo3);
-
-                                            // traduccion Python
-                                            //Si (String expre, String instrucciones)
-                                            Si n = new Si(a.getValor(), b.getValor());
-                                            String codigo = n.getCodigo();
-                                            nuevo.setValor(codigo + "\n");
        
                                             RESULT = nuevo;
                                             :}
@@ -1370,12 +1095,6 @@ SI ::=        pr_si EXPRE:a pr_entonces INSTRUCCIONES:b pr_fin_si{:
                                             nuevo.AddHijos((nodo) c);
                                             nuevo.AddHijos(nuevo4);
        
-                                            // traduccion Python, 
-                                            // Si (boolean de_lo_contra, String expre, String instrucciones, String tentativa)
-                                            Si n = new Si(true, a.getValor(), b.getValor(), c.getValor());
-                                            String codigo = n.getCodigo();
-                                            nuevo.setValor(codigo + "\n");
-
                                             RESULT = nuevo;
                                             :}
 
@@ -1395,13 +1114,6 @@ SI ::=        pr_si EXPRE:a pr_entonces INSTRUCCIONES:b pr_fin_si{:
                                             nuevo.AddHijos((nodo) b);
                                             nuevo.AddHijos((nodo) c);
                                             nuevo.AddHijos(nuevo3);
-
-
-                                            // traduccion Python, 
-                                            // Si (boolean de_lo_contra, String expre, String instrucciones, String tentativa)
-                                            Si n = new Si(false, a.getValor(), b.getValor(), c.getValor());
-                                            String codigo = n.getCodigo();
-                                            nuevo.setValor(codigo + "\n");
        
                                             RESULT = nuevo;
                                             :}
@@ -1426,14 +1138,6 @@ SI ::=        pr_si EXPRE:a pr_entonces INSTRUCCIONES:b pr_fin_si{:
                                             nuevo.AddHijos(nuevo3);
                                             nuevo.AddHijos((nodo) d);
                                             nuevo.AddHijos(nuevo4);
-
-
-                                            // traduccion Python
-                                            //Si (String expre, String instrucciones, String ramificacion, String I_de_lo_contra)
-                                            Si n = new Si(a.getValor(), b.getValor(), c.getValor(), d.getValor());
-                                            String codigo = n.getCodigo();
-                                            nuevo.setValor(codigo + "\n");
-
        
                                             RESULT = nuevo;
                                             :}
@@ -1452,12 +1156,6 @@ RAMIFICACION ::= RAMIFICACION:a pr_o_si EXPRE:b pr_entonces INSTRUCCIONES:c {:
                                             nuevo.AddHijos((nodo) b);
                                             nuevo.AddHijos(nuevo2);
                                             nuevo.AddHijos((nodo) c);
-
-                                            // traduccion Python
-                                            // Ramificacion(String condicion, String instrucciones)
-                                            Ramificacion n = new Ramificacion(b.getValor(), c.getValor());
-                                            String codigo = a.getValor() + n.getCodigo();
-                                            nuevo.setValor(codigo + "\n"); 
        
                                             RESULT = nuevo;
                                             :}
@@ -1475,17 +1173,11 @@ RAMIFICACION ::= RAMIFICACION:a pr_o_si EXPRE:b pr_entonces INSTRUCCIONES:c {:
                                             nuevo.AddHijos(nuevo2);
                                             nuevo.AddHijos((nodo) b);
        
-                                            // traduccion Python
-                                            // Ramificacion(String condicion, String instrucciones)
-                                            Ramificacion n = new Ramificacion(a.getValor(), b.getValor());
-                                            String codigo = n.getCodigo();
-                                            nuevo.setValor(codigo + "\n");       
-
                                             RESULT = nuevo;
                                             :}
 ;
 
-SEGUN ::=   pr_segun EXPRE:a pr_hacer LISTA_SEGUN:b  pr_fin_segun {: 
+SEGUN ::=   pr_segun EXPRE:a pr_hacer LISTA_SEGUN:b pr_fin_segun {: 
                                             nodo nuevo = new nodo("SEGUN", parser.contador);
                                             parser.contador ++;
                                             nodo nuevo1 = new nodo("segun", parser.contador);
@@ -1568,8 +1260,6 @@ LISTA_SEGUN ::= LISTA_SEGUN:a duda1 EXPRE:b duda2 pr_entonces INSTRUCCIONES:c {:
                                             nuevo.AddHijos(nuevo3);
                                             nuevo.AddHijos((nodo) b);
        
-
-
                                             RESULT = nuevo;
                                             :}
 ;
@@ -1597,12 +1287,6 @@ PARA ::=     pr_para EXPRE:a asignacion EXPRE:b pr_hasta EXPRE:c pr_hacer INSTRU
                                             nuevo.AddHijos(nuevo4);
                                             nuevo.AddHijos((nodo) d);
                                             nuevo.AddHijos(nuevo5);
-
-                                            // traduccion Python
-                                            // Para(boolean instru, String variable,String R1, String R2, String tentativa)
-                                            Para n = new Para(true, a.getValor(), b.getValor(), c.getValor(), d.getValor());
-                                            String codigo = n.getCodigo();
-                                            nuevo.setValor(codigo + "\n");
        
                                             RESULT = nuevo;
                                             :}
@@ -1629,12 +1313,6 @@ PARA ::=     pr_para EXPRE:a asignacion EXPRE:b pr_hasta EXPRE:c pr_hacer INSTRU
                                             nuevo.AddHijos((nodo) c);
                                             nuevo.AddHijos(nuevo4);
                                             nuevo.AddHijos(nuevo5);
-
-                                            // traduccion Python
-                                            // Para(String variable,String R1, String R2
-                                            Para n = new Para(a.getValor(), b.getValor(), c.getValor());
-                                            String codigo = n.getCodigo();
-                                            nuevo.setValor(codigo + "\n");
        
                                             RESULT = nuevo;
                                             :}
@@ -1667,12 +1345,6 @@ PARA ::=     pr_para EXPRE:a asignacion EXPRE:b pr_hasta EXPRE:c pr_hacer INSTRU
                                             nuevo.AddHijos(nuevo5);
                                             nuevo.AddHijos((nodo) f);
                                             nuevo.AddHijos(nuevo6);
-
-                                            // traduccion Python
-                                            // Para(String variable,String R1, String R2, String incremento, String instrucciones)
-                                            Para n = new Para(a.getValor(), b.getValor(), c.getValor(), d.getValor(), f.getValor());
-                                            String codigo = n.getCodigo();
-                                            nuevo.setValor(codigo + "\n");
        
                                             RESULT = nuevo;
                                             :}
@@ -1703,13 +1375,7 @@ PARA ::=     pr_para EXPRE:a asignacion EXPRE:b pr_hasta EXPRE:c pr_hacer INSTRU
                                             nuevo.AddHijos((nodo) d);
                                             nuevo.AddHijos(nuevo5);
                                             nuevo.AddHijos(nuevo6);
-
-                                            // traduccion Python
-                                            // Para(boolean instru, String variable,String R1, String R2, String tentativa)
-                                            Para n = new Para(false, a.getValor(), b.getValor(), c.getValor(), d.getValor());
-                                            String codigo = n.getCodigo();
-                                            nuevo.setValor(codigo + "\n");
- 
+       
                                             RESULT = nuevo;
                                             :}
 
@@ -1731,12 +1397,6 @@ MIENTRAS ::= pr_mientras EXPRE:a pr_hacer INSTRUCCIONES:b pr_fin_mientras {:
                                             nuevo.AddHijos((nodo) b);
                                             nuevo.AddHijos(nuevo3);
 
-                                            // traduccion Python
-                                            // Mientras(String condicion, String instrucciones)
-                                            Mientras n = new Mientras(a.getValor(), b.getValor());
-                                            String codigo = n.getCodigo();
-                                            nuevo.setValor(codigo + "\n");
-
                                             RESULT = nuevo;
                                             :}
 
@@ -1755,17 +1415,8 @@ MIENTRAS ::= pr_mientras EXPRE:a pr_hacer INSTRUCCIONES:b pr_fin_mientras {:
                                             nuevo.AddHijos(nuevo2);
                                             nuevo.AddHijos(nuevo3);
 
-                                            // traduccion Python
-                                            // Mientras(String condicion)
-                                            Mientras n = new Mientras(a.getValor());
-                                            String codigo = n.getCodigo();
-                                            nuevo.setValor(codigo + "\n");
-
-
                                             RESULT = nuevo;
                                             :}
-
-
 ;
 
 REPETIR ::=  pr_repetir INSTRUCCIONES:a pr_hasta_que EXPRE:b {: 
@@ -1780,12 +1431,6 @@ REPETIR ::=  pr_repetir INSTRUCCIONES:a pr_hasta_que EXPRE:b {:
                                             nuevo.AddHijos((nodo) a);
                                             nuevo.AddHijos(nuevo2);
                                             nuevo.AddHijos((nodo) b);
-
-                                            // traduccion Python
-                                            // Repetir ( String instrucciones, String condicion)
-                                            Repetir n = new Repetir(a.getValor(), b.getValor());
-                                            String codigo = n.getCodigo();
-                                            nuevo.setValor(codigo + "\n");
 
                                             RESULT = nuevo;
                                             :}
@@ -1802,13 +1447,6 @@ REPETIR ::=  pr_repetir INSTRUCCIONES:a pr_hasta_que EXPRE:b {:
                                             nuevo.AddHijos(nuevo2);
                                             nuevo.AddHijos((nodo) a);
 
-                                            // traduccion Python
-                                            // Repetir (String condicion)
-                                            Repetir n = new Repetir(a.getValor());
-                                            String codigo = n.getCodigo();
-                                            nuevo.setValor(codigo + "\n");
-
                                             RESULT = nuevo;
                                             :}
 ;
-

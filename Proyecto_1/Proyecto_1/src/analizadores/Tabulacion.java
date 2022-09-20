@@ -10,11 +10,9 @@ public class Tabulacion {
     
     public Tabulacion(String contenido){
         
-        String[] cadena = contenido.split("\n");  
-   
-        for (String linea : cadena){          
-            codigo += codigo + "\t" + linea + "\n";     
-        }
+        codigo = contenido.replace("\n", "\n"+" \t");
+        codigo = " \t" + codigo;
+
     }
     
     public String getCodigo(){

@@ -19,7 +19,7 @@ public class Metodo {
     }
     
     public Metodo(String id,String instrucciones){
-        cache = "def " + id  + "():";
+        cache = "def " + id  + "(): \n";
         Tabulacion nueva = new Tabulacion(instrucciones);
         cache += nueva.getCodigo();   
     }

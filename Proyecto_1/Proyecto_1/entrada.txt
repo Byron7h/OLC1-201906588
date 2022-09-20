@@ -1,8 +1,21 @@
 inicio
 
+metodo _potenciaManual_ con_parametros (_base_ Numero, _exponenete_ Numero)
+	ingresar _i_ como Numero con_valor 0;
+	ingresar _acumulado_ como Numero con_valor 0;	
+	imprimir _acumulado_;
+	imprimir_nl " Esta es la potencia Manual";	
+fin_metodo
 
-	para _i_->0 hasta _exponente_-1 hacer
+imprimir _anio1_ ;
+imprimir _anio2_ ;
+imprimir _anio3_ ;
+imprimir _anio4_ ;
+imprimir_nl ".";
 
-	fin_para	
+funcion _potenciaFuncion_ Numero con_parametros (_base_ Numero, _exponente_ Numero) 
+	ingresar _potencia_ como Numero con_valor _base_ potencia [_exponente_];
+	retornar _potencia_;
+fin_funcion
 
 fin
