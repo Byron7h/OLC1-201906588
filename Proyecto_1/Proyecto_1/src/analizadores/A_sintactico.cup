@@ -706,12 +706,23 @@ EXPRE   ::=  pare1 EXPRE:a pare2 {:
                                             RESULT = nuevo;
                                             :} 
 
+
             | VALOR:a {:                    nodo nuevo = new nodo("EXPRE", parser.contador);
                                             parser.contador ++;
                                             nuevo.AddHijos((nodo) a);
 
                                             RESULT = nuevo;
                                             :}
+
+            | EJECUCION:a {:            
+                                            nodo nuevo = new nodo("EJECUCION", parser.contador);
+                                            parser.contador ++;
+
+                                            nuevo.AddHijos((nodo) a);
+                                            RESULT = nuevo;
+                                            
+                                            :}
+
 ;
 
 VALOR ::=   num:a {:            nodo nuevo = new nodo("VALOR", parser.contador);

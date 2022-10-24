@@ -1,0 +1,363 @@
+ 
+%{
+    // acá vamos a importar todas las clases que necesitemos
+    // require es como un import, cada punto antes de la ruta es un directorio hacia atrás del actual, qu sería src
+    
+    //acá usamos el punto antes de la ruta para buicarnos seguún el directorio
+    //const {Declaracion} = require('../instruccion/declaracion');
+    //const {Declaracion_2} = require('../instruccion/declaracion_2');
+    //const {Type} = require('../symbol/type');
+    //const {Arithmetic} = require('../expression/aritmeticas');
+    //const {ArithmeticOption} = require('../expression/aritmeticOption');
+    //const {Literal} = require('../expression/literal');
+    //const {PrintEnv} = require('../instruccion/printEnv');
+    //const {Asignacion} = require('../instruccion/asignacion');
+    //const {Print} = require('../instruccion/print');
+    //const {If} = require('../instruccion/condicionif');
+    //const {For} = require('../instruccion/for');
+    //const {Relacional} = require('../expression/relacional');
+    //const {RelacionalOption} = require('../expression/relacionalOption');
+   // const {Logico} = require('../expression/logico');
+    //const {LogicoOption} = require('../expression/logicoOptions');
+    //const {Casteo} = require('../expression/casteo');
+    //const {Buscador} = require('../expression/buscador');
+    //const {C_if} = require('../objetos/condiciones_if');
+    //const {Statement} = require('../instruccion/Statement');
+
+
+    // const {el nombre con el que lo vamos a usar acá}  = require('ruta');
+
+    //var ides = [];
+    //var condiciones_if = [];
+
+%}
+
+%lex
+%options case-insensitive
+
+//expresiones regulares  
+letter  [a-zA-Z]
+number  [0-9]
+int     {number}+
+double  {int}"."{int}
+id      ({letter}|"_"|{number})+
+bool    "true"|"false" 
+string  "\""  [^\"]* "\""
+options [^\']|"\\"|"\n"|"\t"|"\r"|"\\"|"\\'"
+char  "\'" {options} "\'" 
+  
+
+%%
+
+
+
+
+\s+                                 /* skip whitespace */
+"//".*                              // comentario simple línea
+[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/] // comentario multiple líneas
+
+
+
+{int}                   return 'expreINT' 
+{double}                return 'expreDOUBLE' 
+{bool}                  return 'expreBOOL' 
+{char}                  {yytext = yytext.substr(1,yyleng-2); return 'expreCHAR'}
+{string}                {yytext = yytext.substr(1,yyleng-2); return 'expreSTRING'}
+{id}                    return 'id'
+
+
+// • palabras reservadas 
+"if"                    return 'tif'
+"else"                  return 'telse'
+"elif"                  return 'telif'
+"switch"                return 'tswitch'
+"case"                  return 'tcase'
+"for"                   return 'tfor'
+"do"                    return 'tdo'
+"void"                  return 'tvoid'
+"while"                 return 'twhile'
+"default"               return 'tdefault'
+"until"                 return 'tuntil'
+"break"                 return 'tbreak'
+"continue"              return 'tcontinue'
+"return"                return 'treturn'
+
+"println"               return 'tprintln'
+"print"                 return 'tprint'
+
+"tolower"               return 'ttolower'
+"toupper"               return 'ttoupper'
+"round"                 return 'tround'
+"length"                return 'tlength'
+"typeof"                return 'ttypeof'
+"tostring"              return 'ttostring'
+"tochararray"           return 'ttochararray'
+"push"                  return 'tpush'
+"pop"                   return 'tpop'
+"run"                   return 'trun'
+
+"int"                   return 'tint'
+"double"                return 'tdouble'
+"string"                return 'tstring'
+"boolean"               return 'tbool'
+"char"                  return 'tchar'
+
+
+//"print"                 return 'tprint'
+//"printEnv"              return 'tgprintEnv' // nos va a imprimir la tabla de simbolos
+
+
+
+
+// • simbolos
+">="                   return '>='
+"<="                   return '<='
+">"                    return '>'
+"<"                    return '<'
+"=="                   return '=='
+"!="                   return '!='
+"!"                    return '!'
+"&&"                   return '&&'
+"||"                   return '||'
+
+
+"+"                    return '+'
+"-"                    return '-'
+"++"                   return '++'
+"--"                   return '--'
+"*"                    return '*'
+"/"                    return '/'
+"^"                    return '^'
+"%"                    return '%'
+
+","                    return ','
+";"                    return ';'
+":"                    return ':'
+"="                    return '='
+"("                    return '('
+")"                    return ')'
+"{"                    return '{'
+"}"                    return '}'
+"["                    return '['
+"]"                    return ']'
+"."                    return '.'
+"?"                    return '?'
+
+
+// • nuestro final de doc
+<<EOF>>		            return 'EOF'
+
+.   { 
+        console.log("error lexico")
+             // reporte para el usuario dónde está el error y por qué fue
+    }
+
+/lex
+
+//•precedencia
+%left '||'
+%left '&&'
+%left '!'
+%left '<', '>', '<=', '>=', '==', '!='
+%left '+', '-' //Esto es para la precedencia de operadores, esto evita el shift reduce
+%left '*', '/', '%' // mismo nivel de precedencia, esto está en el enunciado
+%left '^'
+%start Init
+
+%%
+
+//nuestro simbolo inicial
+Init    
+    : Instructions EOF          //{  return $1;  }//intrucciones es un no_terminal, vamos a retornar lo almacenado en instricciones
+;                                               // el return ya es para javascript, lleva un array de clases abstractas
+
+Instructions
+    : Instructions Instruction  //{ $1.push($2); $$ = $1; }//varias o una istruccion // EL.PUSH ES AGREGREGAR A UN ARRAY en JS  
+    | Instruction               //{ $$ = [$1];            }
+;//sabemos que esta va a ser la que se va a hacer primero, por lo que va a retornar al padre
+// a la instruccion 1 le agregamos la instrucción 2, y retornamos la instruccion 2
+// lo que traiga , entre corchetes, UN ARRAY
+
+
+// una instruccion puede ser una declaración, o una asignación o un if o un for etc...
+// modificamos las sentencias para que nos acepte con puntoycoma y sin 
+Instruction
+    : DECLARACION ';'       //{$$ = $1}
+    //| PRINTENVIROMENT       {$$ = $1} // imprime lo que está el la tabla de simbolos
+    //| PRINTENVIROMENT ';'   {$$ = $1}
+    | INDECREMENTO ';'
+    | ASIGNACION ';'        //{$$ = $1}
+    | PRINT                 //{$$ = $1} // para que lo imprima en consola
+    | PRINT ';'             //{$$ = $1}
+    | CONDICIONIF           //{$$ = $1}
+    | CICLOFOR              //{$$ = $1} 
+
+
+
+    
+;
+
+OPTERNARIO
+    : EXPRE '?' EXPRE ':' EXPRE 
+;
+
+
+BLOQUE
+    : '{' Instructions '}'// {$$= new Statement($2, @1.first_line, @1.first_column);}
+;
+
+
+
+CONDICIONIF
+    : 'tif' '(' EXPRE ')' BLOQUE  'telse' BLOQUE /*{
+
+        //agregamos la condición actual al array
+        var con = new C_if($3,$5); //creamos nuestro objeto
+        condiciones_if.push(con); // lo agregamos al array
+        
+        
+        $$= new If(condiciones_if,$7, @1.first_line, @1.first_column);
+        condiciones_if = [];
+        }
+    */
+    
+    
+    | 'tif' '(' EXPRE ')' BLOQUE  // {
+
+        //agregamos la condición actual al array
+        //var con = new C_if($3,$5); //creamos nuestro objeto
+        //condiciones_if.push(con); // lo agregamos al array
+        
+        
+        
+        //$$= new If(condiciones_if,$5, $7, @1.first_line, @1.first_column);}
+    
+                          
+    | 'tif' '(' EXPRE ')' BLOQUE  'telse' CONDICIONIF /*{
+                                                        var con = new C_if($3,$5); //creamos nuestro objeto
+                                                        condiciones_if.push(con); // lo agregamos al array
+                                                        }
+                                                        */
+;
+
+// acá debemos hacer una funcionalidad para el incremento, en lugar de una asignación
+CICLOFOR
+    : 'tfor' '(' DECLARACION ';' EXPRE ';' ASIGNACION ')' BLOQUE  //{$$= new For($3,$5,$8, @1.first_line, @1.first_column);}
+;
+
+
+
+// el $$ es para pasarle info del hijo al padre
+DECLARACION
+    // tipo id = expresion   (nombre, tipo, expresion)
+    //: TIPOS 'id' '=' EXPRE { $$= new Declaracion($2,$1,$4, @1.first_line, @1.first_column)}  
+    // <TIPO> id1, id2, id3, id4 = <EXPRESION>;
+    : TIPOS LISTA_ID '=' EXPRE  /*{ $$= new Declaracion($2,$1,$4, @1.first_line, @1.first_column);                                  
+                                    ides = [];
+                                }*/
+
+    | TIPOS LISTA_ID '=' CASTEO /* { $$= new Declaracion($2,$1,$4, @1.first_line, @1.first_column);                                  
+                                    ides = [];
+                                }*/
+
+    | TIPOS LISTA_ID            /*{ $$= new Declaracion_2($2,$1, @1.first_line, @1.first_column);                                  
+                                    ides = [];
+                                }
+                                */
+;
+
+
+LISTA_ID
+    : LISTA_ID ',' 'id' /*{
+                        ides.push($3);
+                        }*/
+    | 'id' /*{
+        ides.push($1);
+        $$ = ides;
+        //console.log($1);
+        }*/
+;
+
+
+
+/*PRINTENVIROMENT
+    : tgprintEnv '(' ')'  {$$= new PrintEnv(@1.first_line, @1.first_column)}
+;*/
+
+ASIGNACION
+    : 'id' '='  EXPRE   //{$$= new Asignacion($1,$3, @1.first_line, @1.first_column)}
+    | 'id' '='  CASTEO  //{$$= new Asignacion($1,$3, @1.first_line, @1.first_column)}
+    | 'id' '='  OPTERNARIO
+;
+
+PRINT
+    // tprint palabra reservada
+    : 'tprint' '(' EXPRE ')'  //{$$= new Print($3, @1.first_line, @1.first_column)}
+;
+
+
+EXPRE                        // creamos un nodo de tipo aritmetic, que es una clase abstracta, y la retornamos
+                            // izquierda, derecha, tipo(de nuestro enum), fila y columna
+    
+    : EXPRE '++'
+    | EXPRE '--'
+    | '(' EXPRE ')'          //{$$=$2}
+    | EXPRE '+' EXPRE       // {$$=new Arithmetic($1, $3,ArithmeticOption.SUMA ,  @1.first_line, @1.first_column);}
+    | EXPRE '-' EXPRE       // {$$=new Arithmetic($1, $3,ArithmeticOption.RESTA ,  @1.first_line, @1.first_column);}
+    | EXPRE '*' EXPRE        //{$$=new Arithmetic($1, $3,ArithmeticOption.MULTIPLICACION ,  @1.first_line, @1.first_column);}
+    | EXPRE '/' EXPRE        //{$$=new Arithmetic($1, $3,ArithmeticOption.DIV ,  @1.first_line, @1.first_column);}
+    | EXPRE '^' EXPRE        //{$$=new Arithmetic($1, $3,ArithmeticOption.POT ,  @1.first_line, @1.first_column);}
+    | EXPRE '%' EXPRE        //{$$=new Arithmetic($1, $3,ArithmeticOption.MODULO ,  @1.first_line, @1.first_column);}
+    | '-' EXPRE              //{$$=new Arithmetic($2, $2,ArithmeticOption.NEGACION ,  @1.first_line, @1.first_column);}
+
+
+    | EXPRE '<' EXPRE        //{$$=new Relacional($1, $3,RelacionalOption.MENOR , @1.first_line, @1.first_column)}
+    | EXPRE '>' EXPRE        //{$$=new Relacional($1, $3,RelacionalOption.MAYOR , @1.first_line, @1.first_column)}
+    | EXPRE '<=' EXPRE       //{$$=new Relacional($1, $3,RelacionalOption.MENOR_I , @1.first_line, @1.first_column)}
+    | EXPRE '>=' EXPRE       //{$$=new Relacional($1, $3,RelacionalOption.MAYOR_I , @1.first_line, @1.first_column)}
+    | EXPRE '==' EXPRE       //{$$=new Relacional($1, $3,RelacionalOption.IGUAL , @1.first_line, @1.first_column)}
+    | EXPRE '!=' EXPRE       //{$$=new Relacional($1, $3,RelacionalOption.DIFERENTE , @1.first_line, @1.first_column)}
+
+    | EXPRE '&&' EXPRE       //{$$=new Logico($1, $3,LogicoOption.AND , @1.first_line, @1.first_column)}
+    | EXPRE '||' EXPRE       //{$$=new Logico($1, $3,LogicoOption.OR , @1.first_line, @1.first_column)}
+    | '!' EXPRE              //{$$=new Logico($2, $2,LogicoOption.NEG , @1.first_line, @1.first_column)}
+    
+    | 'id'                   //{$$=new Buscador($1, @1.first_line, @1.first_column)}
+
+
+
+    | F                      //{$$= $1;} // como es solo una hoja, se lo retornamos al padre
+;
+
+
+F
+    // creamos la clase abstracta literal y la retornamos
+    // valor, tipo(de nuestro enum), fila, columna
+    //acá irían los demás valores que pueden ser hojas, como Boolean, String, etc
+    // acá tam,bien podría ser un id, haciendo referencia a una variable que esté en la labra de simbolos
+    : expreINT      //{$$= new Literal($1,Type.INT, @1.first_line, @1.first_column);}
+    | expreCADENA   //{$$= new Literal($1,Type.STRING,  @1.first_line, @1.first_column)}
+    | expreBOOL     //{$$= new Literal($1,Type.BOOLEAN, @1.first_line, @1.first_column)}
+    | expreDOUBLE   //{$$= new Literal($1,Type.DOUBLE,  @1.first_line, @1.first_column)}
+    | expreCHAR     //{$$= new Literal($1,Type.CHAR, @1.first_line, @1.first_column)}
+             
+;
+
+CASTEO
+    : '(' TIPOS ')' EXPRE    //{$$=new Casteo($2, $4, @1.first_line, @1.first_column)}
+
+;
+TIPOS
+    : tint      //{$$=Type.INT}
+    | tdouble   //{$$=Type.DOUBLE}
+    | tstring   //{$$=Type.STRING}
+    | tbool     //{$$=Type.BOOLEAN}
+    | tchar     //{$$=Type.CHAR}
+    
+;
+
+
+INDECREMENTO
+    : EXPRE '++'
+    | EXPRE '--'
+;

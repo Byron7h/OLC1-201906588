@@ -440,6 +440,10 @@ EXPRE   ::=  pare1 EXPRE:a pare2 {:
             | VALOR:a {:
                                             RESULT = a;
                                             :}
+
+            | EJECUCION:a {:
+                                            RESULT = a;
+                                            :}
 ;
 
 VALOR ::=   num:a {:

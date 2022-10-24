@@ -13,7 +13,7 @@ public class Metodo {
        
     public Metodo(String id,String parametros,String instrucciones){
         
-        cache = "def " + id  + "( "+ parametros +" ): \n";
+        cache = "def " + id  +  parametros +": \n";
         Tabulacion nueva = new Tabulacion(instrucciones);
         cache += nueva.getCodigo();       
     }

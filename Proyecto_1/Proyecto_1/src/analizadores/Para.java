@@ -15,7 +15,7 @@ public class Para {
     public Para(String variable,String R1, String R2, String incremento, String instrucciones){
         
         Tabulacion tab = new Tabulacion(instrucciones);
-        cache = "for " + variable + " in range( "+ R1 + " , "+ R2 +" , "+ incremento+"):"+
+        cache = "for " + variable + " in range( "+ R1 + " , "+ R2 +" , "+ incremento+"): \n"+
                 tab.getCodigo() +"\n"; 
     }
     
@@ -26,8 +26,8 @@ public class Para {
         // con istruccion, sin incremento
         if (instru){
             
-            Tabulacion tab = new Tabulacion(instrucciones);
-            cache = "for " + variable + " in range( "+ R1 + " , "+ R2 +" , "+ incremento+"):"+
+            Tabulacion tab = new Tabulacion(tentativa);
+            cache = "for " + variable + " in range( "+ R1 + " , "+ R2 +" , "+ incremento+"): \n"+
             tab.getCodigo(); 
             
         // sin istruccion, con incremento    
