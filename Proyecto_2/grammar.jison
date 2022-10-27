@@ -42,9 +42,9 @@ int     {number}+
 double  {int}"."{int}
 id      ({letter}|"_"|{number})+
 bool    "true"|"false" 
-string  "\""  [^\"]* "\""
+string  \"  [^\"]* \" | \“  [^\"]* \”
 options [^\']|"\\"|"\n"|"\t"|"\r"|"\\"|"\\'"
-char  "\'" {options} "\'" 
+char  \' {options} \' 
   
 
 %%
@@ -58,12 +58,6 @@ char  "\'" {options} "\'"
 
 
 
-{int}                   return 'expreINT' 
-{double}                return 'expreDOUBLE' 
-{bool}                  return 'expreBOOL' 
-{char}                  {yytext = yytext.substr(1,yyleng-2); return 'expreCHAR'}
-{string}                {yytext = yytext.substr(1,yyleng-2); return 'expreSTRING'}
-{id}                    return 'id'
 
 
 // • palabras reservadas 
@@ -121,10 +115,10 @@ char  "\'" {options} "\'"
 "||"                   return '||'
 
 
-"+"                    return '+'
-"-"                    return '-'
 "++"                   return '++'
 "--"                   return '--'
+"+"                    return '+'
+"-"                    return '-'
 "*"                    return '*'
 "/"                    return '/'
 "^"                    return '^'
@@ -142,6 +136,14 @@ char  "\'" {options} "\'"
 "]"                    return ']'
 "."                    return '.'
 "?"                    return '?'
+
+
+{id}                    return 'id'
+{int}                   return 'expreINT' 
+{double}                return 'expreDOUBLE' 
+{bool}                  return 'expreBOOL' 
+{char}                  {yytext = yytext.substr(1,yyleng-2); return 'expreCHAR'}
+{string}                {yytext = yytext.substr(1,yyleng-2); return 'expreSTRING'}
 
 
 // • nuestro final de doc
@@ -189,16 +191,17 @@ Instruction
     | ASIGNACION ';'        //{$$ = $1}
     | PRINT                 //{$$ = $1} // para que lo imprima en consola
     | PRINT ';'             //{$$ = $1}
-    | CONDICIONIF           //{$$ = $1}
+    | PRINTLN ';'             //{$$ = $1}
+    | IF           //{$$ = $1}
     | CICLOFOR              //{$$ = $1} 
-
-
+    | SWITCH 
+    | WHILE 
 
     
 ;
 
 OPTERNARIO
-    : EXPRE '?' EXPRE ':' EXPRE 
+    : EXPRE '?' EXPRE ':' EXPRE
 ;
 
 
@@ -206,10 +209,52 @@ BLOQUE
     : '{' Instructions '}'// {$$= new Statement($2, @1.first_line, @1.first_column);}
 ;
 
+IF 
+    : 'tif' '(' EXPRE ')' BLOQUE  
+    | 'tif' '(' EXPRE ')' BLOQUE  COMPLEMENTO_IF
+;
+
+COMPLEMENTO_IF 
+    : ELSE
+    | LISTA_ELIF
+    | LISTA_ELIF ELSE
+;
+
+LISTA_ELIF
+    : 'telif' '(' EXPRE ')' BLOQUE
+    | LISTA_ELIF 'telif' '(' EXPRE ')' BLOQUE
+;
+
+ELSE 
+    :'telif' BLOQUE
+;
 
 
+SWITCH 
+    : 'tswitch' '(' EXPRE ')' '{' COMPLEMENTO_SWITCH '}'
+;
+
+COMPLEMENTO_SWITCH 
+    : LISTA_CASE DEFAULT_CASE
+    | LISTA_CASE
+    | DEFAULT_CASE
+;
+
+LISTA_CASE
+    : 'tcase' EXPRE ':' Instructions 'tbreak' ';'
+    | LISTA_CASE 'tcase' EXPRE ':' Instructions 'tbreak' ';'
+;
+
+DEFAULT_CASE 
+    :'tdefault' ':' Instructions 'tbreak' ';'
+;
+
+WHILE 
+    : 'twhile' '(' EXPRE ')' BLOQUE
+;
+/*
 CONDICIONIF
-    : 'tif' '(' EXPRE ')' BLOQUE  'telse' BLOQUE /*{
+    : 'tif' '(' EXPRE ')' BLOQUE  'telse' BLOQUE {
 
         //agregamos la condición actual al array
         var con = new C_if($3,$5); //creamos nuestro objeto
@@ -219,7 +264,7 @@ CONDICIONIF
         $$= new If(condiciones_if,$7, @1.first_line, @1.first_column);
         condiciones_if = [];
         }
-    */
+    
     
     
     | 'tif' '(' EXPRE ')' BLOQUE  // {
@@ -233,12 +278,14 @@ CONDICIONIF
         //$$= new If(condiciones_if,$5, $7, @1.first_line, @1.first_column);}
     
                           
-    | 'tif' '(' EXPRE ')' BLOQUE  'telse' CONDICIONIF /*{
+    | 'tif' '(' EXPRE ')' BLOQUE  'telse' CONDICIONIF {
                                                         var con = new C_if($3,$5); //creamos nuestro objeto
                                                         condiciones_if.push(con); // lo agregamos al array
                                                         }
-                                                        */
+                                                        
 ;
+*/
+
 
 // acá debemos hacer una funcionalidad para el incremento, en lugar de una asignación
 CICLOFOR
@@ -259,6 +306,7 @@ DECLARACION
     | TIPOS LISTA_ID '=' CASTEO /* { $$= new Declaracion($2,$1,$4, @1.first_line, @1.first_column);                                  
                                     ides = [];
                                 }*/
+    | TIPOS LISTA_ID '=' OPTERNARIO 
 
     | TIPOS LISTA_ID            /*{ $$= new Declaracion_2($2,$1, @1.first_line, @1.first_column);                                  
                                     ides = [];
@@ -296,12 +344,16 @@ PRINT
 ;
 
 
+PRINTLN
+    // tprint palabra reservada
+    : 'tprintln' '(' EXPRE ')'  //{$$= new Print($3, @1.first_line, @1.first_column)}
+;
+
 EXPRE                        // creamos un nodo de tipo aritmetic, que es una clase abstracta, y la retornamos
                             // izquierda, derecha, tipo(de nuestro enum), fila y columna
     
-    : EXPRE '++'
-    | EXPRE '--'
-    | '(' EXPRE ')'          //{$$=$2}
+    : '(' EXPRE ')'          //{$$=$2}
+    | INDECREMENTO
     | EXPRE '+' EXPRE       // {$$=new Arithmetic($1, $3,ArithmeticOption.SUMA ,  @1.first_line, @1.first_column);}
     | EXPRE '-' EXPRE       // {$$=new Arithmetic($1, $3,ArithmeticOption.RESTA ,  @1.first_line, @1.first_column);}
     | EXPRE '*' EXPRE        //{$$=new Arithmetic($1, $3,ArithmeticOption.MULTIPLICACION ,  @1.first_line, @1.first_column);}
@@ -336,7 +388,7 @@ F
     //acá irían los demás valores que pueden ser hojas, como Boolean, String, etc
     // acá tam,bien podría ser un id, haciendo referencia a una variable que esté en la labra de simbolos
     : expreINT      //{$$= new Literal($1,Type.INT, @1.first_line, @1.first_column);}
-    | expreCADENA   //{$$= new Literal($1,Type.STRING,  @1.first_line, @1.first_column)}
+    | expreSTRING   //{$$= new Literal($1,Type.STRING,  @1.first_line, @1.first_column)}
     | expreBOOL     //{$$= new Literal($1,Type.BOOLEAN, @1.first_line, @1.first_column)}
     | expreDOUBLE   //{$$= new Literal($1,Type.DOUBLE,  @1.first_line, @1.first_column)}
     | expreCHAR     //{$$= new Literal($1,Type.CHAR, @1.first_line, @1.first_column)}
@@ -358,6 +410,6 @@ TIPOS
 
 
 INDECREMENTO
-    : EXPRE '++'
-    | EXPRE '--'
+    : 'id' '++'
+    | 'id' '--'
 ;
