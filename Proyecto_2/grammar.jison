@@ -187,7 +187,9 @@ Instructions
 // una instruccion puede ser una declaración, o una asignación o un if o un for etc...
 // modificamos las sentencias para que nos acepte con puntoycoma y sin 
 Instruction
-    : DECLARACION ';'       //{$$ = $1}
+
+    : FUNCION 
+    | DECLARACION ';'       //{$$ = $1}
     //| PRINTENVIROMENT       {$$ = $1} // imprime lo que está el la tabla de simbolos
     //| PRINTENVIROMENT ';'   {$$ = $1}
     | INDECREMENTO ';'
@@ -200,7 +202,7 @@ Instruction
     | WHILE 
     | DO_WHILE ';'
     | DO_UNTIL ';'   
-   // | FUNCION 
+
     //| METODO
     | DECLARACION_VECTOR ';'
     | MODIFICACION_VECTOR ';'
@@ -251,7 +253,6 @@ GLOBALES
 ;
 
 
-
 OPTERNARIO
     : EXPRE '?' EXPRE ':' EXPRE
 ;
@@ -278,7 +279,7 @@ LISTA_ELIF
 ;
 
 ELSE 
-    : 'telse' ACCIONES_IF
+    : 'telse' ACCIONES_
 ;
 
 ACCIONES_
@@ -397,7 +398,6 @@ LISTA_ID
 ;
 
 
-
 /*PRINTENVIROMENT
     : tgprintEnv '(' ')'  {$$= new PrintEnv(@1.first_line, @1.first_column)}
 ;*/
@@ -421,14 +421,12 @@ PRINTLN
 EXPRE                        // creamos un nodo de tipo aritmetic, que es una clase abstracta, y la retornamos
                             // izquierda, derecha, tipo(de nuestro enum), fila y columna
     
-    : '(' EXPRE ')'          //{$$=$2}
-    | INDECREMENTO
+    : '(' EXPRE ')'          {$$=$2}
+    | INDECREMENTO           {$$=$2}
     | EXPRE '+' EXPRE        { 
-                                var nuevo = new Nodo("EXPRE", contador++);
-                                var nuevo1 = new Nodo("+", contador++);
+                                var nuevo = new Nodo("+", contador++);
 
                                 nuevo.addHijos($1);
-                                nuevo.addHijos(nuevo1);
                                 nuevo.addHijos($3);
 
                                 $$ = nuevo; 
@@ -436,11 +434,9 @@ EXPRE                        // creamos un nodo de tipo aritmetic, que es una cl
                             }
 
     | EXPRE '-' EXPRE       { 
-                                var nuevo = new Nodo("EXPRE", contador++);
-                                var nuevo1 = new Nodo("-", contador++);
+                                var nuevo = new Nodo("-", contador++);
 
                                 nuevo.addHijos($1);
-                                nuevo.addHijos(nuevo1);
                                 nuevo.addHijos($3);
 
                                 $$ = nuevo; 
@@ -448,11 +444,9 @@ EXPRE                        // creamos un nodo de tipo aritmetic, que es una cl
                             }
 
     | EXPRE '*' EXPRE       { 
-                                var nuevo = new Nodo("EXPRE", contador++);
-                                var nuevo1 = new Nodo("*", contador++);
+                                var nuevo = new Nodo("*", contador++);
 
                                 nuevo.addHijos($1);
-                                nuevo.addHijos(nuevo1);
                                 nuevo.addHijos($3);
 
                                 $$ = nuevo; 
@@ -460,11 +454,9 @@ EXPRE                        // creamos un nodo de tipo aritmetic, que es una cl
                             }
 
     | EXPRE '/' EXPRE        { 
-                                var nuevo = new Nodo("EXPRE", contador++);
-                                var nuevo1 = new Nodo("/", contador++);
+                                var nuevo = new Nodo("/", contador++);
 
                                 nuevo.addHijos($1);
-                                nuevo.addHijos(nuevo1);
                                 nuevo.addHijos($3);
 
                                 $$ = nuevo; 
@@ -472,11 +464,9 @@ EXPRE                        // creamos un nodo de tipo aritmetic, que es una cl
                             }
        
     | EXPRE '^' EXPRE        { 
-                                var nuevo = new Nodo("EXPRE", contador++);
-                                var nuevo1 = new Nodo("^", contador++);
+                                var nuevo = new Nodo("^", contador++);
 
                                 nuevo.addHijos($1);
-                                nuevo.addHijos(nuevo1);
                                 nuevo.addHijos($3);
 
                                 $$ = nuevo; 
@@ -484,40 +474,113 @@ EXPRE                        // creamos un nodo de tipo aritmetic, que es una cl
                             }
        
     | EXPRE '%' EXPRE        { 
-                                var nuevo = new Nodo("EXPRE", contador++);
-                                var nuevo1 = new Nodo("%", contador++);
+                                var nuevo = new Nodo("%", contador++);
 
                                 nuevo.addHijos($1);
-                                nuevo.addHijos(nuevo1);
                                 nuevo.addHijos($3);
 
                                 $$ = nuevo; 
                                 console.log("SE ENCONTRÓ UN MODULO ");
                             }
        
-    | '-' EXPRE              //{$$=new Arithmetic($2, $2,ArithmeticOption.NEGACION ,  @1.first_line, @1.first_column);}
+    | '-' EXPRE             { 
+                                var nuevo = new Nodo("-" + $2 , contador++);
+                                nuevo.addHijos($2);
+                                $$ = nuevo; 
+                            }
 
 
-    | EXPRE '<' EXPRE        //{$$=new Relacional($1, $3,RelacionalOption.MENOR , @1.first_line, @1.first_column)}
-    | EXPRE '>' EXPRE        //{$$=new Relacional($1, $3,RelacionalOption.MAYOR , @1.first_line, @1.first_column)}
-    | EXPRE '<=' EXPRE       //{$$=new Relacional($1, $3,RelacionalOption.MENOR_I , @1.first_line, @1.first_column)}
-    | EXPRE '>=' EXPRE       //{$$=new Relacional($1, $3,RelacionalOption.MAYOR_I , @1.first_line, @1.first_column)}
-    | EXPRE '==' EXPRE       //{$$=new Relacional($1, $3,RelacionalOption.IGUAL , @1.first_line, @1.first_column)}
-    | EXPRE '!=' EXPRE       //{$$=new Relacional($1, $3,RelacionalOption.DIFERENTE , @1.first_line, @1.first_column)}
+    | EXPRE '<' EXPRE        { 
+                                var nuevo = new Nodo("<", contador++);
 
-    | EXPRE '&&' EXPRE       //{$$=new Logico($1, $3,LogicoOption.AND , @1.first_line, @1.first_column)}
-    | EXPRE '||' EXPRE       //{$$=new Logico($1, $3,LogicoOption.OR , @1.first_line, @1.first_column)}
-    | '!' EXPRE              //{$$=new Logico($2, $2,LogicoOption.NEG , @1.first_line, @1.first_column)}
+                                nuevo.addHijos($1);
+                                nuevo.addHijos($3);
+
+                                $$ = nuevo; 
+                               // console.log("SE ENCONTRÓ UN MODULO ");
+                            }
+    | EXPRE '>' EXPRE        { 
+                                var nuevo = new Nodo(">", contador++);
+
+                                nuevo.addHijos($1);
+                                nuevo.addHijos($3);
+
+                                $$ = nuevo; 
+                                //console.log("SE ENCONTRÓ UN MODULO ");
+                            }
+    | EXPRE '<=' EXPRE       { 
+                                var nuevo = new Nodo("<=", contador++);
+
+                                nuevo.addHijos($1);
+                                nuevo.addHijos($3);
+
+                                $$ = nuevo; 
+                                //console.log("SE ENCONTRÓ UN <= ");
+                            }
+    | EXPRE '>=' EXPRE       { 
+                                var nuevo = new Nodo(">=", contador++);
+
+                                nuevo.addHijos($1);
+                                nuevo.addHijos($3);
+
+                                $$ = nuevo; 
+                                //console.log("SE ENCONTRÓ UN MODULO ");
+                            }
+    | EXPRE '==' EXPRE      { 
+                                var nuevo = new Nodo("==", contador++);
+
+                                nuevo.addHijos($1);
+                                nuevo.addHijos($3);
+
+                                $$ = nuevo; 
+                                //console.log("SE ENCONTRÓ UN MODULO ");
+                            }
+    | EXPRE '!=' EXPRE       { 
+                                var nuevo = new Nodo("!=", contador++);
+
+                                nuevo.addHijos($1);
+                                nuevo.addHijos($3);
+
+                                $$ = nuevo; 
+                                //console.log("SE ENCONTRÓ UN MODULO ");
+                            }
+
+    | EXPRE '&&' EXPRE       { 
+                                var nuevo = new Nodo("&&", contador++);
+
+                                nuevo.addHijos($1);
+                                nuevo.addHijos($3);
+
+                                $$ = nuevo; 
+                                //console.log("SE ENCONTRÓ UN MODULO ");
+                            }
+    | EXPRE '||' EXPRE       { 
+                                var nuevo = new Nodo("||", contador++);
+
+                                nuevo.addHijos($1);
+                                nuevo.addHijos($3);
+
+                                $$ = nuevo; 
+                                //console.log("SE ENCONTRÓ UN MODULO ");
+                            }
+
+
+    | '!' EXPRE              { 
+                                var nuevo = new Nodo("!" + $2 , contador++);
+                                nuevo.addHijos($2);
+                                $$ = nuevo; 
+                            }
     
     | 'id'                   {  console.log("se encontró un id");
                                 $$ = new Nodo("ID", contador++, $1); }
                                 //{$$=new Buscador($1, @1.first_line, @1.first_column)}
- 
+    | LLAMADAS
+
     | ACCESO_VECTOR
 
     | FUNCIONES_NATIVAS
 
-    | F                      {$$ = $1; } // como es solo una hoja, se lo retornamos al padre
+    | F                      {$$ = $1;} // como es solo una hoja, se lo retornamos al padre
 ;
 
 F
@@ -538,16 +601,23 @@ CASTEO
 ;
 
 TIPOS
-    : tint      //{$$=Type.INT}
-    | tdouble   //{$$=Type.DOUBLE}
-    | tstring   //{$$=Type.STRING}
-    | tbool     //{$$=Type.BOOLEAN}
-    | tchar     //{$$=Type.CHAR}    
+    : tint      {   console.log("se encontró un tipo");
+                    $$ = new Nodo("TIPO", contador++, "entero"); }
+    | tdouble   {   console.log("se encontró un tipo");
+                    $$ = new Nodo("TIPO", contador++, "double"); }
+    | tstring   {   console.log("se encontró un tipo");
+                    $$ = new Nodo("TIPO", contador++, "cadena"); }
+    | tbool     {   console.log("se encontró un tipo");
+                    $$ = new Nodo("TIPO", contador++, "boolean"); }
+    | tchar     {   console.log("se encontró un tipo");
+                    $$ = new Nodo("TIPO", contador++, "caracter"); }   
 ;
 
 INDECREMENTO
-    : 'id' '++'
-    | 'id' '--'
+    : 'id' '++' {   console.log("se encontró un incremento");
+                    $$ = new Nodo("INCREMENTO", contador++, $1 + "++"); }
+    | 'id' '--' {   console.log("se encontró un decremento");
+                    $$ = new Nodo("DECREMENTO", contador++, $1 + "--"); }
 ;
 
 FUNCION 
@@ -623,7 +693,7 @@ FUNCIONES_VECTORES
 ;
 
 LLAMADAS 
-    : 'id' '(' LISTA_ID ')'
+    : 'id' '(' LISTA_VALORES_1 ')'
     | 'id' '(' ')'
 ;
 
