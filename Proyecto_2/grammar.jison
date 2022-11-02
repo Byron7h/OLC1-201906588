@@ -24,6 +24,8 @@
     //const {C_if} = require('../objetos/condiciones_if');
     //const {Statement} = require('../instruccion/Statement');
 
+    const {Nodo} = require('./nodo');
+    var contador = 0;
 
     // const {el nombre con el que lo vamos a usar acá}  = require('ruta');
 
@@ -40,7 +42,7 @@ letter  [a-zA-Z]
 number  [0-9]
 int     {number}+
 double  {int}"."{int}
-id      ({letter}|"_"|{number})+
+id      ({letter}|"_")({letter}|"_"|{number})*
 bool    "true"|"false" 
 string  \"  [^\"]* \" | \“  [^\"]* \”
 options [^\']|"\\"|"\n"|"\t"|"\r"|"\\"|"\\'"
@@ -61,40 +63,41 @@ char  \' {options} \'
 
 
 // • palabras reservadas 
-"if"                    return 'tif'
-"else"                  return 'telse'
-"elif"                  return 'telif'
-"switch"                return 'tswitch'
-"case"                  return 'tcase'
-"for"                   return 'tfor'
-"do"                    return 'tdo'
-"void"                  return 'tvoid'
-"while"                 return 'twhile'
-"default"               return 'tdefault'
-"until"                 return 'tuntil'
-"break"                 return 'tbreak'
-"continue"              return 'tcontinue'
-"return"                return 'treturn'
+"if"                    { console.log("Se encontró el token <if> con valor: "+ yytext );  return 'tif'} 
+"else"                  { console.log("Se encontró el token <else> con valor: "+ yytext ); return 'telse'} 
+"elif"                  { console.log("Se encontró el token <elif> con valor: "+ yytext ); return 'telif'} 
+"switch"                { console.log("Se encontró el token <switch> con valor: "+ yytext ); return 'tswitch'} 
+"case"                  { console.log("Se encontró el token <case> con valor: "+ yytext ); return 'tcase'} 
+"for"                   { console.log("Se encontró el token <for> con valor: "+ yytext ); return 'tfor'} 
+"do"                    { console.log("Se encontró el token <do> con valor: "+ yytext ); return 'tdo'} 
+"void"                  { console.log("Se encontró el token <void> con valor: "+ yytext ); return 'tvoid'} 
+"while"                 { console.log("Se encontró el token <while> con valor: "+ yytext ); return 'twhile'} 
+"default"               { console.log("Se encontró el token <default> con valor: "+ yytext ); return 'tdefault'} 
+"until"                 { console.log("Se encontró el token <until> con valor: "+ yytext ); return 'tuntil'} 
+"break"                 { console.log("Se encontró el token <break> con valor: "+ yytext ); return 'tbreak'} 
+"continue"              { console.log("Se encontró el token <continue> con valor: "+ yytext ); return 'tcontinue'} 
+"return"                { console.log("Se encontró el token <return> con valor: "+ yytext ); return 'treturn'} 
 
-"println"               return 'tprintln'
-"print"                 return 'tprint'
+"println"               { console.log("Se encontró el token <println> con valor: "+ yytext ); return 'tprintln'} 
+"print"                 { console.log("Se encontró el token <print> con valor: "+ yytext ); return 'tprint'} 
 
-"tolower"               return 'ttolower'
-"toupper"               return 'ttoupper'
-"round"                 return 'tround'
-"length"                return 'tlength'
-"typeof"                return 'ttypeof'
-"tostring"              return 'ttostring'
-"tochararray"           return 'ttochararray'
-"push"                  return 'tpush'
-"pop"                   return 'tpop'
-"run"                   return 'trun'
+"tolower"               { console.log("Se encontró el token <tolower> con valor: "+ yytext ); return 'ttolower'} 
+"toupper"               { console.log("Se encontró el token <toupper> con valor: "+ yytext ); return 'ttoupper'} 
+"round"                 { console.log("Se encontró el token <round> con valor: "+ yytext ); return 'tround'} 
+"length"                { console.log("Se encontró el token <length> con valor: "+ yytext ); return 'tlength'} 
+"typeof"                { console.log("Se encontró el token <typeof> con valor: "+ yytext ); return 'ttypeof'} 
+"tostring"              { console.log("Se encontró el token <tostring> con valor: "+ yytext ); return 'ttostring'} 
+"tochararray"           { console.log("Se encontró el token <tochar array> con valor: "+ yytext ); return 'ttochararray'} 
+"push"                  { console.log("Se encontró el token <push> con valor: "+ yytext ); return 'tpush'} 
+"pop"                   { console.log("Se encontró el token <pop> con valor: "+ yytext ); return 'tpop'} 
+"run"                   { console.log("Se encontró el token <run> con valor: "+ yytext ); return 'trun'} 
+"new"                   { console.log("Se encontró el token <new> con valor: "+ yytext ); return 'tnew'} 
 
-"int"                   return 'tint'
-"double"                return 'tdouble'
-"string"                return 'tstring'
-"boolean"               return 'tbool'
-"char"                  return 'tchar'
+"int"                   { console.log("Se encontró el token <int> con valor: "+ yytext ); return 'tint'} 
+"double"                { console.log("Se encontró el token <double> con valor: "+ yytext ); return 'tdouble'} 
+"string"                { console.log("Se encontró el token <string> con valor: "+ yytext ); return 'tstring'} 
+"boolean"               { console.log("Se encontró el token <boolean> con valor: "+ yytext ); return 'tbool'} 
+"char"                  { console.log("Se encontró el token <char> con valor: "+ yytext ); return 'tchar'} 
 
 
 //"print"                 return 'tprint'
@@ -104,46 +107,46 @@ char  \' {options} \'
 
 
 // • simbolos
-">="                   return '>='
-"<="                   return '<='
-">"                    return '>'
-"<"                    return '<'
-"=="                   return '=='
-"!="                   return '!='
-"!"                    return '!'
-"&&"                   return '&&'
-"||"                   return '||'
+">="                   { console.log("Se encontró el token >= con valor: "+ yytext ); return '>='} 
+"<="                   { console.log("Se encontró el token <= con valor: "+ yytext ); return '<='}
+">"                    { console.log("Se encontró el token > con valor: "+ yytext ); return '>'}
+"<"                    { console.log("Se encontró el token < con valor: "+ yytext ); return '<'}
+"=="                   { console.log("Se encontró el token <==> con valor: "+ yytext ); return '=='}
+"!="                   { console.log("Se encontró el token <!=> con valor: "+ yytext ); return '!='}
+"!"                    { console.log("Se encontró el token <!> con valor: "+ yytext ); return '!'}
+"&&"                   { console.log("Se encontró el token <&&> con valor: "+ yytext ); return '&&'}
+"||"                   { console.log("Se encontró el token <||> con valor: "+ yytext ); return '||'}
 
 
-"++"                   return '++'
-"--"                   return '--'
-"+"                    return '+'
-"-"                    return '-'
-"*"                    return '*'
-"/"                    return '/'
-"^"                    return '^'
-"%"                    return '%'
+"++"                   { console.log("Se encontró el token <++> con valor: "+ yytext ); return '++'}
+"--"                   { console.log("Se encontró el token <--> con valor: "+ yytext ); return '--'}
+"+"                    { console.log("Se encontró el token <+> con valor: "+ yytext ); return '+'}
+"-"                    { console.log("Se encontró el token <-> con valor: "+ yytext ); return '-'}
+"*"                    { console.log("Se encontró el token <*> con valor: "+ yytext ); return '*'}
+"/"                    { console.log("Se encontró el token </> con valor: "+ yytext ); return '/'}
+"^"                    { console.log("Se encontró el token <^> con valor: "+ yytext ); return '^'}
+"%"                    { console.log("Se encontró el token <%> con valor: "+ yytext ); return '%'}
 
-","                    return ','
-";"                    return ';'
-":"                    return ':'
-"="                    return '='
-"("                    return '('
-")"                    return ')'
-"{"                    return '{'
-"}"                    return '}'
-"["                    return '['
-"]"                    return ']'
-"."                    return '.'
-"?"                    return '?'
+","                    { console.log("Se encontró el token <,> con valor: "+ yytext ); return ','}
+";"                    { console.log("Se encontró el token <;> con valor: "+ yytext ); return ';'}
+":"                    { console.log("Se encontró el token <:> con valor: "+ yytext ); return ':'}
+"="                    { console.log("Se encontró el token <=> con valor: "+ yytext ); return '='}
+"("                    { console.log("Se encontró el token <(> con valor: "+ yytext ); return '('}
+")"                    { console.log("Se encontró el token <)> con valor: "+ yytext ); return ')'}
+"{"                    { console.log("Se encontró el token <{> con valor: "+ yytext ); return '{'}
+"}"                    { console.log("Se encontró el token <}> con valor: "+ yytext ); return '}'}
+"["                    { console.log("Se encontró el token <[]> con valor: "+ yytext ); return '['}
+"]"                    { console.log("Se encontró el token <]> con valor: "+ yytext ); return ']'}
+"."                    { console.log("Se encontró el token <.> con valor: "+ yytext ); return '.'}
+"?"                    { console.log("Se encontró el token <?> con valor: "+ yytext ); return '?'}
 
 
-{id}                    return 'id'
-{int}                   return 'expreINT' 
-{double}                return 'expreDOUBLE' 
-{bool}                  return 'expreBOOL' 
-{char}                  {yytext = yytext.substr(1,yyleng-2); return 'expreCHAR'}
-{string}                {yytext = yytext.substr(1,yyleng-2); return 'expreSTRING'}
+{id}                   { console.log("Se encontró el token <id> con valor: "+ yytext ); return 'id' }
+{double}               { console.log("Se encontró el token <double> con valor: "+ yytext ); return 'expreDOUBLE' }
+{int}                  { console.log("Se encontró el token <int> con valor: "+ yytext ); return 'expreINT' }
+{bool}                 { console.log("Se encontró el token <bool> con valor: "+ yytext ); return 'expreBOOL' }
+{char}                 { yytext = yytext.substr(1,yyleng-2); console.log("Se encontró el token <char> con valor: "+ yytext ); return 'expreCHAR'}
+{string}               { yytext = yytext.substr(1,yyleng-2); console.log("Se encontró el token <string> con valor: "+ yytext ); return 'expreSTRING'}
 
 
 // • nuestro final de doc
@@ -189,16 +192,65 @@ Instruction
     //| PRINTENVIROMENT ';'   {$$ = $1}
     | INDECREMENTO ';'
     | ASIGNACION ';'        //{$$ = $1}
-    | PRINT                 //{$$ = $1} // para que lo imprima en consola
     | PRINT ';'             //{$$ = $1}
     | PRINTLN ';'             //{$$ = $1}
     | IF           //{$$ = $1}
     | CICLOFOR              //{$$ = $1} 
     | SWITCH 
     | WHILE 
-
-    
+    | DO_WHILE ';'
+    | DO_UNTIL ';'   
+   // | FUNCION 
+    //| METODO
+    | DECLARACION_VECTOR ';'
+    | MODIFICACION_VECTOR ';'
+    | FUNCIONES_NATIVAS ';'
+    | LLAMADAS ';' 
+    | FUNCIONES_VECTORES ';'
+    //| RUN ';'
 ;
+
+
+FIJOS     
+    : DECLARACION ';' 
+    | ASIGNACION ';' 
+    | PRINT ';' 
+    | PRINTLN ';'
+    | LLAMADAS ';'
+    | DECLARACION_VECTOR ';'
+    | MODIFICACION_VECTOR ';'
+    | FUNCIONES_VECTORES ';'
+    | FUNCIONES_NATIVAS ';'
+;
+
+CICLOS
+    : IF           
+    | CICLOFOR              
+    | SWITCH  
+    | WHILE 
+    | DO_WHILE ';'
+    | DO_UNTIL ';' 
+;
+
+INSTRUCCIONES_METODO
+    : CICLOS 
+    | RETURN_SOLO
+    | FIJOS
+;
+
+INSTRUCCIONES_FUNCION
+    : CICLOS 
+    | RETURN_VALOR
+    | FIJOS
+;
+
+GLOBALES
+    : CICLOS 
+    | METODO
+    | FUNCION
+;
+
+
 
 OPTERNARIO
     : EXPRE '?' EXPRE ':' EXPRE
@@ -210,24 +262,30 @@ BLOQUE
 ;
 
 IF 
-    : 'tif' '(' EXPRE ')' BLOQUE  
-    | 'tif' '(' EXPRE ')' BLOQUE  COMPLEMENTO_IF
+    : 'tif' '(' EXPRE ')' ACCIONES_  
+    | 'tif' '(' EXPRE ')' ACCIONES_  COMPLEMENTO_IF
 ;
 
 COMPLEMENTO_IF 
-    : ELSE
-    | LISTA_ELIF
-    | LISTA_ELIF ELSE
+    : ELSE {console.log("entro else")}
+    | LISTA_ELIF {console.log("Entro lista elif")}
+    | LISTA_ELIF ELSE {console.log("ENTRO ELIS Y ELSE")}
 ;
 
 LISTA_ELIF
-    : 'telif' '(' EXPRE ')' BLOQUE
-    | LISTA_ELIF 'telif' '(' EXPRE ')' BLOQUE
+    : 'telif' '(' EXPRE ')' ACCIONES_
+    | LISTA_ELIF 'telif' '(' EXPRE ')' ACCIONES_
 ;
 
 ELSE 
-    :'telif' BLOQUE
+    : 'telse' ACCIONES_IF
 ;
+
+ACCIONES_
+    : BLOQUE
+    | '{' '}'
+;   
+
 
 
 SWITCH 
@@ -251,6 +309,14 @@ DEFAULT_CASE
 
 WHILE 
     : 'twhile' '(' EXPRE ')' BLOQUE
+;
+
+DO_WHILE 
+    : 'tdo' BLOQUE 'twhile' (' EXPRE ')' 
+;
+
+DO_UNTIL 
+    : 'tdo' BLOQUE 'tuntil' (' EXPRE ')'
 ;
 /*
 CONDICIONIF
@@ -289,10 +355,14 @@ CONDICIONIF
 
 // acá debemos hacer una funcionalidad para el incremento, en lugar de una asignación
 CICLOFOR
-    : 'tfor' '(' DECLARACION ';' EXPRE ';' ASIGNACION ')' BLOQUE  //{$$= new For($3,$5,$8, @1.first_line, @1.first_column);}
+    : 'tfor' '(' DECLARACION ';' EXPRE ';' ACTUALIZACION_FOR ')' ACCIONES_ //{$$= new For($3,$5,$8, @1.first_line, @1.first_column);}
+    | 'tfor' '(' ASIGNACION ';' EXPRE ';' ACTUALIZACION_FOR ')' ACCIONES_ 
 ;
 
-
+ACTUALIZACION_FOR
+    : INDECREMENTO
+    | ASIGNACION
+;
 
 // el $$ es para pasarle info del hijo al padre
 DECLARACION
@@ -340,13 +410,12 @@ ASIGNACION
 
 PRINT
     // tprint palabra reservada
-    : 'tprint' '(' EXPRE ')'  //{$$= new Print($3, @1.first_line, @1.first_column)}
+    : 'tprint' '(' EXPRE ')' {console.log("PRINT " + $3 );} //{$$= new Print($3, @1.first_line, @1.first_column)}
 ;
-
 
 PRINTLN
     // tprint palabra reservada
-    : 'tprintln' '(' EXPRE ')'  //{$$= new Print($3, @1.first_line, @1.first_column)}
+    : 'tprintln' '(' EXPRE ')'  {console.log("PRINTLN " + $3 );}  //{$$= new Print($3, @1.first_line, @1.first_column)}
 ;
 
 EXPRE                        // creamos un nodo de tipo aritmetic, que es una clase abstracta, y la retornamos
@@ -354,12 +423,78 @@ EXPRE                        // creamos un nodo de tipo aritmetic, que es una cl
     
     : '(' EXPRE ')'          //{$$=$2}
     | INDECREMENTO
-    | EXPRE '+' EXPRE       // {$$=new Arithmetic($1, $3,ArithmeticOption.SUMA ,  @1.first_line, @1.first_column);}
-    | EXPRE '-' EXPRE       // {$$=new Arithmetic($1, $3,ArithmeticOption.RESTA ,  @1.first_line, @1.first_column);}
-    | EXPRE '*' EXPRE        //{$$=new Arithmetic($1, $3,ArithmeticOption.MULTIPLICACION ,  @1.first_line, @1.first_column);}
-    | EXPRE '/' EXPRE        //{$$=new Arithmetic($1, $3,ArithmeticOption.DIV ,  @1.first_line, @1.first_column);}
-    | EXPRE '^' EXPRE        //{$$=new Arithmetic($1, $3,ArithmeticOption.POT ,  @1.first_line, @1.first_column);}
-    | EXPRE '%' EXPRE        //{$$=new Arithmetic($1, $3,ArithmeticOption.MODULO ,  @1.first_line, @1.first_column);}
+    | EXPRE '+' EXPRE        { 
+                                var nuevo = new Nodo("EXPRE", contador++);
+                                var nuevo1 = new Nodo("+", contador++);
+
+                                nuevo.addHijos($1);
+                                nuevo.addHijos(nuevo1);
+                                nuevo.addHijos($3);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UNA SUMA ");
+                            }
+
+    | EXPRE '-' EXPRE       { 
+                                var nuevo = new Nodo("EXPRE", contador++);
+                                var nuevo1 = new Nodo("-", contador++);
+
+                                nuevo.addHijos($1);
+                                nuevo.addHijos(nuevo1);
+                                nuevo.addHijos($3);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UNA RESTA ");
+                            }
+
+    | EXPRE '*' EXPRE       { 
+                                var nuevo = new Nodo("EXPRE", contador++);
+                                var nuevo1 = new Nodo("*", contador++);
+
+                                nuevo.addHijos($1);
+                                nuevo.addHijos(nuevo1);
+                                nuevo.addHijos($3);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UNA MULTIPLICACION ");
+                            }
+
+    | EXPRE '/' EXPRE        { 
+                                var nuevo = new Nodo("EXPRE", contador++);
+                                var nuevo1 = new Nodo("/", contador++);
+
+                                nuevo.addHijos($1);
+                                nuevo.addHijos(nuevo1);
+                                nuevo.addHijos($3);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UNA DIVISION ");
+                            }
+       
+    | EXPRE '^' EXPRE        { 
+                                var nuevo = new Nodo("EXPRE", contador++);
+                                var nuevo1 = new Nodo("^", contador++);
+
+                                nuevo.addHijos($1);
+                                nuevo.addHijos(nuevo1);
+                                nuevo.addHijos($3);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UNA POTENCIA ");
+                            }
+       
+    | EXPRE '%' EXPRE        { 
+                                var nuevo = new Nodo("EXPRE", contador++);
+                                var nuevo1 = new Nodo("%", contador++);
+
+                                nuevo.addHijos($1);
+                                nuevo.addHijos(nuevo1);
+                                nuevo.addHijos($3);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UN MODULO ");
+                            }
+       
     | '-' EXPRE              //{$$=new Arithmetic($2, $2,ArithmeticOption.NEGACION ,  @1.first_line, @1.first_column);}
 
 
@@ -374,42 +509,127 @@ EXPRE                        // creamos un nodo de tipo aritmetic, que es una cl
     | EXPRE '||' EXPRE       //{$$=new Logico($1, $3,LogicoOption.OR , @1.first_line, @1.first_column)}
     | '!' EXPRE              //{$$=new Logico($2, $2,LogicoOption.NEG , @1.first_line, @1.first_column)}
     
-    | 'id'                   //{$$=new Buscador($1, @1.first_line, @1.first_column)}
+    | 'id'                   {  console.log("se encontró un id");
+                                $$ = new Nodo("ID", contador++, $1); }
+                                //{$$=new Buscador($1, @1.first_line, @1.first_column)}
+ 
+    | ACCESO_VECTOR
 
+    | FUNCIONES_NATIVAS
 
-
-    | F                      //{$$= $1;} // como es solo una hoja, se lo retornamos al padre
+    | F                      {$$ = $1; } // como es solo una hoja, se lo retornamos al padre
 ;
-
 
 F
     // creamos la clase abstracta literal y la retornamos
     // valor, tipo(de nuestro enum), fila, columna
     //acá irían los demás valores que pueden ser hojas, como Boolean, String, etc
     // acá tam,bien podría ser un id, haciendo referencia a una variable que esté en la labra de simbolos
-    : expreINT      //{$$= new Literal($1,Type.INT, @1.first_line, @1.first_column);}
-    | expreSTRING   //{$$= new Literal($1,Type.STRING,  @1.first_line, @1.first_column)}
-    | expreBOOL     //{$$= new Literal($1,Type.BOOLEAN, @1.first_line, @1.first_column)}
-    | expreDOUBLE   //{$$= new Literal($1,Type.DOUBLE,  @1.first_line, @1.first_column)}
-    | expreCHAR     //{$$= new Literal($1,Type.CHAR, @1.first_line, @1.first_column)}
+    : expreINT       { $$ = new Nodo("INT", contador ++, $1); console.log("SE ENCONTRÓ UN INT "); }
+    | expreSTRING    { $$ = new Nodo("CADENA", contador ++, $1); console.log("SE ENCONTRÓ UNA CADENA"); }
+    | expreBOOL      { $$ = new Nodo("BOOLEAN", contador ++, $1); console.log("SE ENCONTRÓ UN BOOLEAN "); }
+    | expreDOUBLE    { $$ = new Nodo("DOUBLE", contador ++, $1); console.log("SE ENCONTRÓ UN DOUBLE "); }
+    | expreCHAR      { $$ = new Nodo("CHAR", contador ++, $1); console.log("SE ENCONTRÓ UN CHAR "); }
              
 ;
 
 CASTEO
     : '(' TIPOS ')' EXPRE    //{$$=new Casteo($2, $4, @1.first_line, @1.first_column)}
-
 ;
+
 TIPOS
     : tint      //{$$=Type.INT}
     | tdouble   //{$$=Type.DOUBLE}
     | tstring   //{$$=Type.STRING}
     | tbool     //{$$=Type.BOOLEAN}
-    | tchar     //{$$=Type.CHAR}
-    
+    | tchar     //{$$=Type.CHAR}    
 ;
-
 
 INDECREMENTO
     : 'id' '++'
     | 'id' '--'
 ;
+
+FUNCION 
+    : 'id' '(' LISTA_PARAMETROS ')' ':' TIPOS ACCIONES_
+    | 'id' '(' ')' ':' TIPOS ACCIONES_
+;
+
+METODO 
+    : 'id' '(' LISTA_PARAMETROS ')' ':' 'tvoid' ACCIONES_
+    | 'id' '('LISTA_PARAMETROS ')' ':' ACCIONES_
+    | 'id' '(' ')' ':' 'tvoid' ACCIONES_
+    | 'id' '(' ')' ':'  ACCIONES_
+;
+
+LISTA_PARAMETROS
+    : LISTA_PARAMETROS ',' TIPOS EXPRE
+    | TIPOS EXPRE
+;
+ 
+RETURN_VALOR
+    : 'treturn' EXPRE ';'
+;
+
+RETURN_SOLO
+    : 'treturn' ';'
+;
+
+SENTENCIAS_TRANSFERENCIA
+    : 'tbreak'
+    | 'tcontinue'
+;
+
+DECLARACION_VECTOR
+    : TIPOS '['']' 'id' '=' 'tnew' TIPOS '[' EXPRE ']'
+    | TIPOS '['']' '['']' 'id' '=' 'tnew' TIPOS '[' EXPRE ']' '[' EXPRE ']'
+    | TIPOS '['']' 'id' '=' '{' LISTA_VALORES_1 '}'
+    | TIPOS '['']' '['']' 'id' '=' '{' LISTA_VALORES_2 '}'
+;
+
+LISTA_VALORES_1
+    : LISTA_VALORES_1 ',' EXPRE
+    | EXPRE     
+;
+
+LISTA_VALORES_2
+    : LISTA_VALORES_2 ',' '{' LISTA_VALORES_1 '}'
+    | '{' LISTA_VALORES_1 '}'  
+;
+
+ACCESO_VECTOR
+    : 'id' '[' EXPRE ']'
+    | 'id' '[' EXPRE ']' '[' EXPRE ']' 
+;
+
+MODIFICACION_VECTOR
+    : 'id' '[' EXPRE ']' '=' EXPRE 
+    | 'id' '[' EXPRE ']' '[' EXPRE ']' '=' EXPRE 
+;
+
+FUNCIONES_NATIVAS
+    : 'ttolower' '(' EXPRE ')'  
+    | 'ttoupper' '(' EXPRE ')'
+    | 'tround' '(' EXPRE ')' 
+    | 'tlength' '(' EXPRE ')'
+    | 'ttypeof' '(' EXPRE ')'
+    | 'ttostring' '(' EXPRE ')'
+    | 'ttochararray' '(' EXPRE ')'
+;
+
+FUNCIONES_VECTORES
+    : 'id' '.' 'tpush' '(' EXPRE ')'  
+    | 'id' '.' 'tpop' '(' ')'   
+;
+
+LLAMADAS 
+    : 'id' '(' LISTA_ID ')'
+    | 'id' '(' ')'
+;
+
+
+RUN 
+    : 'trun' 'id' '(' ')' 
+    | 'trun' 'id' '(' LISTA_VALORES_1 ')' 
+;
+

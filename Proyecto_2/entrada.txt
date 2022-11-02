@@ -1,15 +1,4 @@
-while (x<100){
-if (x > 50)
-{
-Print(“Mayor que 50”);
-x++;
-//Más sentencias
-}
-else
-{
-Print(“Menor que 100”);
-//Más sentencias
-} 
-x++;
-//Más sentencias
-}
+
+int edad = 8 + 688;
+
+
