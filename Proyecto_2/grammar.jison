@@ -252,9 +252,18 @@ GLOBALES
     | FUNCION
 ;
 
-
+// 
 OPTERNARIO
-    : EXPRE '?' EXPRE ':' EXPRE
+    : EXPRE '?' EXPRE ':' EXPRE { 
+                                var nuevo = new Nodo("OP_TERNARIO", contador++);
+
+                                nuevo.addHijos($1);
+                                nuevo.addHijos($3);
+                                nuevo.addHijos($5);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UN OPTERNARIO ");
+                            }
 ;
 
 
@@ -287,8 +296,6 @@ ACCIONES_
     | '{' '}'
 ;   
 
-
-
 SWITCH 
     : 'tswitch' '(' EXPRE ')' '{' COMPLEMENTO_SWITCH '}'
 ;
@@ -308,51 +315,45 @@ DEFAULT_CASE
     :'tdefault' ':' Instructions 'tbreak' ';'
 ;
 
+//
 WHILE 
-    : 'twhile' '(' EXPRE ')' BLOQUE
-;
+    : 'twhile' '(' EXPRE ')' BLOQUE { 
+                                var nuevo = new Nodo("WHILE", contador++);
 
+                                nuevo.addHijos($3);
+                                nuevo.addHijos($5);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UN DO WHILE ");
+                            }
+;
+;
+//
 DO_WHILE 
-    : 'tdo' BLOQUE 'twhile' (' EXPRE ')' 
-;
+    : 'tdo' BLOQUE 'twhile' '(' EXPRE ')'
+                            { 
+                                var nuevo = new Nodo("DO WHILE", contador++);
 
+                                nuevo.addHijos($2);
+                                nuevo.addHijos($5);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UN DO WHILE ");
+                            }
+;
+//
 DO_UNTIL 
-    : 'tdo' BLOQUE 'tuntil' (' EXPRE ')'
+    : 'tdo' BLOQUE 'tuntil' '(' EXPRE ')' 
+                            { 
+                                var nuevo = new Nodo("DO UNTIL", contador++);
+
+                                nuevo.addHijos($2);
+                                nuevo.addHijos($5);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UN DOUNTIL ");
+                            }
 ;
-/*
-CONDICIONIF
-    : 'tif' '(' EXPRE ')' BLOQUE  'telse' BLOQUE {
-
-        //agregamos la condición actual al array
-        var con = new C_if($3,$5); //creamos nuestro objeto
-        condiciones_if.push(con); // lo agregamos al array
-        
-        
-        $$= new If(condiciones_if,$7, @1.first_line, @1.first_column);
-        condiciones_if = [];
-        }
-    
-    
-    
-    | 'tif' '(' EXPRE ')' BLOQUE  // {
-
-        //agregamos la condición actual al array
-        //var con = new C_if($3,$5); //creamos nuestro objeto
-        //condiciones_if.push(con); // lo agregamos al array
-        
-        
-        
-        //$$= new If(condiciones_if,$5, $7, @1.first_line, @1.first_column);}
-    
-                          
-    | 'tif' '(' EXPRE ')' BLOQUE  'telse' CONDICIONIF {
-                                                        var con = new C_if($3,$5); //creamos nuestro objeto
-                                                        condiciones_if.push(con); // lo agregamos al array
-                                                        }
-                                                        
-;
-*/
-
 
 // acá debemos hacer una funcionalidad para el incremento, en lugar de una asignación
 CICLOFOR
@@ -365,64 +366,140 @@ ACTUALIZACION_FOR
     | ASIGNACION
 ;
 
-// el $$ es para pasarle info del hijo al padre
+//
 DECLARACION
-    // tipo id = expresion   (nombre, tipo, expresion)
-    //: TIPOS 'id' '=' EXPRE { $$= new Declaracion($2,$1,$4, @1.first_line, @1.first_column)}  
-    // <TIPO> id1, id2, id3, id4 = <EXPRESION>;
-    : TIPOS LISTA_ID '=' EXPRE  /*{ $$= new Declaracion($2,$1,$4, @1.first_line, @1.first_column);                                  
-                                    ides = [];
-                                }*/
 
-    | TIPOS LISTA_ID '=' CASTEO /* { $$= new Declaracion($2,$1,$4, @1.first_line, @1.first_column);                                  
-                                    ides = [];
-                                }*/
-    | TIPOS LISTA_ID '=' OPTERNARIO 
+    : TIPOS LISTA_ID '=' EXPRE  { 
+                                var nuevo = new Nodo("DECLARACION", contador++);
 
-    | TIPOS LISTA_ID            /*{ $$= new Declaracion_2($2,$1, @1.first_line, @1.first_column);                                  
-                                    ides = [];
-                                }
-                                */
+                                nuevo.addHijos($1);
+                                nuevo.addHijos($2);
+                                nuevo.addHijos($4);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UNA DECLARACION ");
+                            }
+
+    | TIPOS LISTA_ID '=' CASTEO { 
+                                var nuevo = new Nodo("DECLARACION", contador++);
+
+                                nuevo.addHijos($1);
+                                nuevo.addHijos($2);
+                                nuevo.addHijos($4);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UNA DECLARACION ");
+                            }
+
+    | TIPOS LISTA_ID '=' OPTERNARIO { 
+                                var nuevo = new Nodo("DECLARACION", contador++);
+
+                                nuevo.addHijos($1);
+                                nuevo.addHijos($2);
+                                nuevo.addHijos($4);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UNA DECLARACION ");
+                            }
+
+    | TIPOS LISTA_ID        { 
+                                var nuevo = new Nodo("DECLARACION", contador++);
+
+                                nuevo.addHijos($1);
+                                nuevo.addHijos($2);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UNA DECLARACION ");
+                            }
 ;
-
-
+//
 LISTA_ID
-    : LISTA_ID ',' 'id' /*{
-                        ides.push($3);
-                        }*/
-    | 'id' /*{
-        ides.push($1);
-        $$ = ides;
-        //console.log($1);
-        }*/
+    : LISTA_ID ',' 'id' { 
+                                var nuevo = new Nodo("LISTA ID", contador++);
+                                var nuevo1 = new Nodo("ID", contador++, $3);
+                                nuevo.addHijos($1);
+                                nuevo.addHijos(nuevo1);
+
+                                $$ = nuevo;
+                                console.log("se encontró un id");
+                         }
+
+    | 'id'              {  
+                                $$ = new Nodo("ID", contador++, $1);
+                                console.log("se encontró un id");
+                        }
+
+    
 ;
 
-
-/*PRINTENVIROMENT
-    : tgprintEnv '(' ')'  {$$= new PrintEnv(@1.first_line, @1.first_column)}
-;*/
-
+//
 ASIGNACION
-    : 'id' '='  EXPRE   //{$$= new Asignacion($1,$3, @1.first_line, @1.first_column)}
-    | 'id' '='  CASTEO  //{$$= new Asignacion($1,$3, @1.first_line, @1.first_column)}
-    | 'id' '='  OPTERNARIO
-;
+    : 'id' '='  EXPRE   { 
+                                var nuevo = new Nodo("ASIGNACION", contador++);
+                                var nuevo1 = new Nodo("ID", contador++, $1);
 
+                                nuevo.addHijos(nuevo1);
+                                nuevo.addHijos($3);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UNA ASIGNACION ");
+                            }
+    | 'id' '='  CASTEO  { 
+                                var nuevo = new Nodo("ASIGNACION", contador++);
+                                var nuevo1 = new Nodo("ID", contador++, $1);
+
+                                nuevo.addHijos(nuevo1);
+                                nuevo.addHijos($3);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UNA ASIGNACION ");
+                            }
+
+    | 'id' '='  OPTERNARIO { 
+                                var nuevo = new Nodo("ASIGNACION", contador++);
+                                var nuevo1 = new Nodo("ID", contador++, $1);
+
+                                nuevo.addHijos(nuevo1);
+                                nuevo.addHijos($3);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UNA ASIGNACION ");
+                            }
+;
+//
 PRINT
-    // tprint palabra reservada
-    : 'tprint' '(' EXPRE ')' {console.log("PRINT " + $3 );} //{$$= new Print($3, @1.first_line, @1.first_column)}
-;
+    : 'tprint' '(' EXPRE ')' { 
+                                var nuevo = new Nodo("PRINT", contador++);
 
+                                var nuevo1 = new Nodo("print", contador++);
+                                nuevo.addHijos(nuevo1);
+                                nuevo.addHijos($3);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UN PRINT ");
+                            } 
+;
+//
 PRINTLN
     // tprint palabra reservada
-    : 'tprintln' '(' EXPRE ')'  {console.log("PRINTLN " + $3 );}  //{$$= new Print($3, @1.first_line, @1.first_column)}
+    : 'tprintln' '(' EXPRE ')'  { 
+                                var nuevo = new Nodo("PRINT", contador++);
+
+
+                                var nuevo1 = new Nodo("println", contador++);
+                                nuevo.addHijos(nuevo1);
+                                nuevo.addHijos($3);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UN PRINTLN ");
+                            } 
 ;
 
 EXPRE                        // creamos un nodo de tipo aritmetic, que es una clase abstracta, y la retornamos
                             // izquierda, derecha, tipo(de nuestro enum), fila y columna
     
     : '(' EXPRE ')'          {$$=$2}
-    | INDECREMENTO           {$$=$2}
+    | INDECREMENTO           {$$=$1}
     | EXPRE '+' EXPRE        { 
                                 var nuevo = new Nodo("+", contador++);
 
@@ -573,16 +650,13 @@ EXPRE                        // creamos un nodo de tipo aritmetic, que es una cl
     
     | 'id'                   {  console.log("se encontró un id");
                                 $$ = new Nodo("ID", contador++, $1); }
-                                //{$$=new Buscador($1, @1.first_line, @1.first_column)}
-    | LLAMADAS
 
-    | ACCESO_VECTOR
-
-    | FUNCIONES_NATIVAS
-
+    | LLAMADAS              {$$ = $1;}
+    | ACCESO_VECTOR         {$$ = $1;}
+    | FUNCIONES_NATIVAS      {$$ = $1;}
     | F                      {$$ = $1;} // como es solo una hoja, se lo retornamos al padre
 ;
-
+//
 F
     // creamos la clase abstracta literal y la retornamos
     // valor, tipo(de nuestro enum), fila, columna
@@ -595,11 +669,19 @@ F
     | expreCHAR      { $$ = new Nodo("CHAR", contador ++, $1); console.log("SE ENCONTRÓ UN CHAR "); }
              
 ;
-
+//
 CASTEO
-    : '(' TIPOS ')' EXPRE    //{$$=new Casteo($2, $4, @1.first_line, @1.first_column)}
-;
+    : '(' TIPOS ')' EXPRE    { 
+                                var nuevo = new Nodo("CASTEO", contador++);
 
+                                nuevo.addHijos($2);
+                                nuevo.addHijos($4);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UN CASTEO ");
+                            }
+;
+//
 TIPOS
     : tint      {   console.log("se encontró un tipo");
                     $$ = new Nodo("TIPO", contador++, "entero"); }
@@ -612,7 +694,7 @@ TIPOS
     | tchar     {   console.log("se encontró un tipo");
                     $$ = new Nodo("TIPO", contador++, "caracter"); }   
 ;
-
+//
 INDECREMENTO
     : 'id' '++' {   console.log("se encontró un incremento");
                     $$ = new Nodo("INCREMENTO", contador++, $1 + "++"); }
@@ -631,72 +713,294 @@ METODO
     | 'id' '(' ')' ':' 'tvoid' ACCIONES_
     | 'id' '(' ')' ':'  ACCIONES_
 ;
-
+//
 LISTA_PARAMETROS
-    : LISTA_PARAMETROS ',' TIPOS EXPRE
-    | TIPOS EXPRE
+    : LISTA_PARAMETROS ',' TIPOS EXPRE { 
+                                var nuevo = new Nodo("LISTA_PARAMETROS", contador++);
+                                nuevo.addHijos($1);
+                                nuevo.addHijos($3);
+                                nuevo.addHijos($4);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UNA LISTA DE VALORES ");
+                            }
+    | TIPOS EXPRE           { 
+                                var nuevo = new Nodo("LISTA_PARAMETROS", contador++);
+                                nuevo.addHijos($1);
+                                nuevo.addHijos($2);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UNA LISTA_PARAMETROS");
+                            }
 ;
- 
+// 
 RETURN_VALOR
-    : 'treturn' EXPRE ';'
+    : 'treturn' EXPRE ';'   { 
+                                var nuevo = new Nodo("RETURN", contador++);
+                                var nuevo1 = new Nodo("return", contador++);
+                                nuevo.addHijos(nuevo1);
+                                nuevo.addHijos($2);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UN RETURN VALOR ");
+                            }
 ;
 
+//
 RETURN_SOLO
-    : 'treturn' ';'
+    : 'treturn' ';'         {   $$ = new Nodo("RETURN", contador++); 
+                                console.log("SE ENCONTRÓ UN RETURN ");                            }
 ;
 
+//
 SENTENCIAS_TRANSFERENCIA
-    : 'tbreak'
-    | 'tcontinue'
+    : 'tbreak' {
+                                $$ = new Nodo("BREAK", contador++); 
+                                console.log("SE ENCONTRÓ UN BREAK ");
+                            }
+    | 'tcontinue'{
+                                $$ = new Nodo("CONTINUE", contador++); 
+                                console.log("SE ENCONTRÓ UN CONTINUE ");
+                            }
 ;
-
+//
 DECLARACION_VECTOR
-    : TIPOS '['']' 'id' '=' 'tnew' TIPOS '[' EXPRE ']'
-    | TIPOS '['']' '['']' 'id' '=' 'tnew' TIPOS '[' EXPRE ']' '[' EXPRE ']'
-    | TIPOS '['']' 'id' '=' '{' LISTA_VALORES_1 '}'
-    | TIPOS '['']' '['']' 'id' '=' '{' LISTA_VALORES_2 '}'
-;
+    : TIPOS '['']' 'id' '=' 'tnew' TIPOS '[' EXPRE ']'  { 
+                                var nuevo = new Nodo("DECLARACION VECTOR", contador++);
+                                var nuevo1 = new Nodo("ID", contador++, $4);
+                                nuevo.addHijos($1);
+                                nuevo.addHijos(nuevo1);
+                                nuevo.addHijos($7);
+                                nuevo.addHijos($9);
 
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UNA DECLARACION VECTOR ");
+                            }
+
+    | TIPOS '['']' '['']' 'id' '=' 'tnew' TIPOS '[' EXPRE ']' '[' EXPRE ']'{ 
+                                var nuevo = new Nodo("DECLARACION VECTOR", contador++);
+                                var nuevo1 = new Nodo("ID", contador++, $6);
+                                nuevo.addHijos($1);
+                                nuevo.addHijos(nuevo1);
+                                nuevo.addHijos($9);
+                                nuevo.addHijos($11);
+                                nuevo.addHijos($14);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UNA DECLARACION VECTOR ");
+                            }
+
+    | TIPOS '['']' 'id' '=' '{' LISTA_VALORES_1 '}'{ 
+                                var nuevo = new Nodo("DECLARACION VECTOR", contador++);
+                                var nuevo1 = new Nodo("ID", contador++, $4);
+                                nuevo.addHijos($1);
+                                nuevo.addHijos(nuevo1);
+                                nuevo.addHijos($7);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UNA DECLARACION VECTOR ");
+                            }
+
+    | TIPOS '['']' '['']' 'id' '=' '{' LISTA_VALORES_2 '}'{ 
+
+                                var nuevo = new Nodo("DECLARACION VECTOR", contador++);
+                                var nuevo1 = new Nodo("ID", contador++, $6);
+
+                                nuevo.addHijos($1);
+                                nuevo.addHijos(nuevo1);
+                                nuevo.addHijos($9);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UNA DECLARACION VECTOR ");
+                            }
+;
+//
 LISTA_VALORES_1
-    : LISTA_VALORES_1 ',' EXPRE
-    | EXPRE     
-;
+    : LISTA_VALORES_1 ',' EXPRE { 
+                                var nuevo = new Nodo("LISTA_VALORES_1", contador++);
+                                nuevo.addHijos($1);
+                                nuevo.addHijos($3);
 
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UNA LISTA DE VALORES ");
+                            }
+
+    | EXPRE  {$$=$1}
+;
+//
 LISTA_VALORES_2
-    : LISTA_VALORES_2 ',' '{' LISTA_VALORES_1 '}'
-    | '{' LISTA_VALORES_1 '}'  
-;
+    : LISTA_VALORES_2 ',' '{' LISTA_VALORES_1 '}'{ 
+                                var nuevo = new Nodo("LISTA_VALORES_2", contador++);
+                                nuevo.addHijos($1);
+                                nuevo.addHijos($4);
 
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UNA LISTA DE VALORES2 ");
+                            }
+    | '{' LISTA_VALORES_1 '}' {$$=$1} 
+;
+//
 ACCESO_VECTOR
-    : 'id' '[' EXPRE ']'
-    | 'id' '[' EXPRE ']' '[' EXPRE ']' 
-;
+    : 'id' '[' EXPRE ']' {                             
+                                var nuevo = new Nodo("ACCESO_VECTOR", contador++);
+                                
+                                var nuevo1 = new Nodo("ID", contador++,$1);
+                                nuevo.addHijos(nuevo1);
+                                nuevo.addHijos($3);
 
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UN ACCESO A VECTOR ");
+                            }
+
+    | 'id' '[' EXPRE ']' '[' EXPRE ']' {                             
+                                var nuevo = new Nodo("ACCESO_VECTOR", contador++);
+                                
+                                var nuevo1 = new Nodo("ID", contador++,$1);
+                                nuevo.addHijos(nuevo1);
+                                nuevo.addHijos($3);
+                                nuevo.addHijos($6);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UN ACCESO A VECTOR ");
+                            }
+;
+//
 MODIFICACION_VECTOR
-    : 'id' '[' EXPRE ']' '=' EXPRE 
+    : 'id' '[' EXPRE ']' '=' EXPRE { 
+                                var nuevo = new Nodo("MODIFICACION VECTOR", contador++);
+                                var nuevo1 = new Nodo("ID", contador++, $1);
+
+                                nuevo.addHijos(nuevo1);
+                                nuevo.addHijos($3);
+                                nuevo.addHijos($6);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UNA MODIFICACION VECTOR ");
+                                }   
     | 'id' '[' EXPRE ']' '[' EXPRE ']' '=' EXPRE 
-;
+    
+                                { 
+                                var nuevo = new Nodo("MODIFICACION VECTOR", contador++);
+                                var nuevo1 = new Nodo("ID", contador++, $1);
 
+                                nuevo.addHijos(nuevo1);
+                                nuevo.addHijos($3);
+                                nuevo.addHijos($6);
+                                nuevo.addHijos($9);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UNA MODIFICACION VECTOR ");
+                                } 
+;
+//
 FUNCIONES_NATIVAS
-    : 'ttolower' '(' EXPRE ')'  
-    | 'ttoupper' '(' EXPRE ')'
-    | 'tround' '(' EXPRE ')' 
-    | 'tlength' '(' EXPRE ')'
-    | 'ttypeof' '(' EXPRE ')'
-    | 'ttostring' '(' EXPRE ')'
-    | 'ttochararray' '(' EXPRE ')'
-;
+    : 'ttolower' '(' EXPRE ')' { 
+                                var nuevo = new Nodo("FUNCION NATIVA", contador++);
+                                var nuevo1 = new Nodo($1, contador++);
+                                nuevo.addHijos(nuevo1);
+                                nuevo.addHijos($3);
 
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UNA funcion nativa ");
+                            } 
+    | 'ttoupper' '(' EXPRE ')'{ 
+                                var nuevo = new Nodo("FUNCION NATIVA", contador++);
+                                var nuevo1 = new Nodo($1, contador++);
+                                nuevo.addHijos(nuevo1);
+                                nuevo.addHijos($3);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UNA funcion nativa ");
+                            } 
+    | 'tround' '(' EXPRE ')' { 
+                                var nuevo = new Nodo("FUNCION NATIVA", contador++);
+                                var nuevo1 = new Nodo($1, contador++);
+                                nuevo.addHijos(nuevo1);
+                                nuevo.addHijos($3);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UNA funcion nativa ");
+                            } 
+    | 'tlength' '(' EXPRE ')'{ 
+                                var nuevo = new Nodo("FUNCION NATIVA", contador++);
+                                var nuevo1 = new Nodo($1, contador++);
+                                nuevo.addHijos(nuevo1);
+                                nuevo.addHijos($3);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UNA funcion nativa ");
+                            } 
+    | 'ttypeof' '(' EXPRE ')'{ 
+                                var nuevo = new Nodo("FUNCION NATIVA", contador++);
+                                var nuevo1 = new Nodo($1, contador++);
+                                nuevo.addHijos(nuevo1);
+                                nuevo.addHijos($3);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UNA funcion nativa ");
+                            } 
+    | 'ttostring' '(' EXPRE ')'{ 
+                                var nuevo = new Nodo("FUNCION NATIVA", contador++);
+                                var nuevo1 = new Nodo($1, contador++);
+                                nuevo.addHijos(nuevo1);
+                                nuevo.addHijos($3);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UNA funcion nativa ");
+                            } 
+    | 'ttochararray' '(' EXPRE ')'{ 
+                                var nuevo = new Nodo("FUNCION NATIVA", contador++);
+                                var nuevo1 = new Nodo($1, contador++);
+                                nuevo.addHijos(nuevo1);
+                                nuevo.addHijos($3);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UNA funcion nativa ");
+                            } 
+;
+//
 FUNCIONES_VECTORES
-    : 'id' '.' 'tpush' '(' EXPRE ')'  
-    | 'id' '.' 'tpop' '(' ')'   
-;
+    : 'id' '.' 'tpush' '(' EXPRE ')'  { 
+                                var nuevo = new Nodo("FUNCION VECTOR", contador++);
+                                var nuevo1 = new Nodo("ID", contador++, $1);
+                                var nuevo2 = new Nodo("push", contador++);
+                                nuevo.addHijos(nuevo1);
+                                nuevo.addHijos(nuevo2);
+                                nuevo.addHijos($5);
 
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UNA FUNCION VECTOR ");
+                                }   
+    | 'id' '.' 'tpop' '(' ')'   { 
+                                var nuevo = new Nodo("FUNCION VECTOR", contador++);
+                                var nuevo1 = new Nodo("ID", contador++, $1);
+                                var nuevo2 = new Nodo("pop", contador++);
+                                nuevo.addHijos(nuevo1);
+                                nuevo.addHijos(nuevo2);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UNA FUNCION VECTOR ");
+                                } 
+;
+//
 LLAMADAS 
-    : 'id' '(' LISTA_VALORES_1 ')'
-    | 'id' '(' ')'
-;
+    : 'id' '(' LISTA_VALORES_1 ') { 
+                                var nuevo = new Nodo("LLAMADA FUNCION", contador++);
+                                var nuevo_id = new Nodo("ID FUNCION", contador++, $1);                           
+                                nuevo.addHijos(nuevo_id);
+                                nuevo.addHijos($3);
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UNA LISTA DE VALORES ");
+                            }
 
+    | 'id' '(' ')'          { 
+                                var nuevo = new Nodo("LLAMADA FUNCION", contador++);
+                                var nuevo_id = new Nodo("ID FUNCION", contador++, $1);                           
+                                nuevo.addHijos(nuevo_id);
+                                $$ = nuevo; 
+                            }
+
+;
 
 RUN 
     : 'trun' 'id' '(' ')' 

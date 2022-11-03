@@ -1,16 +1,5 @@
-switch(edad){
-            case 18: 
-                println("mayoria de eddad en guatemala");
-                string v_5= (string)"hola"+" usac";
-                break;
-            case /*Este mensaje no tendria que dar error porque se omite desde el anlaisis lexico*/ 21:
-                // Este es la mayoria de edad en otro pais
-                println("mayoria de edad en us");
-                int v_1= (int)12+1;
-                break;
-            default:
-                //instrucciones si no se da a complir la conidcion
-                var_3 = ("usac"=="usac")? 1:4+5;
-                int var_23 = ("usac"=="usac")? 1:4+5;
-                break;
-        }
+//Casteos
+int v_5= (int)"hola";
+string v_1= (string)12%8;
+char v_3= (char)true;
+char v_4= (char)'A';
