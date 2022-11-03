@@ -2,9 +2,6 @@
 export class Nodo{
 
     //atributos
-    private etiqueta: string=""
-    private hijos: Array<Nodo>
-    private valor: string=""
     private cadena: boolean = false
     private aux: string=""
     private id: number

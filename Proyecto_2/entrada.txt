@@ -1,5 +1,2 @@
 //Casteos
-int v_5= (int)"hola";
-string v_1= (string)12%8;
-char v_3= (char)true;
-char v_4= (char)'A';
+string numero = "hola";

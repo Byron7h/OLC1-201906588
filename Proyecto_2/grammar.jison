@@ -26,7 +26,12 @@
 
     const {Nodo} = require('./nodo');
     var contador = 0;
-    var padre = new Nodo();
+    const padre = new Nodo();
+
+
+   
+
+
 
     // const {el nombre con el que lo vamos a usar acá}  = require('ruta');
 
@@ -174,7 +179,9 @@ char  \' {options} \'
 
 //nuestro simbolo inicial
 Init    
-    : Instructions EOF          {this.padre = $1}
+    : Instructions EOF          { return $1;
+                                console.log("NODOOS")
+                                }
 ;                                
 
 Instructions

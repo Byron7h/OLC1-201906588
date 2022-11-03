@@ -18,8 +18,9 @@ var Nodo = /** @class */ (function () {
     }
     Nodo.prototype.addHijos = function (nuevo) {
         var hijosv = this.hijos.push(nuevo);
-        console.log(this.hijos);
-        console.log(hijosv);
+
+        //console.log(this.hijos);
+        //console.log(hijosv);
     };
     Nodo.prototype.setEtiqueta = function (eti) {
         this.etiqueta = eti;
@@ -34,13 +35,13 @@ var Nodo = /** @class */ (function () {
         return this.hijos;
     };
     Nodo.prototype.getEtiqueta = function () {
-        return this.etiqueta;
+        return this.etiqueta_;
     };
     Nodo.prototype.getValor = function () {
-        return this.valor;
+        return this.valor_;
     };
     Nodo.prototype.getId = function () {
-        return this.id;
+        return this.id_;
     };
     return Nodo;
 }());
