@@ -26,6 +26,7 @@
 
     const {Nodo} = require('./nodo');
     var contador = 0;
+    var padre = new Nodo();
 
     // const {el nombre con el que lo vamos a usar acá}  = require('ruta');
 
@@ -173,12 +174,22 @@ char  \' {options} \'
 
 //nuestro simbolo inicial
 Init    
-    : Instructions EOF          //{  return $1;  }//intrucciones es un no_terminal, vamos a retornar lo almacenado en instricciones
-;                                               // el return ya es para javascript, lleva un array de clases abstractas
+    : Instructions EOF          {this.padre = $1}
+;                                
 
 Instructions
-    : Instructions Instruction  //{ $1.push($2); $$ = $1; }//varias o una istruccion // EL.PUSH ES AGREGREGAR A UN ARRAY en JS  
-    | Instruction               //{ $$ = [$1];            }
+    : Instructions Instruction  { 
+                                var nuevo = new Nodo("INSTRUCCIONES", contador++);
+                           
+                                nuevo.addHijos($1);
+                                nuevo.addHijos($2);
+
+                                $$ = nuevo;
+                                console.log("se encontró una LISTA INSTRUCCION");
+                                }
+    | Instruction               {  $$ = $1;    
+                                console.log("se encontró una Instruccion");
+                                }
 ;//sabemos que esta va a ser la que se va a hacer primero, por lo que va a retornar al padre
 // a la instruccion 1 le agregamos la instrucción 2, y retornamos la instruccion 2
 // lo que traiga , entre corchetes, UN ARRAY
@@ -188,31 +199,29 @@ Instructions
 // modificamos las sentencias para que nos acepte con puntoycoma y sin 
 Instruction
 
-    : FUNCION 
-    | DECLARACION ';'       //{$$ = $1}
-    //| PRINTENVIROMENT       {$$ = $1} // imprime lo que está el la tabla de simbolos
-    //| PRINTENVIROMENT ';'   {$$ = $1}
-    | INDECREMENTO ';'
-    | ASIGNACION ';'        //{$$ = $1}
-    | PRINT ';'             //{$$ = $1}
-    | PRINTLN ';'             //{$$ = $1}
-    | IF           //{$$ = $1}
-    | CICLOFOR              //{$$ = $1} 
-    | SWITCH 
-    | WHILE 
-    | DO_WHILE ';'
-    | DO_UNTIL ';'   
+    : FUNCION               {$$ = $2}
+    | DECLARACION ';'       {$$ = $1}
+    | INDECREMENTO ';'      {$$ = $2}
+    | ASIGNACION ';'        {$$ = $1}
+    | PRINT ';'             {$$ = $1}
+    | PRINTLN ';'           {$$ = $1}
+    | IF                    {$$ = $1}
+    | CICLOFOR              {$$ = $1} 
+    | SWITCH                {$$ = $2}
+    | WHILE                 {$$ = $2}
+    | DO_WHILE ';'          {$$ = $2}
+    | DO_UNTIL ';'          {$$ = $2} 
 
     //| METODO
-    | DECLARACION_VECTOR ';'
-    | MODIFICACION_VECTOR ';'
-    | FUNCIONES_NATIVAS ';'
-    | LLAMADAS ';' 
-    | FUNCIONES_VECTORES ';'
+    | DECLARACION_VECTOR ';'    {$$ = $2}
+    | MODIFICACION_VECTOR ';'   {$$ = $2}
+    | FUNCIONES_NATIVAS ';'     {$$ = $2}
+    | LLAMADAS ';'              {$$ = $2}
+    | FUNCIONES_VECTORES ';'    {$$ = $2}
     //| RUN ';'
 ;
 
-
+/*
 FIJOS     
     : DECLARACION ';' 
     | ASIGNACION ';' 
@@ -251,7 +260,7 @@ GLOBALES
     | METODO
     | FUNCION
 ;
-
+*/
 // 
 OPTERNARIO
     : EXPRE '?' EXPRE ':' EXPRE { 
@@ -266,53 +275,154 @@ OPTERNARIO
                             }
 ;
 
-
+//
 BLOQUE
-    : '{' Instructions '}'// {$$= new Statement($2, @1.first_line, @1.first_column);}
+    : '{' Instructions '}' {                              
+                                {$$ = $2}
+                            }
 ;
-
+//
 IF 
-    : 'tif' '(' EXPRE ')' ACCIONES_  
-    | 'tif' '(' EXPRE ')' ACCIONES_  COMPLEMENTO_IF
-;
+    : 'tif' '(' EXPRE ')' ACCIONES_  {                              
+                                var nuevo = new Nodo("IF", contador++);
 
+                                nuevo.addHijos($3);
+                                nuevo.addHijos($5);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UN IF");
+                       }
+
+    | 'tif' '(' EXPRE ')' ACCIONES_  COMPLEMENTO_IF {                              
+                                var nuevo = new Nodo("IF", contador++);
+
+                                nuevo.addHijos($3);
+                                nuevo.addHijos($5);
+                                nuevo.addHijos($6);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UN IF");
+                       }
+;
+//
 COMPLEMENTO_IF 
-    : ELSE {console.log("entro else")}
-    | LISTA_ELIF {console.log("Entro lista elif")}
-    | LISTA_ELIF ELSE {console.log("ENTRO ELIS Y ELSE")}
-;
+    : ELSE {$$ = $1}
+    | LISTA_ELIF {$$ = $1}
+    | LISTA_ELIF ELSE {                              
+                                var nuevo = new Nodo("COMPLEMENTO IF", contador++);
 
+                                nuevo.addHijos($1);
+                                nuevo.addHijos($2);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UN ELIF ELSE");
+                       }
+;
+//
 LISTA_ELIF
-    : 'telif' '(' EXPRE ')' ACCIONES_
+    : 'telif' '(' EXPRE ')' ACCIONES_ { 
+                                
+                                var nuevo = new Nodo("ELIF", contador++);
+
+                                nuevo.addHijos($3);
+                                nuevo.addHijos($5);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UN ELIF");
+                            }
+
     | LISTA_ELIF 'telif' '(' EXPRE ')' ACCIONES_
-;
 
+                            { 
+                                var nuevo = new Nodo("LISTA ELIF", contador++);
+                                nuevo.addHijos($1);
+                                nuevo.addHijos($4);
+                                nuevo.addHijos($6);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UNA LISTA ELIF");
+                            }
+
+
+;
+//
 ELSE 
-    : 'telse' ACCIONES_
+    : 'telse' ACCIONES_ { 
+                                var nuevo = new Nodo("ELSE", contador++);
+
+                                nuevo.addHijos($2);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UN ELSE ");
+                        }
 ;
-
+//
 ACCIONES_
-    : BLOQUE
-    | '{' '}'
+    : BLOQUE {$$ = $1}
+    | '{' '}' {$$ = new Nodo("sin instrucciones", contador++);}
 ;   
-
+//
 SWITCH 
     : 'tswitch' '(' EXPRE ')' '{' COMPLEMENTO_SWITCH '}'
-;
+    { 
+                                var nuevo = new Nodo("SWITCH", contador++);
 
+                                nuevo.addHijos($3);
+                                nuevo.addHijos($6);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UN DEFAULT");
+    }
+;
+//
 COMPLEMENTO_SWITCH 
-    : LISTA_CASE DEFAULT_CASE
-    | LISTA_CASE
-    | DEFAULT_CASE
-;
+    : LISTA_CASE DEFAULT_CASE { 
+                                var nuevo = new Nodo("CONTENIDO SWITCH", contador++);
 
+                                nuevo.addHijos($1);
+                                nuevo.addHijos($2);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ CONTENIDO SWITCH");
+                            }
+    | LISTA_CASE {$$ = $1}
+    | DEFAULT_CASE {$$ = $1}
+;
+//
 LISTA_CASE
-    : 'tcase' EXPRE ':' Instructions 'tbreak' ';'
-    | LISTA_CASE 'tcase' EXPRE ':' Instructions 'tbreak' ';'
-;
+    : 'tcase' EXPRE ':' Instructions 'tbreak' ';' 
+                            { 
+                                var nuevo = new Nodo("CASE", contador++);
 
+                                nuevo.addHijos($2);
+                                nuevo.addHijos($4);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ ASE");
+                            }
+
+    | LISTA_CASE 'tcase' EXPRE ':' Instructions 'tbreak' ';' 
+                            { 
+                                var nuevo = new Nodo("LISTA CASE", contador++);
+
+                                nuevo.addHijos($1);
+                                nuevo.addHijos($3);
+                                nuevo.addHijos($5);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UN CASE");
+                            }
+;
+//
 DEFAULT_CASE 
-    :'tdefault' ':' Instructions 'tbreak' ';'
+    :'tdefault' ':' Instructions 'tbreak' ';' { 
+                                var nuevo = new Nodo("DEFAULT", contador++);
+
+                                nuevo.addHijos($3);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UN DEFAULT");
+                            }
 ;
 
 //
@@ -327,7 +437,7 @@ WHILE
                                 console.log("SE ENCONTRÓ UN DO WHILE ");
                             }
 ;
-;
+
 //
 DO_WHILE 
     : 'tdo' BLOQUE 'twhile' '(' EXPRE ')'
@@ -355,15 +465,38 @@ DO_UNTIL
                             }
 ;
 
-// acá debemos hacer una funcionalidad para el incremento, en lugar de una asignación
+// 
 CICLOFOR
-    : 'tfor' '(' DECLARACION ';' EXPRE ';' ACTUALIZACION_FOR ')' ACCIONES_ //{$$= new For($3,$5,$8, @1.first_line, @1.first_column);}
-    | 'tfor' '(' ASIGNACION ';' EXPRE ';' ACTUALIZACION_FOR ')' ACCIONES_ 
-;
+    : 'tfor' '(' DECLARACION ';' EXPRE ';' ACTUALIZACION_FOR ')' ACCIONES_ 
+                            { 
+                                var nuevo = new Nodo("FOR", contador++);
 
+                                nuevo.addHijos($3);
+                                nuevo.addHijos($5);
+                                nuevo.addHijos($7);
+                                nuevo.addHijos($9);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UN FOR ");
+                            }
+
+    | 'tfor' '(' ASIGNACION ';' EXPRE ';' ACTUALIZACION_FOR ')' ACCIONES_ 
+                            { 
+                                var nuevo = new Nodo("FOR", contador++);
+
+                                nuevo.addHijos($3);
+                                nuevo.addHijos($5);
+                                nuevo.addHijos($7);
+                                nuevo.addHijos($9);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UN FOR ");
+                            }
+;
+//
 ACTUALIZACION_FOR
-    : INDECREMENTO
-    | ASIGNACION
+    : INDECREMENTO {$$=$1}
+    | ASIGNACION {$$=$1}
 ;
 
 //
@@ -494,7 +627,7 @@ PRINTLN
                                 console.log("SE ENCONTRÓ UN PRINTLN ");
                             } 
 ;
-
+//
 EXPRE                        // creamos un nodo de tipo aritmetic, que es una clase abstracta, y la retornamos
                             // izquierda, derecha, tipo(de nuestro enum), fila y columna
     
@@ -749,7 +882,8 @@ RETURN_VALOR
 //
 RETURN_SOLO
     : 'treturn' ';'         {   $$ = new Nodo("RETURN", contador++); 
-                                console.log("SE ENCONTRÓ UN RETURN ");                            }
+                                console.log("SE ENCONTRÓ UN RETURN ");                            
+                            }
 ;
 
 //
