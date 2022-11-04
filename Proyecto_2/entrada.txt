@@ -1,2 +1,28 @@
-//Casteos
-string numero = "hola";
+    if( x==3 && 45+56==12){
+        println("Esta bien");
+        var_1--;
+    }elif(8==4|| "Universidad"=="usac"){
+        println("Esta es otra suma");
+        boolean v_4= (boolean)'A';
+        vector1.pop();
+    }elif(5==4+1){
+        edades.push(50-89*4);
+        println("Esta es otra suma");
+        lista.pop();
+        switch(edad){
+            case 18: 
+                println("mayoria de eddad en guatemala");
+                string v_5= (string)"hola"+" usac";
+                break;
+            case /*Este mensaje no tendria que dar error porque se omite desde el anlaisis lexico*/ 21:
+                // Este es la mayoria de edad en otro pais
+                println("mayoria de edad en us");
+                int v_1= (int)12+1;
+                break;
+            default:
+                //instrucciones si no se da a complir la conidcion
+                var_3 = ("usac"=="usac")? 1:4+5;
+                int var_23 = ("usac"=="usac")? 1:4+5;
+                break;
+        }
+    }

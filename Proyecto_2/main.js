@@ -59,21 +59,6 @@ AST2 = function (actual) {
         }
 
     }
-
-/*        ArrayList<nodo> hijos = actual.getHijos();
-        String aux= ""; 
-        
-        if(!hijos.isEmpty() ){
-
-            for(nodo i : hijos){        
-                cache += "    "+actual.getId()+" -> "+i.getId()+";\n";
-                AST(i);
-            }
-                  
-        } */
-
-   
-
                 
 };
 
