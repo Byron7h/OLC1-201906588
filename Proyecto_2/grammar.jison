@@ -23,7 +23,7 @@
     //const {Buscador} = require('../expression/buscador');
     //const {C_if} = require('../objetos/condiciones_if');
     //const {Statement} = require('../instruccion/Statement');
-
+    const { Singleton}=  require("./Singleton")
     const {Nodo} = require('./nodo');
     var contador = 0;
     const padre = new Nodo();
@@ -219,13 +219,21 @@ Instruction
     | DO_WHILE ';'          {$$ = $2}
     | DO_UNTIL ';'          {$$ = $2} 
 
-    //| METODO
+    | METODO
     | DECLARACION_VECTOR ';'    {$$ = $2}
     | MODIFICACION_VECTOR ';'   {$$ = $2}
     | FUNCIONES_NATIVAS ';'     {$$ = $2}
     | LLAMADAS ';'              {$$ = $2}
     | FUNCIONES_VECTORES ';'    {$$ = $2}
     //| RUN ';'
+
+    | error            ';'  {  
+                                console.log("error sintactico en linea " + (yylineno+1) );
+                                //colocar el siguiente codigo en el archivo grammar.js en el= if(!recovering) como penultima instruccion
+                                //let s=Singleton.getInstance();
+                                //s.add_error(new error("Sintactico", `El caracter ${(this.terminals_[symbol] || symbol)} no se esperaba en esta posicion`, yyloc.last_line, yyloc.last_column+1))                  
+                            } 
+
 ;
 
 /*
@@ -843,15 +851,84 @@ INDECREMENTO
 ;
 
 FUNCION 
-    : 'id' '(' LISTA_PARAMETROS ')' ':' TIPOS ACCIONES_
-    | 'id' '(' ')' ':' TIPOS ACCIONES_
+    : 'id' '(' LISTA_PARAMETROS ')' ':' TIPOS ACCIONES_ {   
+
+                                console.log("se encontró un id");
+                                var nuevo = new Nodo("FUNCION", contador++);
+                                var nuevo1 = new Nodo("ID", contador++, $1);
+                                nuevo.addHijos(nuevo1);
+                                nuevo.addHijos($3);
+                                nuevo.addHijos($6);
+                                nuevo.addHijos($7);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UNA FUNCION"); 
+                                }
+                                
+    | 'id' '(' ')' ':' TIPOS ACCIONES_ {        
+                                console.log("se encontró un id");
+
+                                var nuevo = new Nodo("FUNCION", contador++);
+                                var nuevo1 = new Nodo("ID", contador++, $1);
+                                nuevo.addHijos(nuevo1);
+                                nuevo.addHijos($3);
+                                nuevo.addHijos($5);
+                                nuevo.addHijos($6);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UNA FUNCION"); 
+                                }
 ;
 
 METODO 
-    : 'id' '(' LISTA_PARAMETROS ')' ':' 'tvoid' ACCIONES_
-    | 'id' '('LISTA_PARAMETROS ')' ':' ACCIONES_
-    | 'id' '(' ')' ':' 'tvoid' ACCIONES_
-    | 'id' '(' ')' ':'  ACCIONES_
+    : 'id' '(' LISTA_PARAMETROS ')' ':' 'tvoid' ACCIONES_ {        
+
+                                var nuevo = new Nodo("METODO", contador++);
+                                var nuevo1 = new Nodo("ID", contador++, $1);
+                                var nuevo2 = new Nodo("void", contador++, $6);
+                                nuevo.addHijos(nuevo1);
+                                nuevo.addHijos($3);
+                                nuevo.addHijos(nuevo2);                               
+                                nuevo.addHijos($7);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UN METODO"); 
+                                }
+
+    | 'id' '('LISTA_PARAMETROS ')' ':' ACCIONES_ {        
+
+                                var nuevo = new Nodo("METODO", contador++);
+                                var nuevo1 = new Nodo("ID", contador++, $1);
+                                nuevo.addHijos(nuevo1);
+                                nuevo.addHijos($3);                              
+                                nuevo.addHijos($6);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UN METODO"); 
+                                }
+
+    | 'id' '(' ')' ':' 'tvoid' ACCIONES_ {        
+
+                                var nuevo = new Nodo("METODO", contador++);
+                                var nuevo1 = new Nodo("ID", contador++, $1);
+                                nuevo.addHijos(nuevo1);
+                                nuevo.addHijos($3);                              
+                                nuevo.addHijos($6);
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UN METODO"); 
+                                }
+
+    | 'id' '(' ')' ':'  ACCIONES_ { 
+
+                                var nuevo = new Nodo("METODO", contador++);
+                                var nuevo1 = new Nodo("ID", contador++, $1);
+                                nuevo.addHijos(nuevo1);
+                                nuevo.addHijos($5);                              
+
+                                $$ = nuevo; 
+                                console.log("SE ENCONTRÓ UN METODO"); 
+                                }
 ;
 //
 LISTA_PARAMETROS

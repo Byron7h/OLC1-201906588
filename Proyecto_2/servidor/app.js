@@ -21,6 +21,8 @@ var gramatica = require("../grammar") //importamos el archivo que nos generó ji
 var cache = "";
 
 
+ 
+
 
 AST = function (nodo ) {
     this.cache  = "digraph structs {\n"+

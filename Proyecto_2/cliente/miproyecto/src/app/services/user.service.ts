@@ -12,7 +12,13 @@ export class UserService {
 
   // funciones
 geterrores(){
-  return this.http.get(this.URL+'/geterrores')
+  console.log("llego a la funcion")
+  return this.http.get('http://localhost:8080/errores')
+}
+
+posttexto(text:string){
+  console.log("llego a la funcion post")
+  return this.http.post('http://localhost:8080/AST',{"texto":text})
 }
 
 /*
