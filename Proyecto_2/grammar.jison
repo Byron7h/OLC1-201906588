@@ -229,6 +229,13 @@ Instruction
 
     | error            ';'  {  
                                 console.log("error sintactico en linea " + (yylineno+1) );
+                                
+                              
+                                $$ = new Nodo("Error", contador++); 
+
+                                
+                                
+                                
                                 //colocar el siguiente codigo en el archivo grammar.js en el= if(!recovering) como penultima instruccion
                                 //let s=Singleton.getInstance();
                                 //s.add_error(new error("Sintactico", `El caracter ${(this.terminals_[symbol] || symbol)} no se esperaba en esta posicion`, yyloc.last_line, yyloc.last_column+1))                  
